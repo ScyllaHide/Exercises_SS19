@@ -46,12 +46,114 @@
 				\begin{align*}
 					\brackets{\bigcup_{n\in \N} A_n}^C = \bigcap_{n\in \N} A_n^C \subset A^C_{n_0},
 				\end{align*} 
-				damit ist auch das Komplement von $A = \bigcup_{n\in \N}A_n$ abzählbar und liegt in $\F$
+				damit ist auch das Komplement von $A = \bigcup_{n\in \N}A_n$ abzählbar und liegt in $\F$.
 			\end{itemize}
 		Damit wurde nachgewiesen, das $\F$ eine $\sigma$-Algebra ist.
 		\end{itemize}
 	\end{enumerate}
 \end{proof}
+
+%%%%%%%%%%%%%%%%%%%% Aufgabe 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Aufgabe 1.2}
+\begin{enumerate}
+	\item Es sei $(\Omega, \F, \Meas)$ ein WRaum und $A,B,C \in \F$ drei Ereignisse. Beschreiben Sie mengentheoretisch folgende Ereignisse:
+	\begin{enumerate}
+		\item es tritt nur $A$ ein
+		\item $A$ und $B$ treten ein, aber $C$ nicht
+		\item Mindestens eins der Ereignisse tritt ein
+		\item Mindestens zwei der Ereignisse treten ein
+		\item $A,B,C$ treten alle ein
+		\item Keines der drei Ereignisse $A,B,C$ tritt ein
+		\item Höchstens ein Ereigniss tritt ein
+		\item Höchstens zwei Ereignisse treten ein
+		\item Genau zwei Ereignisse treten ein
+		\item Höchstens der drei Ereignisse tretten ein.
+	\end{enumerate}
+	\item Es seien $A_1,A_2, \dots$ Ereignisse. Interpretieren Sie folgende Ereignisse:
+		\begin{align*}
+			\ul{A}:= \liminf_{n \to \infty} A_n = \bigcup_{n=1}^{\infty}\bigcap_{k=n}^{\infty} A_k, \quad \overline{A}:= \limsup_{n \to \infty} A_n = \bigcup_{n=1}^{\infty}\bigcap_{k=n}^{\infty} A_k
+		\end{align*}
+\end{enumerate}
+
+\begin{lösung}
+	\begin{enumerate}
+		\item
+		\begin{enumerate}
+			\item 
+		\end{enumerate}
+	\end{enumerate}
+\end{lösung}
+
+%%%%%%%%%%%%%%%%%%%% Aufgabe 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Aufgabe 1.3}
+
+\begin{enumerate}
+	\item Es sei $\Meas$ ein WMaß auf $(\Omega, \F)$ und $A,B,A_1,A_2,\dots \in \F$ beliebige Ereignisse. Zeigen Sie:
+	\begin{enumerate}
+		\item $\Meas(\emptyset) = 0$,
+		\item $\Meas(A\cup B) + \Meas(A\cap B) = \Meas(A) + \Meas(B)$ (endliche Additivität), insbesondere $\Meas(A) + \Meas(A^C) = 1$,
+		\item Aus $A \subseteq B$ folgt $\Meas(A) \le \Meas(B)$ (Monotonie),
+		\item $\sigma$-Subadditivität
+		\begin{align*}
+			\Meas\left( \bigcup_{i \ge 1} A_i\right) \le \sum_{i\ge 1} \Meas(A_i),
+		\end{align*}
+		\item $\sigma$-Stetigkeit, d.h. $A_n \uparrow A$, d.h. $A_1 \subseteq A_2 \subseteq \dots$ und $A = \bigcup_{i \ge 1} A_i$ (oder $A_n \downarrow A$, d.h. $A_1 \supseteq A_2 \supseteq \dots$ und $A = \bigcap_{i \ge 1} A_i$), dann
+		\begin{align*}
+			\liminf_{i \to \infty} \Meas(A_i) = \Meas(A).
+		\end{align*}
+	\end{enumerate}
+	\item Es sei $(\Omega, \F, \Meas)$ ein WRaum und $A,B \in \F$ zwei Ereignisse mit $\Meas(A) = 0.6$ und $\Meas(B) = 0.4$, sowie $\Meas(A\cap B) = 0.2$. Bestimmen Sie die Wahrscheinlichkeiten
+	\begin{align*}
+		\Meas(A\cup B), \quad \Meas(B^C), \quad \Meas(A^C \cap B), \quad \Meas(A \cup B^C), \quad \Meas(A^C \cap B^C).
+	\end{align*}
+\end{enumerate}
+
+\begin{proof}
+	\begin{enumerate}
+		\item 
+		\begin{enumerate}
+			\item Behauptung: $\Meas(\emptyset) = 0$
+			\begin{align*}
+			\emptyset = \bigcup_{n=1}_{\infty \emptyset} \qquad \Meas(\emptyset) = \Meas\left(\bigcup_{n=1}^{\infty}\right) = \sum_{i= 1}^{\infty} \Meas(\emptyset) \le 1.
+			\end{align*}
+			\item 
+		\end{enumerate}
+	\end{enumerate}
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%% Aufgabe 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Aufgabe 1.4}
+Es sei $X$ eine stetige, reelle Zufallsvariable ($X: \R_{+} \to \R_{+}$) mit Wahrscheinlichkeitsdichte
+\begin{align*}
+	f: \R_{+} \to \R_{+} \mit f(x) = \frac{1}{2c} e^{-cx}
+\end{align*}
+
+\begin{enumerate}[label=\alph*)]
+	\item Bestimme den Paramter $c$!
+	\item Wie sieht die Verteilungsfunktion von $X$ aus?
+\end{enumerate}
+
+\begin{lösung}
+	\begin{enumerate}[label=\alph*)]
+		\item Nach auswerten des Integrals über $\R_{+}$ und $f$, ergibt sich $c = \sfrac{1}{\sqrt{2}}$. %TODO formulate this. 
+		Sei $\Meas$ das WMaß, was normiert ist zu $1$, d.h. $\Meas(\R_{+}) \overset{!}{=}1 (N)$. Damit lässt sich dann $c$ bestimmen:
+		\begin{align*}
+			\Meas(\R_{+}) &= \int_{\R_{+}} \frac{1}{2c} e^{-cx} dx\\
+			&= \frac{1}{2c} \int_{0}^{\infty}  e^{-cx} dx \\
+			&= \frac{1}{2c} \big[-\frac{1}{c} e^{-cx}\big]_{0}^{\infty}\\
+			&= -\frac{1}{2c^2} \big(\lim\limits_{\alpha \to \infty} e^{-c\alpha} - e^{-c\cdot0}\big)\\
+			&= \frac{1}{2c^2} \overset{(N)}{\Rightarrow} c = \frac{1}{\sqrt{2}} 
+		\end{align*}
+		\item Damit gibt es folgenden WRaum $(\Omega, \borel(\R_{+}),\Meas)$ auf diesem soll sich die Verteilungsfunktion befinden. Nach Definition gilt: 
+		\begin{align*}
+			F_{\Meas \circ X^{-1}} = F_{X}: \R_{+} \to [0,1] \mit F: d \to \Meas((X \le d))\\
+			\text{Im dem Fall sieht das so aus } F_{X}(d) = \int_{0}^{d} \frac{1}{2c} e^{-cx} dx. %TODO verify this!
+		\end{align*}
+		%TODO maybe draw a plot of this thing?
+	\end{enumerate}
+\end{lösung}
+
 
 %\begin{align*}
 %	L_0^2:=\big\lbrace X\in L_2:\E[X]=0\big\rbrace
