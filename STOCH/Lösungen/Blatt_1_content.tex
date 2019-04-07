@@ -127,7 +127,48 @@
 			\emptyset = \bigcup_{n=1}^{\infty} \emptyset\qquad 
 			\Meas(\emptyset) = \Meas\left(\bigcup_{n=1}^{\infty}\right) = \sum_{i= 1}^{\infty} \Meas(\emptyset) \le 1.
 			\end{align*}
-			\item ... %TODO other points, i have as picture!
+			\item Behauptung: $\Meas(A \cup B) + \Meas(A \cap B) = \Meas(A) + \Meas(B)$
+			\begin{align}
+				\Meas(A\uplus B) 
+				&= \Meas(A \cup B \cup \emptyset \cup \dots)\notag\\ 
+				&= \Meas(A) + \Meas(B) + \sum_{i=1}^{\infty}\Meas(\emptyset)\notag\\
+				B = A^C &\Rightarrow \Meas(\Omega) = \Meas(A \uplus A^C)\notag\\
+				&= \Meas(A) + \Meas(A^C) = 1\notag\\
+				\Meas(A \cup B) + \Meas(A \cap B) 
+				&= \Meas(A \setminus B \cup B\setminus A \uplus (A \cap B) + \Meas(A \cap B)\notag\\
+				&= \underbrace{\Meas(A\setminus B)  + \Meas(A \cap B)}_{\Meas(A)} + \underbrace{\Meas(A \cap B) + \Meas(B\setminus A)}_{\Meas(B)}\notag\\
+				&= \Meas(A) + \Meas(B)\notag
+			\end{align}
+%			\item ... %TODO other points, i have as picture!
+			\item $A,B \in \F, A \subseteq B$:\\
+			\begin{align}
+				\Meas(B) = \Meas(A \cup B\setminus A) = \Meas(A) + \underbrace{\Meas(B\setminus A)}_{\ge 0} \ge \Meas(A) 
+				\label{eq_1}\tag{*}
+			\end{align}
+			\item $A_1,A_2,\dots$\\
+			Behauptung: $\Meas\brackets{\bigcup_{i \ge 1} A_i} \overset{!?}{\le} \sum_{i\ge 1} \Meas(A_i)$
+			\begin{align}
+			&= \Meas(\bigcup_{i \ge 1}^{\infty}(A_i \setminus \bigcup_{j \ge i} A_j))\notag\\ 
+			&= \Meas(A_1 \cup (A_2 \setminus A_1) \cup (A_3 \setminus (A_1 \cup A_2)) \cup \dots)\notag\\
+			&= \sum_{i\ge 1}^{\infty} \Meas(A_i \setminus \bigcup_{j \ge i} A_j) \overset{\text{\cref{eq_1}}}{\le} \sum_{i\ge 1} \Meas(A_i)\notag
+			\end{align}
+			\item $A_1 \subseteq A_2 \subseteq \dots \in F, A_0 = \emptyset$ und $A_n \xrightarrow{n \to \infty} A$. 
+			%(Es muss eine disjunkte Zerlegung gefunden werden: $F_i = A_i \setminus A_{i-1}$)
+			\begin{align}
+				\Meas(A) 
+				&= \Meas(\bigcup_{i \ge 1} (A_i \setminus A_{i-1})) \notag\\
+				&= \sum_{i\ge 1} \Meas(A_i \setminus A_{i-1})\notag\\
+				&= \liminf_{n \to \infty} \sum_{i\ge 1}^{n} \Meas(A_i \setminus A_{i-1})\notag \\
+				&= \liminf_{n \to \infty} \Meas(\bigcap_{i \ge 1} (A_i\setminus A_{i-1})) \notag\\
+				&= \liminf_{n \to \infty} \Meas(A_n)
+				\label{eq_2}\tag{**}
+			\end{align}
+			Und nun nochmal den absteigenden Fall:\\
+			$B_1 \supseteq B_2 \supseteq \dots \in F$ und $B_n \downarrow B \Longrightarrow B_1 \setminus B_n \uparrow B_1 \setminus B$. Benutze dazu \cref{eq_1} und \cref{eq_2}:
+			\begin{align}
+				\underbrace{\Meas(B_1 \setminus B)}_{\Meas(B_1) - \Meas(B)} &= \lim_{n \to \infty} \Meas(B_1 \setminus B_n) \notag\\
+				&= \lim_{n \to \infty} (\Meas(B_1) - \Meas(B_1))\notag
+			\end{align}
 		\end{enumerate}
 	\item $\dots$ %TODO No idea right now, later.
 	\end{enumerate}
@@ -159,8 +200,8 @@ Es sei $X$ eine stetige, reelle Zufallsvariable ($X: \R_{+} \to \R_{+}$) mit Wah
 		\end{align*}
 		\item Damit gibt es folgenden WRaum $(\Omega, \borel(\R_{+}),\Meas)$ auf diesem soll sich die Verteilungsfunktion befinden. Nach Definition gilt: 
 		\begin{align*}
-			F_{\Meas \circ X^{-1}} = F_{X}: \R_{+} \to [0,1] \mit F: d \to \Meas((X \le d))\\
-			\text{Im dem Fall sieht das so aus } F_{X}(d) = \int_{0}^{d} \frac{1}{2c} e^{-cx} dx. %TODO verify this!
+			F_{\Meas \circ X^{-1}} = F_{X}: \R_{+} \to [0,1] \mit F: d \to \Meas((X \le d))\notag\\
+			\text{Im dem Fall sieht das so aus: } F_{X}(d) = \int_{-\infty}^{d} \frac{1}{2\sqrt{2}} e^{-\frac{x}{\sqrt{2}}} \diff x = \brackets{1 - e^{-\frac{d}{\sqrt{2}}}}\indi_{\set{x \ge 0}}.\notag\\
 		\end{align*}
 		%TODO maybe draw a plot of this thing?
 	\end{enumerate}
