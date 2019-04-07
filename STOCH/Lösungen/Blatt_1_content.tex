@@ -67,7 +67,7 @@
 		\item Höchstens ein Ereigniss tritt ein
 		\item Höchstens zwei Ereignisse treten ein
 		\item Genau zwei Ereignisse treten ein
-		\item Höchstens der drei Ereignisse tretten ein.
+		\item Höchstens drei der Ereignisse tretten ein.
 	\end{enumerate}
 	\item Es seien $A_1,A_2, \dots$ Ereignisse. Interpretieren Sie folgende Ereignisse:
 		\begin{align*}
@@ -77,10 +77,20 @@
 
 \begin{lösung}
 	\begin{enumerate}
-		\item
+		\item Im wesentlichen sind das eigentlich nur Teilmengen der Potenzmenge von $\pows(\Omega)$, wobei $\Omega = \set{A,B,C}$ ist? (Bin mir dabei gar nicht recht sicher, könnte auch eine Partition von $\pows(\Omega)$) sein.
 		\begin{enumerate}
-			\item 
+			\item $\set{A}$
+			\item $\set{A,B}$
+			\item $\set{A,B,C, \set{A,B}, \set{B,C}, \set{A,C}, \set{A,B,C}}$
+			\item $\set{\set{A,B}, \set{B,C}, \set{A,C}, \set{A,B,C}}$
+			\item $\set{A,B,C}$
+			\item $\set{\emptyset}$
+			\item $\set{\emptyset, A, B, C}$
+			\item $\set{\set{A,B}, \set{B,C}, \set{A,C}, \emptyset, A,B,C}$
+			\item $\set{\set{A,B}, \set{B,C}, \set{A,C}}$
+			\item $\set{\set{A,B,C}}$
 		\end{enumerate}
+	\item $\dots$ %TODO!
 	\end{enumerate}
 \end{lösung}
 
@@ -114,10 +124,12 @@
 		\begin{enumerate}
 			\item Behauptung: $\Meas(\emptyset) = 0$
 			\begin{align*}
-			\emptyset = \bigcup_{n=1}_{\infty \emptyset} \qquad \Meas(\emptyset) = \Meas\left(\bigcup_{n=1}^{\infty}\right) = \sum_{i= 1}^{\infty} \Meas(\emptyset) \le 1.
+			\emptyset = \bigcup_{n=1}^{\infty} \emptyset\qquad 
+			\Meas(\emptyset) = \Meas\left(\bigcup_{n=1}^{\infty}\right) = \sum_{i= 1}^{\infty} \Meas(\emptyset) \le 1.
 			\end{align*}
-			\item 
+			\item ... %TODO other points, i have as picture!
 		\end{enumerate}
+	\item $\dots$ %TODO No idea right now, later.
 	\end{enumerate}
 \end{proof}
 
