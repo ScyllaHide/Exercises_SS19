@@ -26,10 +26,10 @@
 			&\gdw a \not\in \set{T \in A}\\
 			&\gdw a \in \set{T \in A}^C = a \in (T^{-1}(A))^C
 		\end{align*}
-		Nun muss man sich noch $(!)$ klar machen. Das ganz gilt, da $T$ eine Abbildung ist, also wird jedem Element in $M$ genau ein Element in $N$ zugeordnet.\\
+		Nun muss man sich noch $(!)$ klar machen. Das Ganze gilt, da $T$ eine Abbildung ist, also wird jedem Element in $M$ genau ein Element in $N$ zugeordnet.\\
 		``$\Rightarrow$'' folgt aus der Eigenschaft, dass für jedes Element in $M$ \emph{höchstens} ein Element in $N$ abgebildet wird.\\
-		``$\Leftarrow$'' Analog Argument.
-		\item $\forall A \in \F_3$ gilt $(g\circ f)^{-1}(A) = f^{-1}\circ \underbrace{\in \F_2}_{g^{-1}(A)} \in f^{-1}(\F_2)\subset \F_1$
+		``$\Leftarrow$'' Gleiches Argument.
+		\item $\forall A \in \F_3$ gilt $(g\circ f)^{-1}(A) = f^{-1}\circ \underbrace{g^{-1}(A)}_{\in \F_2} \in f^{-1}(\F_2)\subset \F_1$
 		\item Dafür muss man nur die drei Axiome der $\sigma$-Algebra nachweisen.
 		\begin{itemize}
 			\item $\Sigma_1$: $\Omega^C = \emptyset$ ist abzählbar $\Rightarrow \Omega \in \F$
@@ -41,14 +41,14 @@
 			\end{align*}
 			\item $\Sigma_3$: Sei $\brackets{A_n}_{n \in \N} \subset \F$. Zwei Fälle sind zu bearbeiten.
 			\begin{itemize}
-				\item[\textit{Fall 1:}] Es werden genau die Mengen $A_n$ ausgewählt, welche abzählbar sind. Dann folgt aber das auch die Vereinigung $\bigcup_{n\in \N} A_n$ von abzählbare vielen abzählbaren Mengen eine abzählbare Menge sind, also $A \in \F$.
-				\item[\textit{Fall 2:}] Eine Menge, z.B. $A_{n_0}$, ist überabzählbar. Dann folgt aber aus der Definition von $\F$, das Komplement von $A_{n_0}^C$ abzählbar ist. Damit folgt für die Folge, dass $\brackets{A_n}_{n \in \N}$ gilt.
+				\item[\textit{Fall 1:}] Es werden genau die Mengen $A_n$ ausgewählt, welche abzählbar sind. Dann folgt aber, dass auch die Vereinigung $\bigcup_{n\in \N} A_n$ von abzählbare vielen abzählbaren Mengen eine abzählbare Menge ist, also $A \in \F$.
+				\item[\textit{Fall 2:}] Eine Menge, z.B. $A_{n_0}$, ist überabzählbar. Dann folgt aus der Definition von $\F$,dass das Komplement von $A_{n_0}^C$ abzählbar ist. Folglich ergibt sich
 				\begin{align*}
-					\brackets{\bigcup_{n\in \N} A_n}^C = \bigcap_{n\in \N} A_n^C \subset A^C_{n_0},
+					\brackets{\bigcup_{n\in \N} A_n}^C = \bigcap_{n\in \N} A_n^C \subset A^C_{n_0}.
 				\end{align*} 
-				damit ist auch das Komplement von $A = \bigcup_{n\in \N}A_n$ abzählbar und liegt in $\F$.
+				Damit ist auch das Komplement von $A = \bigcup_{n\in \N}A_n$ abzählbar und liegt in $\F$.
 			\end{itemize}
-		Damit wurde nachgewiesen, das $\F$ eine $\sigma$-Algebra ist.
+%		Damit wurde nachgewiesen, das $\F$ eine $\sigma$-Algebra ist.
 		\end{itemize}
 	\end{enumerate}
 \end{proof}
@@ -77,7 +77,7 @@
 
 \begin{lösung}
 	\begin{enumerate}
-		\item Im wesentlichen sind das eigentlich nur Teilmengen der Potenzmenge von $\pows(\Omega)$, wobei $\Omega = \set{A,B,C}$ ist? (Bin mir dabei gar nicht recht sicher, könnte auch eine Partition von $\pows(\Omega)$) sein.
+		\item Im wesentlichen sind das eigentlich nur Teilmengen der Potenzmenge von $\pows(\Omega)$, wobei $\Omega = \set{A,B,C}$ ist? (Bin mir dabei gar nicht recht sicher, könnte auch eine Partition von $\pows(\Omega)$ sein.)
 		\begin{enumerate}
 			\item $\set{A}$
 			\item $\set{A,B}$
@@ -142,13 +142,13 @@ Es sei $X$ eine stetige, reelle Zufallsvariable ($X: \R_{+} \to \R_{+}$) mit Wah
 \end{align*}
 
 \begin{enumerate}[label=\alph*)]
-	\item Bestimme den Paramter $c$!
+	\item Bestimme den Parameter $c$!
 	\item Wie sieht die Verteilungsfunktion von $X$ aus?
 \end{enumerate}
 
 \begin{lösung}
 	\begin{enumerate}[label=\alph*)]
-		\item Nach auswerten des Integrals über $\R_{+}$ und $f$, ergibt sich $c = \sfrac{1}{\sqrt{2}}$. %TODO formulate this. 
+		\item Nach auswerten des Integrals über $f$ auf $\R_{+}$ ergibt sich, $c = \sfrac{1}{\sqrt{2}}$.
 		Sei $\Meas$ das WMaß, was normiert ist zu $1$, d.h. $\Meas(\R_{+}) \overset{!}{=}1 (N)$. Damit lässt sich dann $c$ bestimmen:
 		\begin{align*}
 			\Meas(\R_{+}) &= \int_{\R_{+}} \frac{1}{2c} e^{-cx} dx\\
