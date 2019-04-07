@@ -1,0 +1,121 @@
+% This work is licensed under the Creative Commons
+% Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy
+% of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or
+% send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+% hier einige Befehle, die ich im Sinne der selbst-erklärheit der Codes sinnvoll finde:
+
+\newcommand{\measure}[1]{\abs{#1}}    % measure (size) of a set
+\newcommand{\halfnorm}[1]{\left\lvert#1\right\rvert}     % Halbnorm
+\newcommand{\rest}[2]{\left. #1 \right|_{#2}}  % restriction of function #1 to domain #2
+%\newcommand{\scaProd}[2]{\left\langle#1, #2\right\rangle} % scalar product, could also use \rangle, \langle
+\newcommand{\dualpair}[2]{\left\langle #1, #2 \right\rangle} % dual pairing, could also be #1 \left(#2\right)
+\newcommand{\Rand}[1]{\partial #1}  % Rand einer Menge. Wenn im Code \partial steht, verwirrt mich das, denn ich erwarte eine differenzierte Funktion 
+\newcommand{\setDef}[2]{\left\{#1 \,:\, #2\right\}}            % a typical set definition: #1 is the thing in the set #2 the condition on the variables {#1 : #2}
+% alternative to ':' is \middle\vert
+
+\usepackage{silence}                  % Package that lets ignore warnings and errors for unicodechar redefining
+\WarningFilter{newunicodechar}{Redefining Unicode character}
+
+\usepackage{newunicodechar}               % makes this remapping possible
+% \RequirePackage{eurosym}                  % provides euro symbol
+
+% Ebene 2 german „“
+\newunicodechar{•}{\item}
+
+% Ebene 3
+\newunicodechar{≡}{\ensuremath{\equiv}}
+\newunicodechar{≈}{\ensuremath{\approx}}
+\newunicodechar{…}{\dots}
+\newunicodechar{⊇}{\ensuremath{\supseteq}}
+
+% Ebene 4 
+\newunicodechar{✓}{\checkmark}
+\newunicodechar{·}{\ensuremath{\cdot}}
+\newunicodechar{ℱ}{\ensuremath{\mathcal F}}
+\newunicodechar{⁚}{\ensuremath{\colon}}
+\newunicodechar{±}{\ensuremath{\pm}}
+\newunicodechar{∓}{\ensuremath{\mp}}
+\newunicodechar{⊃}{\ensuremath{\supset}}
+\newunicodechar{→}{\ensuremath{\to}}
+
+% Ebene 5
+\newunicodechar{α}{\ensuremath{\alpha}}
+\newunicodechar{β}{\ensuremath{\beta}}
+\newunicodechar{γ}{\ensuremath{\gamma}}
+\newunicodechar{δ}{\ensuremath{\delta}}
+\newunicodechar{ε}{\ensuremath{\varepsilon}}
+\newunicodechar{ζ}{\ensuremath{\zeta}}
+\newunicodechar{η}{\ensuremath{\eta}}
+\newunicodechar{θ}{\ensuremath{\theta}}
+\newunicodechar{ι}{\ensuremath{\iota}}
+\newunicodechar{κ}{\ensuremath{\kappa}}
+\newunicodechar{λ}{\ensuremath{\lambda}}
+\newunicodechar{μ}{\ensuremath{\mu}}
+\newunicodechar{ν}{\ensuremath{\nu}}
+\newunicodechar{ξ}{\ensuremath{\xi}}
+\newunicodechar{π}{\ensuremath{\pi}}
+\newunicodechar{ρ}{\ensuremath{\rho}}
+\newunicodechar{σ}{\ensuremath{\sigma}}
+\newunicodechar{τ}{\ensuremath{\tau}}
+\newunicodechar{υ}{\ensuremath{\upsilon}}
+\newunicodechar{φ}{\ensuremath{\varphi}}
+\newunicodechar{ϕ}{\ensuremath{\phi}}
+\newunicodechar{χ}{\ensuremath{\chi}}
+\newunicodechar{ψ}{\ensuremath{\psi}}
+\newunicodechar{ω}{\ensuremath{\omega}}
+\newunicodechar{ϑ}{\ensuremath{\vartheta}}
+\newunicodechar{ς}{\ensuremath{\varsigma}}
+\newunicodechar{ϱ}{\ensuremath{\varrho}}
+\newunicodechar{≤}{\ensuremath{\leq}}
+\newunicodechar{≥}{\ensuremath{\geq}}
+\newunicodechar{⊆}{\ensuremath{\subseteq}}
+
+
+% Ebene 5 top row:
+\newunicodechar{⟨}{\ensuremath{\left\langle}}
+\newunicodechar{⟩}{\ensuremath{\right\rangle}}
+
+% Ebene 6 NEO top row:
+\newunicodechar{¬}{\ensuremath{\neg}}
+\newunicodechar{∧}{\ensuremath{\wedge}}
+\newunicodechar{∨}{\ensuremath{\vee}}
+\newunicodechar{⊥}{\ensuremath{\perp}}
+\newunicodechar{∡}{\ensuremath{\measuredangle}}
+\newunicodechar{∥}{\ensuremath{\parallel}}
+\newunicodechar{⟶}{\ensuremath{\to}}            % ! Differs from NEO !
+\newunicodechar{∞}{\ensuremath{\infty}}
+\newunicodechar{∅}{\ensuremath{\emptyset}}
+
+\newunicodechar{Ξ}{\ensuremath{\Xi}}
+\newunicodechar{√}{\ensuremath{\sqrt}}
+\newunicodechar{Λ}{\ensuremath{\Lambda}}
+\newunicodechar{ℂ}{\ensuremath{\mathbb{C}}}
+\newunicodechar{Ω}{\ensuremath{\Omega}}
+\newunicodechar{×}{\ensuremath{\times}}
+\newunicodechar{Ψ}{\ensuremath{\Psi}}
+\newunicodechar{Γ}{\ensuremath{\Gamma}}
+\newunicodechar{Φ}{\ensuremath{\Phi}}
+\newunicodechar{ℚ}{\ensuremath{\mathbb{Q}}}
+\newunicodechar{∘}{\ensuremath{\circ}}
+\newunicodechar{⊂}{\ensuremath{\subset}}
+\newunicodechar{∫}{\ensuremath{\int}}
+\newunicodechar{∀}{\ensuremath{\forall}}
+\newunicodechar{∃}{\ensuremath{\exists}}
+\newunicodechar{∈}{\ensuremath{\in}}
+\newunicodechar{Σ}{\ensuremath{\sum}} % not capital sigma which is smaller!
+\newunicodechar{ℕ}{\ensuremath{\mathbb{N}}}
+\newunicodechar{ℝ}{\ensuremath{\mathbb{R}}}
+\newunicodechar{∂}{\ensuremath{\partial}}
+\newunicodechar{Δ}{\ensuremath{\Delta}}
+\newunicodechar{∇}{\ensuremath{\nabla}}
+\newunicodechar{∪}{\ensuremath{\cup}}
+\newunicodechar{∩}{\ensuremath{\cap}}
+\newunicodechar{Π}{\ensuremath{\prod}} % not capital pi which is smaller!
+\newunicodechar{ℤ}{\ensuremath{\mathbb{Z}}}
+\newunicodechar{⇒}{\ensuremath{\implies}}
+\newunicodechar{⇐}{\ensuremath{\impliedby}}
+\newunicodechar{⇔}{\ensuremath{\iff}}
+\newunicodechar{↦}{\ensuremath{\mapsto}}
+\newunicodechar{Θ}{\ensuremath{\Theta}}
+

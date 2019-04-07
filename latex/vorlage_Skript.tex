@@ -1,0 +1,75 @@
+% This work is licensed under the Creative Commons
+% Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy
+% of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or
+% send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dies ist nur eine Vorlage und soll die künstlerische Freiheit des Autors einer Mitschrift in keiner Weise schmälern.
+% Der Inhalt dieser Vorlage soll eher Möglichkeiten anbieten und bewährte Lösungswege aufzeigen.
+% Wichtige Dinge sind aktuell enthalten, optionale Dinge sind auskommentiert.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[]{scrreprt}
+
+\newcommand{\directoryPrefix}{} % sollte Wert ../latex/ haben, wenn man die Standard-Ordnungsstruktur beibehält 
+\input{\directoryPrefix packages}
+%\input{\directoryPrefix counters} % section counter benutzt römische Zahlen
+\input{\directoryPrefix theoremenvironments}
+\input{\directoryPrefix font}
+\input{\directoryPrefix commands}
+%\input{\directoryPrefix commands_Willi}
+%\input{local_commands} % lokale Commands und packages werden auch ausgelagert. Lokal bedeutet nur diese Vorlesung betreffend.
+
+\makeindex % erstellt Stichwortverzeichnis
+\setlength{\parindent}{0px} % verhindert das Einrücken eines Absatzes bei einer leeren Codezeile.
+%\renewcommand{\thesection}{\arabic{section}} % nützlich, falls es keine Chapter, sondern nur sections gibt.
+
+\title{
+	Vorlesung\\
+	Optimierung und Numerik - Teil 2\\
+	Numerik gewöhnlicher Differentialgleichungen
+}
+%\subject{Thema}
+\subtitle{Wintersemester 2018/2019}
+\author{
+	Vorlesung: Prof. Dr. Vorname Name\\
+	Mitschrift: Willi Sontopski
+}
+\date{\today}
+\publishers{\url{https://github.com/LostInDarkMath/MatheMaster}}
+%\dedication{Widmung}
+
+\begin{document}
+	%\begin{hack}: fix overfull hbox warning caused by \tableofcontents when exceeding 100 pages	
+	\makeatletter
+  	\renewcommand{\@pnumwidth}{2em}
+  	%\renewcommand{\@tocrmarg}{3em} % currently unnecessary
+  	\makeatother
+  	%\end{hack}
+  	
+  	%\selectlanguage{english}
+  	
+	\pagenumbering{gobble}	% disable pagenumbering
+	\maketitle
+	%\epigraph{Hier steht eine Lebensweisheit.}{\textit{Der Admin}}
+	%\newpage
+	\doclicenseThis
+	\tableofcontents
+	\pagenumbering{arabic}	% enable pagenumbering
+	
+	%\addchap{Hauptüberschrift} % sinnvoll in Kombination mit Zeile 15
+	\chapter{Demo Content}
+	\input{demo_content}
+	
+	\appendix
+	%\input{anhang}
+	
+	\newcommand{\pathPrefix}{Loesungen/}
+	%\input{chapter_loesungen} % Falls es Übungsaufgaben gibt, sollte man diese miteinbinden
+
+	\printindex % erstellt Stichwortverzeichnis, muss mit "MakeIndex" gebaut werden!
+	%\listoffigures 
+	%\listoftables
+	%\nocite{*} % erstellt Literaturverzeichnis selbst wenn nie auf die entsprechende Literatur im Dokument verwiesen wird
+	%\bibliography{literatur}
+\end{document}

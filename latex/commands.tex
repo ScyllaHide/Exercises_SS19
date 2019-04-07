@@ -1,0 +1,144 @@
+% This work is licensed under the Creative Commons
+% Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy
+% of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or
+% send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+% Wichtige Mengen
+\newcommand{\R}{\mathbb{R}}              % reelle Zahlen
+\newcommand{\Rn}{\R^n}                   % der R^n
+\newcommand{\N}{\mathbb{N}}              % natürliche Zahlen
+\newcommand{\Q}{\mathbb{Q}}              % rationale Zahlen
+\newcommand{\Z}{\mathbb{Z}}              % ganze Zahlen
+\newcommand{\C}{\mathbb{C}}              % komplexe Zahlen
+\newcommand{\K}{\mathbb{K}}              % Körper
+\renewcommand{\L}{\mathcal{L}}           % L_p-Räume
+\newcommand{\ii}{\mathrm{i}\mkern1mu}    % imaginäre Einheit
+\renewcommand{\O}{\mathcal{O}}           % Landau-O
+
+% Schlüsselwörter
+\renewcommand{\mit}{\text{ mit }}        % sprachliches mit für align-Umgebungen
+\newcommand{\falls}{\text{falls }}       % sprachliches falls für Fallunterscheidungen
+\newcommand{\sonst}{\text{sonst }}       % sprachliches sonst für Fallunterscheidungen
+\newcommand{\und}{\text{ und }}          % sprachliches und für align-Umgebungen
+\newcommand{\oder}{\text{ oder }}        % sprachliches oder für align-Umgebungen
+\newcommand{\Def}{\text{Def}}            % Definition, z.B. $\overset{\Def}{=}$
+\newcommand{\Vor}{\text{Vor}}            % Voraussetzung, z.B. $\overset{\Vor}{=}$
+\newcommand{\Lin}{\text{Lin}}            % Nutze Linearität, z.B. $\overset{\Lin}{=}$
+
+% Commands für Stochastik / Statistik
+\newcommand{\A}{\mathcal{A}}             % Sigma-Algebra
+\renewcommand{\P}{\mathbb{P}}            % Wahrscheinlichkeitsmaß
+\newcommand{\E}{\mathbb{E}}              % Erwartungswert
+\newcommand{\B}{\mathcal{B}}             % Borel-Sigma-Algebra
+\newcommand{\Var}{\mathbb{V}\text{ar}}   % Varianz
+\newcommand{\Cov}{\mathbb{C}\text{ov}}   % Kovarianz
+\newcommand{\indi}{\mathbbm{1}}          % Indikatorfunktion
+
+% Verteilungen
+\DeclareMathOperator{\Bin}{Bin}          % Binomialverteilung
+\newcommand{\Nor}{\mathcal{N}}           % Normalverteilung
+\DeclareMathOperator{\Poi}{Poi}          % Poissonverteilung
+\DeclareMathOperator{\Exp}{Exp}          % Exponentialverteilung
+\DeclareMathOperator{\Cauchy}{Cauchy}    % Cauchyverteilung
+
+% Wichtige Operatoren (alphabetisch)
+\newcommand{\AND}{\wedge}                % logisches Und
+\DeclareMathOperator*{\argmax}{arg\,max} % argmax
+\DeclareMathOperator*{\argmin}{arg\,min} % argmin
+\newcommand{\bigcupdot}{
+	\mathop{\vphantom{\bigcup}\mathpalette\setbigcupdot\cdot}\displaylimits
+}                                        % Disjunkte Vereinigung
+	\newcommand{\setbigcupdot}[2]{\ooalign{\hfil$#1\bigcup$\hfil\cr\hfil$#2$\hfil\cr\cr}}
+\newcommand*{\bigtimes}{
+	\mathop{\raisebox{-.5ex}{\hbox{\huge{$\times$}}}}
+}                                        % Kartesisches Produkt / Kreuzprodukt 
+\renewcommand{\d}{\mathrm{d}}            % Differential d ohne Space
+\newcommand{\ds}{~\mathrm{d}}            % Differential d mit Space für Integrale
+\DeclareMathOperator{\diag}{diag}        % Diagonalmatrix
+\DeclareMathOperator{\diam}{diam}        % Diameter, Durchmesser einer Menge
+\let\divison\div                         % save it before overwriting:
+	\DeclareMathOperator{\BigDiv}{div}   % Divergenz
+	\renewcommand{\div}{\BigDiv}         % Divergenz
+\DeclareMathOperator{\dom}{dom}          % Domain, Definitionsbereich
+\DeclareMathOperator*{\esssup}{ess\,sup} % essenzielles Supremum
+\DeclareMathOperator{\grad}{grad}        % Gradient, alternativ zu \nabla
+\DeclareMathOperator{\graph}{graph}      % Graph einer Funktion
+\DeclareMathOperator{\Hom}{Hom}          % Raum linearer Funktionen
+\DeclareMathOperator{\id}{id}            % identische Abbildung
+\newcommand{\ideal}{\trianglelefteq}     % Ideal
+\DeclareMathOperator{\im}{im}            % Bild
+\DeclareMathOperator{\inner}{int}        % Das innere einer Menge
+\newcommand{\laplace}{\triangle}         % Laplace Operator
+\newcommand{\limn}{\lim\limits_{n\to\infty}} % Standard-Limes
+\newcommand{\mal}{\cdot}                 % hier kann man \cdot ein- und ausschalten
+\DeclareMathOperator{\meas}{meas}        % Das Maß einer Menge, meist Lebesguemaß gemeint
+\newcommand{\OR}{\vee}                   % logisches Oder
+\newcommand{\properideal}{
+	\mathrel{\ooalign{$\lneqq$\cr\raise.51ex\hbox{$\lhd$}\cr}}
+}                                        % echtes Ideal
+\newcommand{\rand}{\partial}             % Rand einer Menge
+\newcommand{\Potenzmenge}[1]{\mathfrak{P}\left(#1\right)} % Potenzmenge
+\DeclareMathOperator{\rg}{rg}            % Bild einer Funktion, Rang einer Matrix
+\DeclareMathOperator{\SO}{SO}            % Orthogonale Gruppe
+\DeclareMathOperator{\Span}{span}        % Span / Lineare Hülle
+	\newcommand{\spann}{\Span}           % Span / Lineare Hülle
+\DeclareMathOperator{\supp}{supp}        % Träger
+\DeclareMathOperator{\tr}{tr}            % Spur
+
+% Normen, Betrag, Skalarprodukt
+% Quelle: https://tex.stackexchange.com/questions/94410/easily-change-behavior-of-declarepaireddelimiter
+% Beispiel: \set{...}; \set*{...}=\set[]{...}; \set[\big]{...}, \set[\Big]{...}, ...
+\NewDocumentCommand\xDeclarePairedDelimiter{mmm} % unär
+{
+	\NewDocumentCommand#1{som}{
+   		\IfNoValueTF{##2}
+	    {\IfBooleanTF{##1}{#2##3#3}{\mleft#2##3\mright#3}}
+    	{\mathopen{##2#2}##3\mathclose{##2#3}}
+	}
+}
+
+\NewDocumentCommand\xDeclarePairedDelimiterBin{mmm} % binär
+{
+	\NewDocumentCommand#1{somm}{
+   		\IfNoValueTF{##2}
+	    {\IfBooleanTF{##1}{#2##3,##4#3}{\mleft#2##3,##4\mright#3}}
+    	{\mathopen{##2#2}##3,##4\mathclose{##2#3}}
+	}
+}
+ 
+\xDeclarePairedDelimiter{\set}{\lbrace}{\rbrace}
+\xDeclarePairedDelimiter{\norm}{\Vert}{\Vert}
+\xDeclarePairedDelimiter{\abs}{\vert}{\vert}
+\xDeclarePairedDelimiterBin{\scaProd}{\langle}{\rangle}
+\xDeclarePairedDelimiterBin{\intervall}{[}{]}
+\xDeclarePairedDelimiterBin{\intervallHO}{[}{)}
+\xDeclarePairedDelimiterBin{\intervallOH}{(}{]}
+\xDeclarePairedDelimiterBin{\intervallO}{(}{)}
+\xDeclarePairedDelimiter{\brackets}{(}{)}
+
+\NewDocumentCommand\normiii{som}{
+	\IfNoValueTF{#2} %falls optionales Argument leer (d.h. kein "\Big")
+	{\IfBooleanTF{#1}
+		{\vert\kern-0.25ex \vert\kern-0.25ex \vert #3 \vert\kern-0.25ex \vert\kern-0.25ex\vert} %normale Darstellung
+		{\mleft\vert\kern-0.25ex \mleft\vert\kern-0.25ex \mleft\vert #3 \mright\vert\kern-0.25ex \mright\vert\kern-0.25ex \mright\vert}
+	}
+    {\mathopen{#2\vert\kern-0.25ex #2\vert\kern-0.25ex #2\vert} #3 \mathclose{#2\vert\kern-0.25ex #2\vert\kern-0.25ex #2\vert}}
+}
+
+% WHITESPACE COMMANDS
+\newcommand{\nl}{\\[\baselineskip]}      % Zeilenumbruch mit freier Zeile darunter OHNE underfull-hbox-warning
+\newcommand{\enter}{$ $\newline}         % Zeilenumbruch ohne Einschränkungen
+\newcommand\tab[1][1cm]{\hspace*{#1}}    % praktischer Tabulator
+
+% overset und Co.
+\newcommand{\stackrelnew}[3]{\underset{#1}{\overset{#2}{#3}}}
+\newcommand{\stackeq}[1]{\overset{#1}{=}}  
+
+% Hervorhebungen
+\newcommand{\ul}[1]{\underline{#1}}    
+\newcommand{\define}[1]{\textbf{#1}}     % Definitionen sind standardmäßig fett
+\newcommand{\undefine}[1]{\textit{#1}}   % Markiert das Nutzen von "externen" Resultaten oder Begriffen, die nicht in der Vorlesung eingeführt wurden.
+\newcommand{\betone}[1]{\underline{#1}}  % Das zu Betonende ist standardmäßig unterstrichen
+
+% Warnings and errors
+\newcommand{\throwWarning}[1]{\PackageWarning{42}{#1}} % Erzeugt LaTeX-Warnung mit Message = #1 

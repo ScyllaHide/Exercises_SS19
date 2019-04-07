@@ -1,0 +1,26 @@
+% THEOREM-ENVIRONMENTS
+
+\newtheoremstyle{mystyle}
+  {20pt}   % ABOVESPACE \topsep is default, 20pt looks nice
+  {20pt}   % BELOWSPACE \topsep is default, 20pt looks nice
+  {\normalfont} % BODYFONT
+  {0pt}       % INDENT (empty value is the same as 0pt)
+  {\bfseries} % HEADFONT
+  {}          % HEADPUNCT (if needed)
+  {5pt plus 1pt minus 1pt} % HEADSPACE
+	{}          % CUSTOM-HEAD-SPEC
+\theoremstyle{mystyle}
+
+% Definitionen der Satz, Lemma... - Umgebungen. Der Zähler von "satz" ist dem "section"-Zähler untergeordnet, alle weiteren Umgebungen bedienen sich des satz-Zählers.
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+
+% Bemerkungen, Erinnerungen und Notationshinweise werden ohne Numerierungen dargestellt.
+\newtheorem*{remark}{Remark.}
+\newtheorem*{reminder}{Reminder.}
+\newtheorem*{notation}{Notation.}
+\newtheorem*{exam}{Example.} %Beispiel ohne Nummerierung

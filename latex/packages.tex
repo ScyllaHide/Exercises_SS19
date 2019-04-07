@@ -1,0 +1,79 @@
+% This work is licensed under the Creative Commons
+% Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy
+% of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or
+% send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+% Folgende Packages sollten zuerst geladen werden:
+\usepackage[utf8]{inputenc}	             % Paket für Umlaute; verwende utf8 Kodierung in TexWorks 
+
+%%%%%%%%%%%%%%%%%%%%% PACKAGES (alphabetisch sortiert)
+\usepackage{aligned-overset}             % besseres Einrücken, siehe: https://tex.stackexchange.com/questions/257529/overset-and-align-environment-how-to-get-correct-alignment
+\usepackage{amsmath}                     % wichtig für align-Umgebung
+\usepackage{amssymb}                     % wichtig für \mathbb{} usw.
+\usepackage{amsthm}                      % damit kann man eigene Theorem-Umgebungen definieren, proof-Umgebungen, etc.
+\usepackage{anyfontsize}                 % supports fallback scaling for non-existing font size
+\usepackage{array}                       % Für Tabellen mit Zeilenumbrüchen in Zellen
+\usepackage[english, ngerman]{babel}	 % Paket für Sprachselektion, in diesem Fall für deutsches Datum etc
+\usepackage{bbm}                         % sorgt für Symbol für Indikatorfunktion
+% cleverref siehe ganz unten
+\usepackage{color}                       % bringt Farbe ins Spiel
+\usepackage{csquotes}                    % Man kann normale Anführungsstriche "..." im Textmodus nutzen
+	\MakeOuterQuote{"}
+\usepackage[
+	type={CC},
+	modifier={by-nc-sa},
+    version={4.0},
+]{doclicense}                            % für CC Lizenz-Vermerk
+\usepackage{enumitem}                    % für custom Liste mit default Buchstaben
+\usepackage{epigraph}                    % für wohlformatierte Zitate
+\usepackage{float}                       % figure-Umgebungen besser positionieren
+\usepackage[T1]{fontenc}                 % ö,ü,ä werden richtig kodiert
+\usepackage{graphicx}                    % für Grafiken
+\usepackage{grffile}
+\usepackage[backref]{hyperref}           % Inhaltsverzeichnis und ref-Befehle werden in der PDF-klickbar
+% inputenc siehe ganz oben
+\usepackage{lmodern}                     % provides a bigger set of font sizes
+\usepackage{makecell}                    % für Zellen mit Zeilenumbrüchen in Zellen
+\usepackage{makeidx}                     % erstellt Index / Stichwortverzeichnis
+\usepackage{mathrsfs}                    % für fancy \mathscr-Symbole
+\usepackage{mleftright}                  % für \DeclarePairedDelimiter
+\usepackage{pdflscape}                   % damit kann man einzelne Seiten ins Querformat drehen
+\usepackage{pgfplots}                    % damit kann man Funktionen plotten
+	\pgfplotsset{compat=newest}
+\usepackage{scrhack}                     % provides a hack for deprecated float environments used by some libs
+\usepackage{setspace}                    % wichtig für Lesbarkeit. Schöne Zeilenabstände
+\usepackage{tikz}
+	\usepackage{tikz-qtree}
+	\usetikzlibrary{arrows}
+	\usetikzlibrary{automata}
+	\usetikzlibrary{babel}
+	\usetikzlibrary{calc}
+	\usetikzlibrary{cd}
+	\usetikzlibrary{fit}
+	\usetikzlibrary{matrix}
+	\usetikzlibrary{positioning}
+	\usetikzlibrary{shapes.geometric}
+\usepackage{xargs}                       % for multiple optional args in newcommand
+\usepackage{xfrac}
+\usepackage{xparse}                      % wichtig für \DeclarePairedDelimiter
+\usepackage{xr}                          % man Referenzen aus anderen teX-files importieren und darauf verlinken
+
+% Ich habe gelesen, dass man folgendes Package zuletzt einbinden soll:
+\usepackage[english, ngerman, capitalise]{cleveref} % bessere Verweise
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
