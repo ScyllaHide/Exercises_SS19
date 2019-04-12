@@ -1,0 +1,530 @@
+% This work is licensed under the Creative Commons
+% Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy
+% of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or
+% send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+\section{Präsenzübung 2 - Freitag}
+\subsection{Präsenzaufgabe 2.1}
+
+\begin{enumerate}
+	\item Eine Firma produziert Glühbirnen. Auf 100 produzierten Birnen kommen erfahrungsgemäß 3
+	defekte. Wie hoch ist die Wahrscheinlichkeit, dass man keine defekte erhält, wenn man aus
+	100 Glühbirnen 5 beliebige nimmt?
+	\item Auf einer Party sind 12 Leute eingeladen, 3 aus dem Dorf $A$, 4 aus Dorf $B$ und 5 aus Dorf $C$.
+	Sie spielen folgendes Würfelspiel mit einem Dodekaeder: Jeder Gast bekommt eine feste Zahl
+	zugewiesen; wird seine Zahl gewürfelt, gewinnt derjenige. Wie groß ist die Wahrscheinlichkeit,
+	dass bei fünf Spielrunden ein Gast aus Dorf $A$, und jeweils 2 Gäste aus den Dörfern $B$ und $C$
+	gewinnen?
+\end{enumerate}
+
+\begin{lösung}
+	\begin{enumerate}
+		\item Setze $X$ als die Anzahl der defekten Glühbirnen. $X$ ist binomialverteilt mit $p=0,03$ und $n=5$. Damit ergibt sich
+		\begin{align*}
+			\Meas(X=0) = \binom{n}{0}p^0(1-p)^{n-0} = 0.97^5 \approx \ul{0,8587}
+		\end{align*}
+		\item 5 Spielrunden, 1 Gast aus Dorf $A$ und je 2 Gäaste aus Dorf $B/C$\\
+		äquivalentes Urnenmodell:
+		\begin{align*}
+			12 \text{ Kugeln} \longrightarrow &3 \text{ schwarze}\\
+			&4 \text{ blaue}\\ &5 \text{ rote}
+		\end{align*}
+		Gesucht sei die Wahrscheinlichkeit bei 5-maligem Ziehen: 1 schwarze, 2 blaue und 2 rote Kugeln zu ziehen.\\
+		Lösung: Es ist $E = \set{s,b,r}$, also $\abs{E} = 3$ und $(k_{a})_{a \in E} = (k_s, k_b, k_r) = (3,4,5)$
+		\begin{align*}
+			\Meas\brackets{Y = (1,2,2)^T}
+			&= \binom{5}{(1,2,2)}\binom{3}{12}^1\cdot \binom{4}{12}^2\cdot\binom{5}{12}^2\\
+			&= \frac{5!}{1!2!2!} \frac{1}{4}\frac{1}{9}\frac{25}{144}\\
+			&= \frac{120}{4}\frac{1}{4}\frac{1}{9}\frac{25}{144}\\
+			&= 30\cdot \frac{1}{4}\frac{1}{9}\frac{25}{144}\\
+			&= \frac{30\cdot 25}{4\mal 9 \mal 144} = \frac{5 \mal 25}{6 \mal 144}= \frac{5^3}{2^2 6^3}\frac{750}{5184} = 0.1447
+		\end{align*}
+	\end{enumerate}
+\end{lösung}
+
+%%%%%%%%%%%%%%%%%%%% Aufgabe 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Präsenzaufgabe 2.2}
+Ein Individuum einer Spezies zeugt $n = 1000$ Nachkommen, die mit einer Wahrscheinlichkeit von $p = 0.001$
+das geschlechtsreife Alter erreichen. Wie groß ist die Wahrscheinlichkeit, dass zwei oder mehr Nachkommen das geschlechtsreife Alter ereichen?
+
+\begin{lösung}
+	Sei $X$ die Anzahl der Nachkommen, die das geschlechtsreife Alter erreichen. 
+	\begin{itemize}
+		\item Binomialverteilung: Dabei wähle $X = \Bin(1000,0,001)$, $\Omega = \set{0,\dots,1000}$ und $\F = \pows({\Omega}), X = \id.$
+		\begin{align*}
+		\Meas(X \ge 2) = 1-\Meas(X<2) 
+		&= 1 - \Meas(X=0) - \Meas(X = 1)\\
+		&= 1 - \binom{1000}{0}\mal 0.001^{0}0.999^{1000}-\binom{1000}{1}0.001^1\mal 0.999^{999}\\
+		&= 1-0.999^{1000} - 1000\mal 0.001 \mal 0.999^{999}\\
+		&= 1 - 0.999^{1000} - 0.999^{999}\\
+		&\approx 0.2645 \approx 26.4\%
+		\end{align*}
+		\item Poisson-Approximation: Dabei wähle $\Omega = \N, \Meas = \Pois(\lambda = np)$
+		\begin{align*}
+			\Meas(X \ge 2) = 1 - \Meas(X = 1) - \Meas(X = 0) \approx 0.2642
+		\end{align*}
+	\end{itemize}
+	Wie man sieht ergibt die Bimonialverteilung und die Poissonverteilung die gleichen Werte, wobei ich finde, dass die Poissonverteilung sich schneller arithmetischer berechnen lässt.
+\end{lösung}
+
+\subsection{Präsenzaufgabe 2.3}
+
+\begin{enumerate}
+	\item Alice und Bob spielen ein faires Spiel über 9 Runden mit einem Wetteinsatz von 5 EUR. Der
+	Gewinner des Spiels erhält den gesamten Einsatz (also 10 EUR). Beim Stand von 2:3 muss
+	das Spiel abgebrochen werden (da die Vorlesung beginnt). Wie teilen die beiden den Jackpot
+	auf?
+	\item Wie groß ist die Wahrscheinlichkeit, dass unter n Personen in einem Raum zwei am gleichen
+	Tag Geburtstag haben?\\
+	Wie viele Leute müssen Sie kennen, damit mit Wahrscheinlichkeit von 50\% einer davon am
+	gleichen Tag wie Sie Geburtstag hat? 
+	\item Es sei $\Meas({k}) = 2^{-k}$. Zeigen Sie, $\Meas$ ist ein Wahrscheinlichkeitsmaß auf $(\N , \Meas(\N))$. Geben Sie
+	eine Zufallsvariable $X$ an, die einen doppelten Münzwurf mit einer fairen Münze beschreibt.
+	\item Aus dem folgendem Satz wird ein Wort zufällig gleichverteilt ausgewählt.
+	\begin{center}
+		''Das Leben ist wie eine Schachtel Pralinen, man weiß nie, was man kriegt.''
+	\end{center}
+	Geben Sie die Verteilung für die Länge des ausgewählten Wortes an.
+\end{enumerate}
+
+\begin{lösung}
+	\begin{enumerate}
+		\item Bob muss einen Anteil von $\frac{12}{16}$ vom Jackpot bekommen.
+		\item 
+		\begin{itemize}
+			\item Wähle $\Omega = \set{1,\dots,365}^n,\F = \pows{\Omega}, J=\set{1,\dots,365}$. Setze $X_d: \Omega \to \N$ als Anzahl der Leute, die am tag $a$ Geburtstag haben.
+			\begin{align*}
+			\omega = (\omega_1,\dots,\omega_n) \mapsto \sum_{i=1}^{n} \indi_{d} (\omega_i) \und d\in \Omega
+			\end{align*}
+			Dabei sind $\omega$ das Geburtsdatum der $n$ Personen und $X_d$ ist messbar, da $\sum$ von Indikatorfunktion auf messbare Menge $\set{d}$ abbildet.
+			Setze $X: \Omega \to \N_0 \mit X(\omega) := \max_{d \in J} X_d(\omega)$ und die Dichtefunktion $\rho(d) = \frac{1}{\Omega} ? \frac{1}{365^n}\quad \forall d \in J$. Dann haben wir
+			\begin{align*}
+			\Meas(X \ge 2) 
+			&= \Meas(\set{\omega \in \Omega : X(\omega) \ge 2})\\
+			&= \frac{\abs{\omega \in \Omega : X(\omega \ge 2)}}{\abs{\Omega}}\\
+			\Meas(X \ge 2)
+			&= 1 - \Meas(X<2)\\
+			&= \frac{365\mal 364 \cdots (365-n + 1)}{365^n}
+			\end{align*} 
+			Für $n = 23$ ist $\Meas(X \ge 2) \approx \frac{1}{2}$.
+			\item Für festes Datum: $p = \frac{1}{365}, q \approx 1- p = 1 - \frac{1}{365}$
+			\begin{align*}
+				\Meas = 1- q^n = \frac{1}{2} \Longrightarrow \frac{1}{2} = q^n \Longrightarrow n = \frac{\ln \frac{1}{2}}{\ln q} \approx 253 
+			\end{align*}
+		\end{itemize}
+	\item Wahrscheinlichkeitsmaß: $\sum_{k=1}^{\infty} \frac{1}{2^k} = -1 + \sum_{k=0}^{\infty} \frac{1}{2^k} = -1 +2 = 1$\\
+	mögliche Zufallsvariablen sind dann: 
+	\begin{align*}
+		X: \N \to \set{1,2,3} \mit \omega \mapsto 
+		\begin{cases}
+			1 & \omega = 2 \qquad \text{ (Kopf, Kopf)}\\
+			1 & \omega = 1 \qquad \text{ (Kopf, Zahl)}\\
+			1 & \omega \ge 3 \qquad \text{ (Zahl, Zahl)}
+		\end{cases}
+	\end{align*}
+	\item \begin{align*}
+	\Meas(L = 3) &= \frac{7}{13} & \Meas(L = 3) &= \frac{1}{13}\\
+	\Meas(L = 4) &= \frac{2}{13} & \Meas(L = 3) &= \frac{1}{13}\\
+	\Meas(L = 5) &= \frac{1}{13} & \Meas(L = 3) &= \frac{1}{13}\\
+	\Meas(L = 6) &= \frac{1}{13} &              &              \\
+	\end{align*}
+	Die ersten Wörter werden mit $\frac{1}{4}$ ausgewählt, nächstes Wort mit Wahrscheinlichkeit $\frac{1}{2}$ und dann mit $\frac{1}{4}$. Das letzte Wort hat Wahrscheinlichkeit 0.
+	\end{enumerate}
+\end{lösung}
+
+%\begin{align*}
+%	L_0^2:=\big\lbrace X\in L_2:\E[X]=0\big\rbrace
+%\end{align*}
+%der Raum der zentrierten quadrat-integrierbaren Zufallsvariablen. 
+%Für diesen gilt:
+%\begin{enumerate}[label=\alph*)]
+%	\item $L_0^2$ ist ein Hilbertraum mit Skalarprodukt $\Cov(\cdot,\cdot)$.
+%	\item Seien $X_1,...,X_n\in L_0^2$. Dann gilt:
+%	\begin{align*}
+%		\Var\left[\sum\limits_{j=1}^n X_j\right]
+%		=\sum\limits_{j=1}^n\left(\Var[X_j]+2\cdot\sum\limits_{k>j}\Cov[X_j,X_k]\right)
+%	\end{align*}
+%	\item Seien $X_1,...,X_n\in L_0^2$. Dann gilt:
+%	\begin{align*}
+%		\sqrt{\Var\left[\sum\limits_{j=1}^n X_j\right]}\leq\sum\limits_{j=1}^n \sqrt{\Var[X_j]}
+%	\end{align*}
+%\end{enumerate}
+%
+%\begin{proof}
+%	\underline{Zeige a):}\\
+%	Nutze Untervektorraumkriterium:
+%	\begin{itemize}
+%		\item $0\in L_0^2$ ist klar.
+%		\item Sei $X\in L_0^2$ und $\lambda\in\R$. Dann ist $X\in L_0^2$ wegen
+%		\begin{align*}
+%			\E[\lambda\cdot X]\stackeq{\text{Lin}}\lambda\cdot\E[X]\stackeq{X\in L_2^0}0
+%		\end{align*}
+%		\item Seien $X,Y\in L_0^2$. Dann ist $X+Y\in L_0^2$ wegen
+%		\begin{align*}
+%			\E[X+Y]\stackeq{\text{Lin}}\E[X]+\E[Y]\stackeq{X,Y\in L_0^2}0+0=0
+%		\end{align*}
+%	\end{itemize}
+%	Somit ist $L_0^2$ ein Untervektorraum von $L_2$. Dass
+%	\begin{align*}
+%		\langle X,Y\rangle:=\Cov(X,Y):=
+%		\E\Big[\big(X-\E[X]\big)\cdot\big(Y-\E[Y]\big)\Big]
+%		=\E[X\cdot Y]
+%		\qquad\forall X,Y\in L_0^2
+%	\end{align*}
+%	ein Skalarprodukt auf $L_0^2$ ist, ist klar, das es mit dem $L^2$-Skalarprodukt des Oberraumes $L^2$ übereinstimmt.
+%
+%	%Gleich vorweg: Die Kovarianz erfüllt sogar auf $L^2$ alle Eigenschaften bis auf positive Definitheit. Diese gilt nur auf $L_0^2$. Deswegen werden im Folgenden die Eigenschaften der Kovarianz allgemeiner gezeigt.
+%	%\begin{itemize}
+%	%\item Die Kovarianz ist Bilinear, denn für $\lambda\in\R$ und $X,Y,Z\in L_0^2$ gilt
+%	%\begin{align*}
+%	%\Cov(\lambda\cdot X,Y)
+%	%&=\E\Big[\big(\lambda\cdot X-\E[ \lambda\cdot X]\big)\cdot\big(Y-\E[Y]\big)\Big]\\
+%	%&=\E\Big[\big(\lambda\cdot\big(X-\E[X]\big)\big)\cdot\big(Y-\E[Y]\big)\Big]\\
+%	%&=\lambda\cdot\Cov(X,Y)\\
+%	%\Cov(X,\lambda\cdot Y)
+%	%&=\E\Big[\big(X-\E[X]\big)\cdot\big(\lambda\cdot Y-\E[\lambda\cdot Y]\big)\Big]\\
+%	%&=\E\Big[\big(X-\E[X]\big)\cdot\big(\lambda\cdot\big(Y-\E[Y]\big)\big)\Big]\\
+%	%&=\lambda\cdot\Cov(X,Y)\\
+%	%\Cov(X+Z,Y)
+%	%&=\E\Big[\big(X+Z-\E[X+Z]\big)\cdot\big(Y-\E[Y]\big)\Big]\\
+%	%&=\E\Big[\big(X-\E[X]\big)\cdot\big(Y-\E[Y]\big)+\big(Z-\E[Z]\big)\cdot\big(Y-\E[Y]\big)\Big]\\
+%	%&=\E\Big[\big(X-\E[X]\big)\cdot\big(Y-\E[Y]\big)\Big]
+%	%+\E\Big[\big(Z-\E[Z]\big)\cdot\big(Y-\E[Y]\big)\Big]\\
+%	%&=\Cov(X,Y)+\Cov(Z,Y)\\
+%	%\Cov(X,Y+Z)
+%	%&=\E\Big[\big(X-\E[X]\big)\cdot\big(Y+Z-\E[Y+Z]\big)\Big]\\
+%	%&=\E\Big[\big(X-\E[X]\big)\cdot\big(Y-\E[Y]\big)+\big(X-\E[X]\big)\cdot\big(Z-\E[Z]\big)\Big]\\
+%	%&=\E\Big[\big(X-\E[X]\big)\cdot\big(Y-\E[Y]\big)\Big]
+%	%+\E\Big[\big(X-\E[X]\big)\cdot\big(Z-\E[Z]\big)\Big]\\
+%	%&=\Cov(X,Y)+\Cov(X,Z)
+%	%\end{align*}
+%	%\item Die Kovarianz ist symmetrisch, was man schon an der Definition erkennt: $\Cov(X,Y)=\Cov(Y,X)$
+%	%\item Die Kovarianz ist positiv definit:
+%	%\begin{align*}
+%	%\Cov(X,X)&=\E\Big[\underbrace{\big(X-\E[X]\big)^2}_{\geq0}\Big]\geq0\text{ und}\\
+%	%\Cov(X,X)&=0\stackrel{\E[X]=0}{\gdw} X=0\text{ fast sicher}
+%	%\end{align*}
+%	%\end{itemize}
+%	
+%	Bleibt noch zu zeigen, dass $L_0^2$ bzgl. der die die Kovarianz induzierten Norm
+%	\begin{align*}
+%		\Vert X\Vert:=\sqrt{\Cov(X,X)}
+%		=\sqrt{\E\Big[\big(X-\E[X]\big)^2\Big]}
+%		=\sqrt{\E\Big[X^2\Big]}
+%		\qquad\forall X,Y\in L_0^2
+%	\end{align*}
+%	vollständig ist. 
+%	Diese Norm stimmt auf $L_0^2$ mit der bekannten $L^2$-Norm überein. 
+%	Und da bekannt ist, dass $\big(L^2,\Vert\cdot\Vert_{L^2}\big)$ ein Banachraum ist, genügt es noch zu zeigen, dass $L_0^2$ abgeschlossen ist.
+%	Sei also $(X_n)_{n\in\N}\subseteq L_0^2$ eine Folge mit
+%	$X_n\stackrel{n\to\infty}{\longrightarrow}X\in L^2$.
+%	Dann gilt schon $X\in L_0^2$, denn:
+%
+%	%Angenommen $\E[X]\neq0$. Dann gibt es $c>0$ so, dass
+%	%\begin{align*}
+%	%0<c\leq \big(\E[X]\big)^2&=\Big(\E[X]\cdot\big(\E[X-X_n+X_n]\big)\Big)\\
+%	%&=\big(\E[X]\cdot\E[X-X_n]+\E[X]\cdot\underbrace{\E[X_n]}_{=0}\big)\\
+%	%&=\E[X]\cdot\E[X-X_n]\\
+%	%&\leq\E\big[|X|\big]\cdot\E\big[|X-X_n|\big]
+%	%\stackrel{n\to\infty}{\longrightarrow}0
+%	%\end{align*}
+%	%Dies ist ein Widerspruch. Folglich $\E[X]=0$ und somit $X\in L_0^2(\Omega)$.\\
+%
+%	\begin{align*}
+%		E[X]
+%		&=\E[X-X_n+X_n]\\ 
+%		&=\E[X-X_n]+\underbrace{\E[X_n]}_{=0}\\
+%		\implies
+%		\big|\E[X]\big|&\leq \E\big[|X-X_n|\big]
+%		\overset{\text{Jensen}}{\leq}
+%		\sqrt{\E\big[(X_n-X)^2\big]}
+%		\overset{n\to\infty}{\longrightarrow} 0\\
+%		\implies
+%		\E[X]&=0
+%	\end{align*}
+%
+%	\underline{Zeige b):} 
+%	Für $X,Y\in L_0^2$ gilt $\Var[X]=\E\big[X^2\big]$ und $\Cov[X,Y]=\E[X\cdot Y]$. 
+%	Damit folgt
+%	\begin{align*}
+%		\Var\left[\sum\limits_{j=1}^n X_j\right]
+%		&=\E\left[\left(\sum\limits_{j=1}^n X_j\right)^2\right]\\
+%		&=\E\left[\sum\limits_{j=1}^n\sum\limits_{k=1}^n X_j\cdot X_k\right]\\
+%		&=\sum\limits_{j=1}^n\sum\limits_{k=1}^n \E[X_j\cdot X_k]\\
+%		&=\sum\limits_{j=1}^n\left(
+%		\sum\limits_{\begin{subarray}{c}k=1\\ k=j\end{subarray}}^n \E[X_j\cdot X_k]
+%		+\sum\limits_{\begin{subarray}{c}k=1\\ k\neq j\end{subarray}}^n \E[X_j\cdot X_k]\right)\\
+%		&=\sum\limits_{j=1}^n\left(\underbrace{\E\big[X_j^2\big]}_{=\Var[X]}+2\cdot\sum\limits_{k>j}\underbrace{\E[X_j\cdot X_k]}_{=\Cov(X_j,Y_k)}\right)
+%	\end{align*}
+%
+%	Abstrakt als Hilbertraum aufgefasst:
+%	\begin{align*}
+%		\left\langle\sum\limits_{k},\sum\limits_{k} X_k\right\rangle
+%		=\sum\limits_k\left\langle X_k,X_k\right\rangle+2\cdot\sum\limits_{i<j}\left\langle X_i,X_j\right\rangle
+%	\end{align*}
+%
+%	\underline{Zeige c):}
+%	\begin{align*}
+%		\sqrt{\Var\left[\sum\limits_{j=1}^n X_j\right]}
+%		=\sqrt{\E\left[\left(\sum\limits_{j=1}^n\right)^2\right]}
+%		=\left\Vert\sum\limits_{j=1}^n X_i\right\Vert
+%		\overset{\Delta\text{-Ungl}}{\leq}
+%		\sum\limits_{j=1}^n\Vert X_j\Vert
+%		=\sum\limits_{j=1}^n\sqrt{\Var[X_j]}
+%	\end{align*}
+%\end{proof}
+%
+%\subsection{Aufgabe 1.2}
+%Seien $X,Y\in L_2(\A)$ und $\F\subseteq\A$ Unter-$\sigma$-Algebra von $\A$. 
+%\textbf{Bedingte Varianz} und \textbf{bedingte Kovarianz} von $X$ bzw. $X,Y$ unter $\F$ sind definiert als
+%\begin{align*}
+%	\Var[X~|~\F]&:=\E\Big[\big(X-\E[X~|~\F]\big)^2~\Big|~\F\Big]\\
+%	\Cov[X,Y~|~\F]&:=\E\Big[\big(X-\E[X~|~\F]\big)\cdot\big(Y-\E[Y~|~\F]\big)~\Big|~\F\Big]
+%\end{align*}
+%Dann gelten die Sätze der \textbf{totalen Varianz} bzw. \textbf{totalen Kovarianz}:
+%\begin{align*}
+%	\Var[X]&=\E\big[\Var[X~|~\F]\big]+\Var\big[\E[X~|~\F]\big]\\
+%	\Cov[X,Y]&=\E\big[\Cov[X,Y~|~\F]\big]+\Cov\big[\E[X~|~F],\E[Y~|~\F]\big]
+%\end{align*}
+%
+%\begin{proof}
+%	\underline{Zur ersten Gleichung:}\\
+%	Aus der Nebenrechnung
+%	\begin{align}\label{eqTotaleVarianz}
+%		\Var[X~|~\F]
+%		\overset{\text{Def}}&=
+%		\E\Big[\big(X-\E[X~|~\F]\big)^2~\Big|~\F\Big]\\\nonumber
+%		\overset{\text{}}&=
+%		\E\Big[X^2-2\cdot X\cdot \E[X~|~\F]+\big(\E[X~|~\F]\big)^2~\Big|~\F\Big]\\\nonumber
+%		\overset{\text{Lin}}&=
+%		\E\big[X^2~\big|~\F\big]-2\cdot\E\big[X\cdot\E[X~|~\F]\big]+\E\Big[\big(\E[X~|~\F]\big)^2~\Big|~\Big]\\\nonumber
+%		\overset{\text{Pull-out}}&=
+%		\E\big[X^2~\big|~\F\big]-2\cdot\E[X~|~\F]\cdot\E[X~|~\F]+
+%		\E[X~|~\F]\cdot\underbrace{\E\big[\E[X~|~\F]~\big|~\F\big]}_{\stackeq{\text{Tower}}\E[X~|~\F]}\\\nonumber
+%		&=
+%		\E\big[X^2~\big|~\F\big]-\big(\E[X~|~\F]\big)^2 
+%	\end{align}
+%	folgt
+%	\begin{align*}
+%		&\E\big[\Var[X~|~\F]\big]+\Var\big[\E[X~|~\F]\big]\\
+%		&=\E\big[\Var[X~|~\F]\big]+\E\Big[\big(\E[X~|~\F]\big)^2\Big]-\Big(\E\big[\E[X~|~\F]\big]\Big)^2\\
+%		\overset{\eqref{eqTotaleVarianz}}&=
+%		\E\Big[\E\big[X^2~\big|~\F\big]-\big(\E[X~|~\F]\big)^2 \Big]+
+%		\E\Big[\big(\E[X~|~\F]\big)^2\Big]-\Big(\E\big[\E[X~|~\F]\big]\Big)^2\\
+%		\overset{\text{Lin}}&=
+%		\E\Big[\E\big[X^2~\big|~\F\big]\Big]\underbrace{-\E\Big[\big(\E[X~|~\F]\big)^2 \Big]+
+%		\E\Big[\big(\E[X~|~\F]\big)^2\Big]}_{=0}-\Big(\E\big[\E[X~|~\F]\big]\Big)^2\\
+%		&=\E\Big[\E\big[X^2~\big|~\F\big]\Big]-\Big(\E\big[\E[X~|~\F]\big]\Big)^2\\
+%		\overset{\text{Tower}}&=
+%		\E[X^2]-\big(\E[X]\big)^2\\
+%		&=\Var[X]
+%	\end{align*}
+%
+%	\underline{Zur zweiten Gleichung:} 
+%
+%	Zunächst gilt die \textit{Polarisation:} 
+%	\begin{align*}
+%		\Cov(X,Y)=\frac{1}{2}\cdot\big(\underbrace{\Var[X+Y]}_{=\langle X+Y,X+Y\rangle}-\underbrace{\Var[X]}_{=\langle X,X\rangle}-\underbrace{\Var[Y]}_{=\langle Y,Y\rangle}\big)
+%	\end{align*}
+%	Setze der Kürze halber $X_F:=\E[X~|~\F], Y_F:=\E[Y~|~\F]$. 
+%	Dann gilt:
+%	\begin{align*}
+%		&\E[\Cov(X,y~|~\F)]\\
+%		&=\E[\E[(X-X_F)\cdot(Y-Y_F)~|~\F]]\\
+%		\overset{\text{Tower}}&=
+%		\E[(X-X_F)\cdot(Y-Y_F)]\\
+%		&=\E[X\cdot Y]-\E[\E[X~|~F]\cdot Y]-\E[X\cdot\E[Y~|~\F]]+\E[\E[X~|~\F]\cdot\E[Y~|~\F]]\\
+%		\overset{\text{Sym}}&=
+%		\E[X\cdot Y]-\E[X_F\cdot Y_F]\\
+%		&=\Cov(X,Y)+\E[X]\cdot\E[Y]-\E[X_F\cdot Y_F]\\
+%		\overset{\text{Tower}}&=
+%		\Cov(X,Y)+\E[X_F]\cdot\E[Y_F]-\E[X_F\cdot Y_F]\\
+%		&=\Cov(X,Y)-\Cov(\E[X~|~\F],\E[Y~|~\F]]
+%	\end{align*}
+%	Umstellen impliziert die Behauptung.
+%\end{proof}
+%
+%\subsection{Aufgabe 1.3}
+%Sei 
+%$M=\begin{pmatrix}
+%	A & B\\ C & D
+%\end{pmatrix}$ eine quadratische, in Blöcke unterteilte Matrix von vollem Rang, wobei $A$ und $D$ ebenfalls quadratisch und von vollem Rang seien. 
+%Die Ausdrücke
+%\begin{align*}
+%	(M/A):=\left(D-C\cdot A^{-1}\cdot B\right),\qquad(M/D):=\left(A-B\cdot D^{-1}\cdot C\right)
+%\end{align*}
+%heißen \textbf{Schurkomplement} von $A$ in $M$ bzw. 
+%$D$ in $M$. Dann gilt:
+%\begin{enumerate}[label=\alph*)]
+%	\item $\begin{aligned}
+%		M^{-1}=\begin{pmatrix}
+%			(M/D)^{-1} & -A^{-1}\cdot B\cdot(M/A)^{-1}\\
+%			-D^{-1}\cdot C\cdot(M/D)^{-1} & (M/A)^{-1}
+%		\end{pmatrix}
+%	\end{aligned}$
+%	\item Sei $M$ nun symmetrisch, d.h. $A$ und $D$ sind symmetrisch und $C=B^T$. Dann gilt:
+%	\begin{align*}
+%		(x^T,y^T)\cdot M^{-1}\cdot\begin{pmatrix}
+%			x\\y
+%		\end{pmatrix}-y^T\cdot D^{-1}\cdot y=\tilde{x}^T\cdot(M/D)^{-1}\cdot\tilde{x}
+%	\end{align*}
+%	mit $\tilde{x}=\left(x-B\cdot D^{-1}\cdot y\right)$ für alle $x,y$ mit passender Dimension.
+%	\item Es sei $(X,Y)$ multivariat normalverteilt mit Erwartungswert 0 und positiv definiter Kovarianzmatrix 
+%	$\Sigma=\begin{pmatrix}
+%		\Sigma_X & \Sigma_{XY}\\ 
+%		\Sigma_{XY}^T & \Sigma_Y
+%	\end{pmatrix}$. 
+%	Dann ist $X$ bedingt auf $Y$ normalverteilt mit $\E[X~|~Y]=\Sigma_{XY}\cdot\Sigma_{Y}^{-1}$ und Kovarianzmatrix $(\Sigma/\Sigma_Y)$\\
+%	Hinweis: Es gilt $\det(\Sigma)=\det(\Sigma_Y)\cdot\det(\Sigma/\Sigma_Y)$.
+%\end{enumerate}
+%
+%\begin{proof}
+%	\underline{Zeige a):}\\
+%	Beachte: Matrixmultiplikation gilt Blockweise.
+%	\begin{align*}
+%		&M\cdot M^{-1}\\
+%		&=\begin{pmatrix}
+%			A & B\\ C & D
+%		\end{pmatrix}\cdot\begin{pmatrix}
+%			(A-B\cdot D^{-1}\cdot C)^{-1} & -A^{-1}\cdot B\cdot(D-A\cdot C^{-1}\cdot B)^{-1}\\
+%			-D^{-1}\cdot C\cdot(A-B\cdot D^{-1}\cdot C)^{-1} & (D-C\cdot A^{-1}\cdot B)^{-1}
+%		\end{pmatrix}\\
+%		&=\begin{pmatrix}
+%			(\ast) & 0\\
+%			0 & (\ast\ast)
+%		\end{pmatrix}\\
+%		(\ast)
+%		&=A\cdot(A-B\cdot D^{-1}\cdot C)^{-1}-B\cdot D^{-1}\cdot C(A-B\cdot D{-1}\cdot C)^{-1}\\
+%		&=(A-B\cdot D^{-1}\cdot C)\cdot(A-B\cdot D^{-1}\cdot C)^{-1}\\
+%		&=I\\
+%		(\ast\ast)
+%		&=(-C\cdot A^{-1}\cdot B+D)\cdot(D-C\cdot A^{-1}\cdot B)^{-1}\\
+%		&=I
+%	\end{align*}
+%
+%	\underline{Zeige b):}
+%	\begin{align}\label{3b1}\tag{$\ast$} 
+%		&-D^{-1}\cdot B^T\cdot(M/D)^{-1}
+%		=-(M/A)^{-1}\cdot B^T\cdot A^{-1}\\\nonumber
+%		&\implies
+%		(M/A)\cdot D^{-1}\cdot B^T=B^T\cdot A^{-1}\cdot(M/D)\\\nonumber
+%		&\implies
+%		(D-B^T\cdot A^{-1}\cdot B)\cdot D^{-1}\cdot B^T=B^T\cdot A^{-1}\cdot(A-B\cdot D^{-1}\cdot B^T)\\\nonumber
+%		&\implies
+%		B^T-B^T\cdot A^{-1}\cdot B\cdot D^{-1}\cdot B^T
+%		=B^T-B^T\cdot A^{-1}\cdot B\cdot D^{-1}\cdot B^T
+%	\end{align}
+%
+%	\begin{align*}
+%		M^{-1}
+%		&=\begin{pmatrix}
+%			(M/D)^{-1} & -A^{-1}\cdot B\cdot(M/A)^{-1}\\
+%			-D^{-1}\cdot B^T\cdot(M/D)^{-1} & (M/A)^{-1}
+%		\end{pmatrix}\\
+%		\overset{\eqref{3b1}}&=
+%		\begin{pmatrix}
+%			(M/D)^{-1} & -A^{-1}\cdot B\cdot(M/A)^{-1}\\
+%			-(M/A)^{-1}\cdot B^T\cdot A^{-1} & (M/A)^{-1}
+%		\end{pmatrix}
+%	\end{align*}
+%	Zu zeigen:
+%	\begin{align*}
+%		\begin{pmatrix}
+%			x\\ 
+%			y
+%		\end{pmatrix}\cdot M^{-1}\cdot\begin{pmatrix}
+%			x\\ 
+%			y
+%		\end{pmatrix}-y^T\cdot D^{-1}\cdot y=\tilde{x}^T\cdot (M/D)^{-1}\cdot\tilde{x}
+%		\mit\tilde{x}=x-B\cdot D^{-1}\cdot y
+%	\end{align*}
+%	Linke Seite:
+%	\begin{align*}
+%		x^T\cdot(M/D)^{-1}\cdot x-2 y^T\cdot\underbrace{(M/A)^{-1}\cdot B^T\cdot x}_{\text{wegen \eqref{3b1}}}\cdot x+y^T\cdot(M/A)^{-1}\cdot y-y^T\cdot D^{-1}\cdot y
+%	\end{align*}
+%	Rechte Seite:
+%	\begin{align*}
+%		x^T\cdot(M/D)^{-1}\cdot x-2 y^T\cdot D^{-1}\cdot B^T\cdot(M/D)^{-1}\cdot x+\\
+%		+y^T\cdot D^{-1}\cdot B^T\cdot(M/D)^{-1}\cdot B\cdot D^{-1}\cdot y
+%	\end{align*}
+%	Noch zu zeigen
+%	\begin{align*}
+%		(M/A)^{-1}-D^{-1}
+%		&=D^{-1}\cdot B^T\cdot(M/D)^{-1}\cdot B\cdot D^{-1}\\
+%		&\implies %von links \cdot(M/A) und von rechts \cdot D
+%		D-(M/A)=(M/A)\cdot\underbrace{ D^{-1}\cdot B^T\cdot(M/D)^{-1}}_{\stackrel{\eqref{3b1}}(M/A)^{-1}\cdot B^T\cdot A^{-1}}\cdot B
+%		\\
+%		&\implies
+%		B^T\cdot A^{-1}\cdot B=B^T\cdot A^{-1}\cdot B
+%	\end{align*}
+%	
+%	\underline{Zeige c):}
+%	\begin{align*}
+%		f_{X|Y}(x,y)
+%		&=\frac{f_{XY}(x,y)}{f_Y(y)}\\
+%		&=\frac{(2\cdot\pi)^{-\frac{m+n}{2}}\cdot\det(\Sigma_Y)}{\det(\Sigma)\cdot(2\cdot\pi)^{-\frac{n}{2}}}
+%		\cdot\exp\left(-\frac{1}{2}\cdot\left(\begin{pmatrix}
+%			x\\ 
+%			y
+%		\end{pmatrix}^T\cdot\Sigma^{-1}\cdot\begin{pmatrix}
+%			x\\ 
+%			y
+%		\end{pmatrix}-y^T\cdot\Sigma_Y\cdot y\right)\right)\\
+%		\overset{\text{(b)}}&=
+%		\frac{(2\cdot\pi)^{-\frac{m}{2}}}{\det(\Sigma/\Sigma_Y}\cdot\exp\left(-\frac{1}{2}\cdot\tilde{x}^T\cdot(\Sigma/\Sigma_Y)^{-1}\cdot\tilde{x}\right)
+%		\mit\tilde{x}=x-\Sigma_{XY}\cdot\Sigma_{Y}^{-1}\cdot y
+%	\end{align*}
+%	ist Dichte von 
+%	\begin{align*}
+%		\mathcal{N}\Big(\Sigma_{XY}\cdot\Sigma_Y^{-1}\cdot y,(\Sigma/\Sigma_Y)\Big)
+%	\end{align*}
+%\end{proof}
+%
+%\subsection{Aufgabe 1.4}
+%In einer bestimmten Population sei das Alter $X$ bei erstmaliger Berufsunfähigkeit exponentialverteilt mit Parameter $\lambda>0$. 
+%Für eine Versicherungsgesellschaft die gegen Berufsunfähigkeit versichert ist das mittlere Alter bei Eintritt der Berufsunfähigkeit von Bedeutung, 
+%unter der Bedingung dass die Berufsunfähigkeit zwischen den Altersgrenzen $0\leq a\leq b$ eintritt.\\
+%Bestimme diesen bedingten Erwartungswert $\E[X~|~a\leq X\leq b]$.
+%
+%\begin{proof}
+%	Die Zufallsgröße $X\colon\Omega\to\R$ hat Dichte $f_X(x)=\lambda\cdot\exp(-\lambda\cdot x)$
+%	\begin{align*}
+%		\E[X~|~a\leq X\leq b]
+%		&=\frac{\E\left[X\cdot\indi_{\lbrace a\leq X\leq b\rbrace}\right]}{\P[a\leq X\leq b]}\\
+%		&=\frac{\int\limits_a^b \lambda\cdot x\cdot\exp(-\lambda\cdot x)\d x}{\int\limits_a^b\lambda\cdot\exp(-\lambda\cdot x)\d x}\\
+%		&=\frac{\int\limits_a^b x\cdot\exp(-\lambda\cdot x)\d x}{\int\limits_a^b\exp(-\lambda\cdot x)\d x}\\
+%		&=\frac{\left[\left(-\frac{x}{\lambda}-\frac{1}{\lambda^2}\right)\cdot\exp(-\lambda\cdot x)\right]_{x=a}^b}
+%		{\left[-\frac{\exp(-\lambda\cdot x)}{\lambda}\right]_{x=a}^b}\\
+%		%&=\frac{
+%		%\frac{b\cdot\exp(-\lambda\cdot b)}{\lambda}
+%		%+\frac{\exp(-\lambda\cdot b)}{\lambda^2}
+%		%-\frac{a\cdot\exp(-\lambda\cdot a)}{\lambda}
+%		%-\frac{\exp(-\lambda)\cdot a)}{\lambda^2}
+%		%}{
+%		%\frac{\exp(-\lambda\cdot b)}{\lambda}
+%		%-\frac{\exp(-\lambda\cdot a)}{\lambda}}\\
+%		%&=\frac{\left(b+\frac{1}{\lambda}\right)\cdot\exp(-\lambda\cdot b)-\left(a+\frac{1}{\lambda}\right)\cdot\exp(-\lambda\cdot a)}{\exp(-\lambda\cdot b)-\exp(-\lambda\cdot a)}
+%		&=\frac{\frac{(a\cdot\lambda+1)\cdot\exp(-\lambda\cdot a)}{\lambda^2}-\frac{(b\cdot\lambda+1)\cdot\exp(-\lambda\cdot b)}{\lambda^2}}{\frac{\exp(-\lambda\cdot a)}{\lambda}-\frac{\exp(-\lambda\cdot b)}{\lambda}}\\
+%		&=\frac{(b\cdot\lambda+1)\cdot\exp(a\cdot\lambda)-(a\cdot\lambda+1)\cdot\exp(b\cdot\lambda)}{\big(\exp(a\cdot\lambda)-\exp(b\cdot\lambda)\big)\cdot\lambda}\\
+%		\overset{\text{Prof}}&=
+%		\frac{1}{\lambda}+\frac{a\cdot\exp(-\lambda\cdot a)-b\cdot\exp(-\lambda\cdot b)}{\exp(-\lambda\cdot a)-\exp(-\lambda\cdot b)}
+%	\end{align*}
+%\end{proof}
+%
+%\subsection{Aufgabe 1.5}
+%Welche der folgenden in der Vorlesung definierten mathematischen Objekte sind: 
+%reelle Zahlen, Zufallsvariablen, messbare Funktionen von $\R\to\R$?
+%\begin{align*}
+%	\E[X~|~\F],\qquad\P[A~|~B],\qquad \E[X~|~Y=y],\qquad\P[A~|~\F],\qquad\E[X~|~Y]
+%\end{align*}
+%Wie üblich bezeichnet $\F$ eine $\sigma$-Algebra, $X,Y$ Zufallsvariablen, $y$ eine reelle Zahl und $A,B$ Ereignisse.
+%
+%\begin{lösung}
+%	\begin{align*}
+%		&\E[X~|~\F]\in L_2(\Omega,\F,\P)\text{, ist also eine Zufallsvariable}\\
+%		&\P[A~|~B]\in[0,1]\subseteq\R\\
+%		&\E[X~|~Y=y]:=\int\limits_{\R^m}x\cdot f_{X|Y}(x,y)\d x\in\R\\
+%		&\P[A~|~\F]:=\E[\indi_A~|~\F]\in L_2(\Omega,\F,P)\text{ bzw. }\in(0,1)\text{ für festes }\omega\in\Omega\\
+%		&\E[X~|~Y]:=\E[X~|~\sigma(Y)]\in L_2(\Omega,\F,\P)\text{, ist also ein Spezialfall der ersten Zeile}
+%	\end{align*}
+%\end{lösung}
