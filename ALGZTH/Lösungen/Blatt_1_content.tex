@@ -3,210 +3,60 @@
 % of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or
 % send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
-\section{Präsenzübung 1}
-\subsection{Aufgabe 1.1}
+\section{Übung 1 - Körpergrad, algebraische Erweiterungen}
+Sei $L \vert K$ Körpererweiterung.
+\subsection{V 1.1}
+Ist $\chara(K) = p >0$, so gilt $(a+b)^p = a^p + b^p$ für alle $a,b \in K$.
 
-\begin{enumerate}[label=\alph*)]
-	\item Es seien $M,N$ beliege Mengen und $T: M \to N$ eine Abbildung. Zeigen Sie: $T^{-1}(A^C) = (T^{-1}(A))^C$.
-	Erinnerung an Schreibweise $T^{-1}(A) = \set{a \in M \colon T(a) \in B}$ und $T(A) := \set{T(a) \colon a \in A}$ und setze $A \subset N$ und $B \subset M$.
-	\item Es seien $(\Omega_1, \F_1)$, $(\Omega_2, \F_2)$ und $(\Omega_3, \F_3)$ messbare Räume (oder auch Messräume) und $f: (\Omega_1, \F_1) \to (\Omega_2, \F_2)$, $g: (\Omega_1, \F_1) \to (\Omega_2, \F_2)$ messbare Funktionen. Zeigen Sie, dass dann auch die Komposition $g\circ f: (\Omega_1, \F_1) \to (\Omega_3, \F_3)$ messbar ist.
-	\item Es sei $\Omega$ eine überabzählbare Menge. Zeigen Sie, dass
-	\begin{align*}
-		\F := \set{A \subset \Omega: A \text{ ist abzählbar } \vee A^{C} \text{ ist abzählbar}}
-	\end{align*}
-	eine $\sigma$-Algebra über $\Omega$ ist.
-\end{enumerate}
-%TODO check if I can make this more sound! there is still a problem at the end of the proof with the way it is defined.
 \begin{proof}
-	\begin{enumerate}[label=\alph*)]
-		\item 
-		\begin{align*}
-			\set{a \in T^{-1}(A^C)} &\gdw \exists b \in B^C : T(a) = b\\
-			&\overset{(!)}{\gdw} \exists c \in B : T(a) = c\\
-			&\gdw a \not\in \set{T \in A}\\
-			&\gdw a \in \set{T \in A}^C = a \in (T^{-1}(A))^C
-		\end{align*}
-		Nun muss man sich noch $(!)$ klar machen. Das Ganze gilt, da $T$ eine Abbildung ist, also wird jedem Element in $M$ genau ein Element in $N$ zugeordnet.\\
-		``$\Rightarrow$'' folgt aus der Eigenschaft, dass für jedes Element in $M$ \emph{höchstens} ein Element in $N$ abgebildet wird.\\
-		``$\Leftarrow$'' Gleiches Argument.
-		\item $\forall A \in \F_3$ gilt $(g\circ f)^{-1}(A) = f^{-1}\circ \underbrace{g^{-1}(A)}_{\in \F_2} \in f^{-1}(\F_2)\subset \F_1$
-		\item Dafür muss man nur die drei Axiome der $\sigma$-Algebra nachweisen.
-		\begin{itemize}
-			\item $\Sigma_1$: $\Omega^C = \emptyset$ ist abzählbar $\Rightarrow \Omega \in \F$
-			\item $\Sigma_2$: 
-			\begin{align*}
-				A \in \F &\gdw \#A \le \#\N \oder \# A^C \le \# \N\\
-				&\gdw \# A^C \le \# \N \oder \# (A^C)^C = A \le \#\N\\
-				&\gdw A^C \in \F
-			\end{align*}
-			\item $\Sigma_3$: Sei $\brackets{A_n}_{n \in \N} \subset \F$. Zwei Fälle sind zu bearbeiten.
-			\begin{itemize}
-				\item[\textit{Fall 1:}] Es werden genau die Mengen $A_n$ ausgewählt, welche abzählbar sind. Dann folgt aber, dass auch die Vereinigung $\bigcup_{n\in \N} A_n$ von abzählbare vielen abzählbaren Mengen eine abzählbare Menge ist, also $A \in \F$.
-				\item[\textit{Fall 2:}] Eine Menge, z.B. $A_{n_0}$, ist überabzählbar. Dann folgt aus der Definition von $\F$,dass das Komplement von $A_{n_0}^C$ abzählbar ist. Folglich ergibt sich
-				\begin{align*}
-					\brackets{\bigcup_{n\in \N} A_n}^C = \bigcap_{n\in \N} A_n^C \subset A^C_{n_0}.
-				\end{align*} 
-				Damit ist auch das Komplement von $A = \bigcup_{n\in \N}A_n$ abzählbar und liegt in $\F$.
-			\end{itemize}
-%		Damit wurde nachgewiesen, das $\F$ eine $\sigma$-Algebra ist.
-		\end{itemize}
-	\end{enumerate}
+	Es seien $a,b \in K$. Es gilt:
+	\begin{align*}
+		(a+b)^p = \sum_{k=1}^p \frac{p!}{k! (p-k)!}a^k b^{p-k}
+	\end{align*}
+	Für $1 \le k \le p-1$ gilt $p \vert \frac{p!}{k! (p-k)!}a^k b^{p-k}$. Da $\chara(K) = p$ folgt $\frac{p!}{k! (p-k)!}a^k b^{p-k} = 0$ für $1 \le k \le p-1$. Deswegen ist $(a+b)^p = a^p + b^p$.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%% Aufgabe 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Aufgabe 1.2}
-\begin{enumerate}
-	\item Es sei $(\Omega, \F, \Meas)$ ein WRaum und $A,B,C \in \F$ drei Ereignisse. Beschreiben Sie mengentheoretisch folgende Ereignisse:
-	\begin{enumerate}
-		\item es tritt nur $A$ ein
-		\item $A$ und $B$ treten ein, aber $C$ nicht
-		\item Mindestens eins der Ereignisse tritt ein
-		\item Mindestens zwei der Ereignisse treten ein
-		\item $A,B,C$ treten alle ein
-		\item Keines der drei Ereignisse $A,B,C$ tritt ein
-		\item Höchstens ein Ereigniss tritt ein
-		\item Höchstens zwei Ereignisse treten ein
-		\item Genau zwei Ereignisse treten ein
-		\item Höchstens drei der Ereignisse tretten ein.
-	\end{enumerate}
-	\item Es seien $A_1,A_2, \dots$ Ereignisse. Interpretieren Sie folgende Ereignisse:
-		\begin{align*}
-			\ul{A}:= \liminf_{n \to \infty} A_n = \bigcup_{n=1}^{\infty}\bigcap_{k=n}^{\infty} A_k, \quad \overline{A}:= \limsup_{n \to \infty} A_n = \bigcup_{n=1}^{\infty}\bigcap_{k=n}^{\infty} A_k
-		\end{align*}
-\end{enumerate}
-
-\begin{lösung}
-	\begin{enumerate}
-		\item Im wesentlichen sind das eigentlich nur Teilmengen der Potenzmenge von $\pows(\Omega)$, wobei $\Omega = \set{A,B,C}$ ist? (Bin mir dabei gar nicht recht sicher, könnte auch eine Partition von $\pows(\Omega)$ sein.)
-		\begin{enumerate}
-			\item $\set{A}$
-			\item $\set{A,B}$
-			\item $\set{A,B,C, \set{A,B}, \set{B,C}, \set{A,C}, \set{A,B,C}}$
-			\item $\set{\set{A,B}, \set{B,C}, \set{A,C}, \set{A,B,C}}$
-			\item $\set{A,B,C}$
-			\item $\set{\emptyset}$
-			\item $\set{\emptyset, A, B, C}$
-			\item $\set{\set{A,B}, \set{B,C}, \set{A,C}, \emptyset, A,B,C}$
-			\item $\set{\set{A,B}, \set{B,C}, \set{A,C}}$
-			\item $\set{\set{A,B,C}}$
-		\end{enumerate}
-	\item $\dots$ %TODO!
-	\end{enumerate}
-\end{lösung}
-
+\subsection{V 1.2}
+%TODO
 %%%%%%%%%%%%%%%%%%%% Aufgabe 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Aufgabe 1.3}
 
-\begin{enumerate}
-	\item Es sei $\Meas$ ein WMaß auf $(\Omega, \F)$ und $A,B,A_1,A_2,\dots \in \F$ beliebige Ereignisse. Zeigen Sie:
-	\begin{enumerate}
-		\item $\Meas(\emptyset) = 0$,
-		\item $\Meas(A\cup B) + \Meas(A\cap B) = \Meas(A) + \Meas(B)$ (endliche Additivität), insbesondere $\Meas(A) + \Meas(A^C) = 1$,
-		\item Aus $A \subseteq B$ folgt $\Meas(A) \le \Meas(B)$ (Monotonie),
-		\item $\sigma$-Subadditivität
-		\begin{align*}
-			\Meas\left( \bigcup_{i \ge 1} A_i\right) \le \sum_{i\ge 1} \Meas(A_i),
-		\end{align*}
-		\item $\sigma$-Stetigkeit, d.h. $A_n \uparrow A$, d.h. $A_1 \subseteq A_2 \subseteq \dots$ und $A = \bigcup_{i \ge 1} A_i$ (oder $A_n \downarrow A$, d.h. $A_1 \supseteq A_2 \supseteq \dots$ und $A = \bigcap_{i \ge 1} A_i$), dann
-		\begin{align*}
-			\liminf_{i \to \infty} \Meas(A_i) = \Meas(A).
-		\end{align*}
-	\end{enumerate}
-	\item Es sei $(\Omega, \F, \Meas)$ ein WRaum und $A,B \in \F$ zwei Ereignisse mit $\Meas(A) = 0.6$ und $\Meas(B) = 0.4$, sowie $\Meas(A\cap B) = 0.2$. Bestimmen Sie die Wahrscheinlichkeiten
-	\begin{align*}
-		\Meas(A\cup B), \quad \Meas(B^C), \quad \Meas(A^C \cap B), \quad \Meas(A \cup B^C), \quad \Meas(A^C \cap B^C).
-	\end{align*}
-\end{enumerate}
+\subsection{V 1.3}
+Sei $\alpha \in L^{\times}$. Zeigen Sie: Für $a \in K^{\times}$ und $b \in K^{\times}$ ist $K[\alpha] = K[a\alpha + b]$ und $K(\alpha) = K(\alpha^{-1}) = K(a\alpha + b)$.
 
 \begin{proof}
-	\begin{enumerate}
-		\item 
-		\begin{enumerate}
-			\item Behauptung: $\Meas(\emptyset) = 0$
-			\begin{align*}
-			\emptyset = \bigcup_{n=1}^{\infty} \emptyset\qquad 
-			\Meas(\emptyset) = \Meas\left(\bigcup_{n=1}^{\infty}\right) = \sum_{i= 1}^{\infty} \Meas(\emptyset) \le 1.
-			\end{align*}
-			\item Behauptung: $\Meas(A \cup B) + \Meas(A \cap B) = \Meas(A) + \Meas(B)$
-			\begin{align}
-				\Meas(A\uplus B) 
-				&= \Meas(A \cup B \cup \emptyset \cup \dots)\notag\\ 
-				&= \Meas(A) + \Meas(B) + \sum_{i=1}^{\infty}\Meas(\emptyset)\notag\\
-				B = A^C &\Rightarrow \Meas(\Omega) = \Meas(A \uplus A^C)\notag\\
-				&= \Meas(A) + \Meas(A^C) = 1\notag\\
-				\Meas(A \cup B) + \Meas(A \cap B) 
-				&= \Meas(A \setminus B \cup B\setminus A \uplus (A \cap B) + \Meas(A \cap B)\notag\\
-				&= \underbrace{\Meas(A\setminus B)  + \Meas(A \cap B)}_{\Meas(A)} + \underbrace{\Meas(A \cap B) + \Meas(B\setminus A)}_{\Meas(B)}\notag\\
-				&= \Meas(A) + \Meas(B)\notag
-			\end{align}
-%			\item ... %TODO other points, i have as picture!
-			\item $A,B \in \F, A \subseteq B$:\\
-			\begin{align}
-				\Meas(B) = \Meas(A \cup B\setminus A) = \Meas(A) + \underbrace{\Meas(B\setminus A)}_{\ge 0} \ge \Meas(A) 
-				\label{eq_1}\tag{*}
-			\end{align}
-			\item $A_1,A_2,\dots$\\
-			Behauptung: $\Meas\brackets{\bigcup_{i \ge 1} A_i} \overset{!?}{\le} \sum_{i\ge 1} \Meas(A_i)$
-			\begin{align}
-			&= \Meas(\bigcup_{i \ge 1}^{\infty}(A_i \setminus \bigcup_{j \ge i} A_j))\notag\\ 
-			&= \Meas(A_1 \cup (A_2 \setminus A_1) \cup (A_3 \setminus (A_1 \cup A_2)) \cup \dots)\notag\\
-			&= \sum_{i\ge 1}^{\infty} \Meas(A_i \setminus \bigcup_{j \ge i} A_j) \overset{\text{\cref{eq_1}}}{\le} \sum_{i\ge 1} \Meas(A_i)\notag
-			\end{align}
-			\item $A_1 \subseteq A_2 \subseteq \dots \in F, A_0 = \emptyset$ und $A_n \xrightarrow{n \to \infty} A$. 
-			%(Es muss eine disjunkte Zerlegung gefunden werden: $F_i = A_i \setminus A_{i-1}$)
-			\begin{align}
-				\Meas(A) 
-				&= \Meas(\bigcup_{i \ge 1} (A_i \setminus A_{i-1})) \notag\\
-				&= \sum_{i\ge 1} \Meas(A_i \setminus A_{i-1})\notag\\
-				&= \liminf_{n \to \infty} \sum_{i\ge 1}^{n} \Meas(A_i \setminus A_{i-1})\notag \\
-				&= \liminf_{n \to \infty} \Meas(\bigcap_{i \ge 1} (A_i\setminus A_{i-1})) \notag\\
-				&= \liminf_{n \to \infty} \Meas(A_n)
-				\label{eq_2}\tag{**}
-			\end{align}
-			Und nun nochmal den absteigenden Fall:\\
-			$B_1 \supseteq B_2 \supseteq \dots \in F$ und $B_n \downarrow B \Longrightarrow B_1 \setminus B_n \uparrow B_1 \setminus B$. Benutze dazu \cref{eq_1} und \cref{eq_2}:
-			\begin{align}
-				\underbrace{\Meas(B_1 \setminus B)}_{\Meas(B_1) - \Meas(B)} &= \lim_{n \to \infty} \Meas(B_1 \setminus B_n) \notag\\
-				&= \lim_{n \to \infty} (\Meas(B_1) - \Meas(B_1))\notag
-			\end{align}
-		\end{enumerate}
-	\item $\dots$ %TODO No idea right now, later.
-	\end{enumerate}
+	\begin{itemize}
+		\item $K[\alpha] = K[a\alpha + b]:$
+		\begin{align*}
+			&(\supseteq)\quad a\alpha + b = a(\alpha) + b\\
+			&(\subseteq)\quad a\alpha = \frac{1}{a} (a\alpha + n) - \frac{b}{a}\\
+		\end{align*}
+		\item $K(\alpha) = K(\alpha^{-1}):$
+		\begin{align*}
+			&(\subseteq)\quad a\alpha^{-1} = \frac{1}{a}\\
+			&(\supseteq)\quad a\alpha = (\alpha^{-1})^{-1}
+		\end{align*}
+		\item $K(\alpha) = K(\alpha +b):$ folgt aus $K[\alpha] = K[\alpha + b]$ und der Definition von $K(...)$. 
+	\end{itemize}
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%% Aufgabe 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Ü 1.4}
+Ist $[L:K] = p$ prim, so ist $L = K(\alpha)$ für jedes $\alpha \in L \setminus K$.
+
+\begin{proof}
+	Sei $\alpha \in L \vert K$. Es gilt
+	\begin{align*}
+		p = [L:K] = [L:K(\alpha)]\mal [K(\alpha):K]
+	\end{align*}
+	Da $p$ prim ist, gilt entweder $[L:K(\alpha)] = 1$ und $[K(\alpha):K] = p$ oder $[L:K(\alpha)]=p$ und $[K(\alpha):K] = 1$. Jedoch ist $\alpha \not\in K$, d.h. $K(\alpha) \neq K$ und somit $[K(\alpha):K] \neq 1$. Deswegen ist $[L:K(\alpha)] = 1$, d.h. $L = K(\alpha)$
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%% Aufgabe 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Aufgabe 1.4}
-Es sei $X$ eine stetige, reelle Zufallsvariable ($X: \R_{+} \to \R_{+}$) mit Wahrscheinlichkeitsdichte
-\begin{align*}
-	f: \R_{+} \to \R_{+} \mit f(x) = \frac{1}{2c} e^{-cx}
-\end{align*}
 
-\begin{enumerate}[label=\alph*)]
-	\item Bestimme den Parameter $c$!
-	\item Wie sieht die Verteilungsfunktion von $X$ aus?
-\end{enumerate}
-
-\begin{lösung}
-	\begin{enumerate}[label=\alph*)]
-		\item Nach auswerten des Integrals über $f$ auf $\R_{+}$ ergibt sich, $c = \sfrac{1}{\sqrt{2}}$.
-		Sei $\Meas$ das WMaß, was normiert ist zu $1$, d.h. $\Meas(\R_{+}) \overset{!}{=}1 (N)$. Damit lässt sich dann $c$ bestimmen:
-		\begin{align*}
-			\Meas(\R_{+}) &= \int_{\R_{+}} \frac{1}{2c} e^{-cx} dx\\
-			&= \frac{1}{2c} \int_{0}^{\infty}  e^{-cx} dx \\
-			&= \frac{1}{2c} \big[-\frac{1}{c} e^{-cx}\big]_{0}^{\infty}\\
-			&= -\frac{1}{2c^2} \big(\lim\limits_{\alpha \to \infty} e^{-c\alpha} - e^{-c\cdot0}\big)\\
-			&= \frac{1}{2c^2} \overset{(N)}{\Rightarrow} c = \frac{1}{\sqrt{2}} 
-		\end{align*}
-		\item Damit gibt es folgenden WRaum $(\Omega, \borel(\R_{+}),\Meas)$ auf diesem soll sich die Verteilungsfunktion befinden. Nach Definition gilt: 
-		\begin{align*}
-			F_{\Meas \circ X^{-1}} = F_{X}: \R_{+} \to [0,1] \mit F: d \to \Meas((X \le d))\notag\\
-			\text{Im dem Fall sieht das so aus: } F_{X}(d) = \int_{-\infty}^{d} \frac{1}{2\sqrt{2}} e^{-\frac{x}{\sqrt{2}}} \diff x = \brackets{1 - e^{-\frac{d}{\sqrt{2}}}}\indi_{\set{x \ge 0}}.\notag\\
-		\end{align*}
-		%TODO maybe draw a plot of this thing?
-	\end{enumerate}
-\end{lösung}
-
+%\end{document}
 
 %\begin{align*}
 %	L_0^2:=\big\lbrace X\in L_2:\E[X]=0\big\rbrace
