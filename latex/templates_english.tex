@@ -1,0 +1,62 @@
+% This work is licensed under the Creative Commons
+% Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy
+% of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or
+% send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+% Du kannst dir jederzeit neue Templates definieren.
+% Schreibe dir einfach einen eigenen Command in dieses File.
+
+\newcommand{\TemplateUebung}[3]{
+	% Argument no. 1 is the author
+	% Argument no. 2 is the name of the lecture
+	% Argument no. 3 is the worksheet number
+
+	\documentclass{scrartcl} 
+	
+	\input{\directoryPrefix packages}
+	\input{\directoryPrefix theoremenvironments_english}
+	\input{\directoryPrefix commands}
+	\input{\directoryPrefix commands_Willi}
+
+	\author{#1}
+	\parindent0cm %Ist wichtig, um führende Leerzeichen zu entfernen
+
+	\usepackage{scrlayer-scrpage}
+	\clearscrheadfoot
+	
+	\ihead{#1}
+	\chead{}
+	\ohead{#2}
+	\ifoot{Blatt #3}
+	\cfoot{Version: \today}
+	\ofoot{Seite \pagemark}
+}
+
+\newcommand{\TemplateSummary}[2]{
+	% Argument no. 1 is the author
+	% Argument no. 2 is the name of the lecture (short version, should match the file name of the corresponding local command file. See code below.)
+
+	\documentclass[12pt]{scrartcl}
+	\usepackage{palatino,setspace,fancyhdr}
+	\usepackage[left=10mm,right=10mm,top=25mm,bottom=25mm]{geometry}
+	\onehalfspacing
+	\pagestyle{fancy}
+	
+	\chead{Zusammenfassung #2}
+	\lfoot{Version: \today}
+	\rfoot{Seite \thepage}
+	\lhead{}
+	\rhead{#1}
+
+	\input{\directoryPrefix packages}
+	\input{\directoryPrefix theoremenvironments_english}
+	\input{\directoryPrefix commands}
+	\input{\directoryPrefix commands_Willi}
+	\IfFileExists{./commands_#2}{
+		\input{commands_#2}
+	}{}
+
+	% Platzeinsparungen:
+	\setitemize{leftmargin=*} % itemize-Umbegungen werden nicht eingerückt
+	\setkomafont{section}{\large}
+}
