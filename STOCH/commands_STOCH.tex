@@ -13,11 +13,23 @@
 \undef{\Q}
 \newcommand{\Q}{\mathbb{Q}}
 \DeclareMathOperator{\Pois}{Pois}				  % Poisson-distribution
+\DeclareMathOperator{\Uni}{Uni}
+\DeclareMathOperator{\Multi}{Multi}				  % Uniform-distribution
+\DeclareMathOperator{\Hyper}{Hyper}
+%\newcommand{\N}{\mathbb N}
+%\newcommand{\Z}{\mathbb Z}
 
 % independent symbol from:
 % https://tex.stackexchange.com/questions/79434/double-perpendicular-symbol-for-independence
 \newcommand{\unab}{\protect\mathpalette{\protect\independenT}{\perp}}
 \def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+
+% english words
+\newcommand{\with}{\text{ with }}
+\newcommand{\for}{\text{ for }}
+\undef{\and}
+\newcommand{\and}{\text{ and }}
+
 
 
 
