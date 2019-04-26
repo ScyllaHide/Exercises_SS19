@@ -4,10 +4,13 @@
 % send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
 % Commands für STOCH
-\newcommand{\F}{\mathhb{F}}					      % general field
+%\undef{\F}
+\newcommand{\F}{\mathbb{F}}					      % general field \math
 %\newcommand{\qetesbus}{\rotatebox[origin=c]{180}{$\subseteq$}} % mirrored \subseteq
 \DeclareMathOperator{\chara}{char}				  % characteristic of field
 
+\undef{\over}
+\newcommand{\over}[2]{\overset{#1}{#2}}
 
 % independent symbol from:
 % https://tex.stackexchange.com/questions/79434/double-perpendicular-symbol-for-independence

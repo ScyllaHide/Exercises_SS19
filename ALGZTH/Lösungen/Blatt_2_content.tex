@@ -1,0 +1,92 @@
+% This work is licensed under the Creative Commons
+% Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy
+% of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or
+% send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+\section{Übung 2 - Wurzelkörper, Zerfällungskörper, algebraischer Abschluss}
+Sei $L \vert K$ Körpererweiterung.
+\subsection{V 2.17}
+Bestimmen Sie den Zerfällungskörper von $f = X^4 - 5X^2 +6$ über $\Q$ und geben Sie seinen Grad an.
+
+\begin{lösung}
+	Es gilt $f = X^4 - 5X^2 + 6 = (X^2)^2 - 5X^2 +6 = (X^2-3)(X^2-2)$. Deswegen ist $\Q(\sqrt{2}, \sqrt{3})$ der Zerfällungskörper von $f$ über $\Q$. Es gilt
+	\begin{align*}
+		[\Q(\sqrt{2}), \sqrt{3}: \Q] = [\Q(\sqrt{2}, \sqrt{3}): \Q(\sqrt{2})]\underbrace{[\Q(\sqrt{2}): \Q]}_{=2} = 2\underbrace{[\Q(\sqrt{2})(\sqrt{3}):\Q(\sqrt{2})]}_{\le 2}.
+	\end{align*}
+	Ist $[\Q(\sqrt{2})(\sqrt(3),\Q(\sqrt{2})] = 1$. So ist $\sqrt{3} \in \Q(\sqrt{2})$, was falsch ist(vgl. P15!). Damit ist $[\Q(\sqrt{2},\sqrt{3}):\Q] = 4$
+\end{lösung}
+
+%%%%%%%%%%%%%%%%%%%% Aufgabe 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Ü 2.20}
+Ist $[L:K] = 2$ und $\chara(K) \neq 2$, so ist $L = K(\sqrt{a})$ für ein $a \in K$.
+
+\begin{proof}
+	Angenommen $\sqrt{a} \in L \setminus K$, dann hat $[K(\sqrt{2}):K] =2$ und somit 
+	\begin{align*}
+		[L:K] = \underbrace{[L:K(\sqrt{2})]}_{=1}\underbrace{[K(\sqrt{a}):K]}_{=2} = 2
+	\end{align*}
+	und da $[L:K(\sqrt{2})] = 1$, ist $L=K(\sqrt{a})$.\\
+	Sei $x \in L\setminus K$. Da $[L:K] = 2 = (L:K) = [L:K(x)]\underbrace{[K(x):K]}_{\neq 1}$, ist $L=K(x)$. Es sei
+	$x^2 + ax + b \in K[X]$ das Minimalpolynom von $x$ über $K$. Es gilt
+	\begin{align*}
+		0&=x^2 + ax + b\\
+		&\overset{\chara(K) =2}{=} (x-\frac{9}{2})^2 + b - \frac{a^2}{4}\\
+		&= (x + \frac{9}{2} + \frac{\sqrt{a^2 - 4b}}{2})(2 + \frac{a}{2} - \frac{\sqrt{a^2 - 4b}}{2}).
+	\end{align*}
+	Deswegen ist $x  = - \frac{a}{2} pm \frac{\sqrt{a^2 - 4b}}{2}$. Mit V3 ist $L = K(X) = K(\sqrt{a^2-4b})$.
+\end{proof}
+%%%%%%%%%%%%%%%%%%%% Aufgabe 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{V 2.21}
+Zeigen Sie, dass $\Q(\sqrt{2}, \sqrt{3}) = \Q(\sqrt{2}+\sqrt{3})$ und bestimmen Sie das Minimalpolynom von $\sqrt{2} + \sqrt{3}$ über $\Q$ und über $\Q{\sqrt{2}}$.
+
+\begin{proof}
+	\begin{itemize}
+		\item $\Q(\sqrt{2}+\sqrt{3}) \subseteq \Q(\sqrt{2},\sqrt{3})$
+		\item $\Q(\sqrt{2}, \sqrt{3}) \subseteq \Q(\sqrt{2} + \sqrt{3}):$
+		\begin{align*}
+			(\sqrt{2}+\sqrt{3})^2 &= 2 + 2\sqrt{6} +3\\
+			(\sqrt{2} + \sqrt{3})^3 &= 11\sqrt{2} + 9 \sqrt{3}
+		\end{align*}
+		$p = \frac{1}{2}(X^3 - 9X) = p(\sqrt{2}+\sqrt{3}) = \frac{1}{2}(11\sqrt{2} + 9\sqrt{3}-9\sqrt{2}-9\sqrt{3}) = \sqrt{12}$
+		\begin{align*}
+			(\sqrt{2}+\sqrt{3})^4 &= \sqrt{2}^4 + 4\sqrt{2}\sqrt[3]{3} + 6\sqrt{2}^2\sqrt{3}^2 + 4\sqrt{2}\sqrt{3}^3 + \sqrt{3}^4\\
+			&= 4 + 8 \sqrt{2}\sqrt{3} + 36 + 12\sqrt{2}\sqrt{3}+9\\
+			&=49 + 20\sqrt{6}
+		\end{align*}
+		\item Minimalpolynom: $X^4 -10 X^2 + 1 =: g$ über $\Q$, da $\Q(\sqrt{2}+\sqrt{3})$ Grad 4 hat
+		\begin{align*}
+			g(\sqrt{2}+\sqrt{3}) = 49 + 20\sqrt{6}-20 \sqrt{6} - 20 +1 =0 \text{ (Grad passt, normiert \checkmark)}
+		\end{align*}
+		\item $[\Q(\sqrt{2},\sqrt{3}):\Q(\sqrt{2})] = 2$, also hat Minimalpolynom Grad 2, z.B. $h:= x^2 - 2\sqrt{2}X-1$ (Grad passt, normiert \checkmark).
+	\end{itemize}
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%% Aufgabe 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Ü 1.4}
+Zeigen Sie, dass $f = X^4 + X +1 \in \F_2 [X]$ irreduzibel ist und dass der Zerfällungskörper von $f$ Grad 3 über $\F_2$ hat.
+
+\begin{proof}
+	Da $f$ keine Nullstelle hat in $\F_2$, ist $f$ irreduzibel in $\F_2[X]$. ($f(0) = 1, f(1) = 1$). Sei $\alpha$ eine Nullstelle von $f$. Es gilt $0 = (\alpha^3 + \alpha +1)^2 \over{\text{V1}}{=} \alpha^6 + \alpha^2 +1$, d.h. $\alpha^2$ ist eine Nullstelle von $f$. Es gilt auch, dass $\alpha^4$ eine Nullstelle von $f$ ist, da
+	$\alpha^4 = \alpha^3 \alpha \over{\chara(K) =2}{=} (\alpha+1)\alpha = \alpha^2 +\alpha$. Deswegen sind $\alpha, \alpha^2, \alpha + \alpha^2$ genau die Nullstellen von $f$. Insbesondere ist $\F_2 (\alpha, \alpha^2, \alpha + \alpha^2) = \F_2 (\alpha)$ der Zerfällungskörper von $f$ über $\F_2$ und dieser Körper hat Grad 3 über $\F_2$.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%% Aufgabe 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{P 2.29}
+Sei $K$ algebraisch abgeschlossen mit Primkörper $F$. Zeigen Sie, dass $[K:F] = \infty$ gilt.
+
+\begin{proof}\
+	\begin{enumerate}[label=]
+		\item 1. Fall: Ist $\chara(K) = 0 \implies F = \Q$. Sei $n \ge 2$. Das Polynom $x^n -2$ ist irreduzibel über $\Q$ (Eisenstein!). Es sei $\alpha$ eine Nullstelle von $x^n -2$ über $K$. Da $[\Q(\alpha) : \Q] = n \und \Q(\alpha) \subseteq K$, gilt $[K:\Q] \ge n$. Deswegen ist $[K:\Q] = \infty$.
+		\item 2. Fall: Es sei $L$ ein endlicher Körper. zeige, dass $L$ nicht algebraisch abgeschlossen ist. Schreibe $L = \set{x_1 , \dots, x_n}$ und betrachte das Polynom $f = (X - x_1)(X - x_2)\cdots (X-x_n) + 1 \in L[X]$. Da $f$ keine Nullstelle in $L$ hat, ist $L$ nicht algebraisch abgeschlossen. 
+	\end{enumerate}
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%% Aufgabe 6 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{P 1.30}
+Geben Sie ein Beispiel einer unendlichen algebraischen Erweiterung $L\mid K$ mit $L$ nicht algebraisch abgeschlossen.
+\begin{lösung}
+	Betrachte $K = \Q \und L = \R \cap \tilde{\Q}$. Das Polynom $x^2 +1$ hat keine Nullstelle in $\R$, also nicht in $L$. Deswegen ist $l$ nicht algebraisch abgeschlossen. Für jedes $n \ge 2$ ist $\sqrt[n]{2} \in L$. Da $[\Q(\sqrt[n]{2}):\Q] = n$ für jedes $n \ge 2$, also ist $[L:\Q] = \infty$.
+\end{lösung}
