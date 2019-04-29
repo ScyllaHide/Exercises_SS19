@@ -1,0 +1,176 @@
+% This work is licensed under the Creative Commons
+% Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy
+% of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or
+% send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+\section{3rd Homework STOCH}
+\subsection{}
+Let $(\Omega, \F, \Meas)$ a probability space.
+\begin{enumerate}
+	\item Let $A,B \in F \with \Meas(A) >0$. Proof
+	\begin{align*}
+		\Meas(A\cap B \mid A\cup B) \le \P(A \cap B \mid A).
+	\end{align*}
+	\item Let $A_1 , A_2 , \dots , A_n \in \F$ independent events. Proof
+	\begin{align*}
+		\Meas(\set{\bigcap_{k=1}^n} A^C_k) \le \exp\brackets{- \sum_{k=1}^{n} \Meas(A_k)}
+	\end{align*}
+	\item Proof: Let $A,B,C \in F \with 0 < \P(C) < 1$. Then
+	\begin{align*}
+		\Meas(A\mid C) \ge \Meas(B \mid C) \and \Meas(A \mid C^C) \ge \Meas(B \mid C^C) \implies \Meas(A) \ge \Meas(B).
+	\end{align*}
+	\item Let $A, B \in \F$. Proof or disproof the claim
+	\begin{align*}
+		\Meas(A\cap B) = \Meas(A)\meas(B) \implies \Meas(B \mid A) = \Meas(A^C).
+	\end{align*}
+	\item Proof or disproof. There are events $A,B \in \F \with 0 < \meas(B) < 1, \meas(A\mid B) = \meas(A)$ and $\meas(A \cap B) = \Meas(A \cup B)$.
+	\begin{align*}
+	\end{align*}
+\end{enumerate}
+
+\begin{solution}\
+	\begin{enumerate}
+		\item Start with definition:
+		\begin{align*}
+			\Meas(A \cap B \mid A \cup B) &= \frac{\Meas((A\cap B)\cap (A \cup B)}{\Meas(A \cup B)}\\
+			&= \frac{\Meas((A\cap B)\cap A}{\Meas(A \cup B)}\\
+			&\le \frac{\Meas((A\capB)\cap A}{\Meas(A)}\\
+			&= \Meas(A\cap B \mid A) \text{claim!}
+		\end{align*}
+		\item With Lemma 3.16 is also the family of sets $A^C_1 , \dots, A^C_n \in \F$ stochastic independent and this implies $\Meas(\bigcap_{k=1}^n A_k^C) = \prod_{k=1}^{n} \Meas(A_k^C)$. Then we have
+		\begin{align*}
+			\Meas(\bigcap_{k=1}^n A^C_k) &\overset{\star}{=} \prod_{k=1}^n \meas(A_k^C)\\
+			&= \prod_{k=1}^n (1-\Meas(A_k))\\
+			&\le \prod_{k=1}^n \exp(-\Meas(A_k)) \qquad \text{ used e^{-x} \ge 1 - x here}\\
+			&= \exp(-\sum_{k=1}^n \Meas(A_k))
+		\end{align*}
+		and that was the claim.
+		\item 
+	\end{enumerate}
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%% Aufgabe 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{}
+
+\begin{proof}
+	Let $\vec{k} \in \Omega$ fixed ($\Omega = \set{\vec{k} = (k_a)_{a \in E} \in \N_0^{\abs{E}}\colon \sum_{a \in E} k_a = n}$ - like we had defined in the lecture.). In the limit $N_a \to \infty$ holds
+	\begin{align*}
+		\binom{N_a}{k_a} &= \frac{N_a^{k_a}}{K_a !} \frac{N_a(N_a -1)\dots (N_a - k_a +1)}{N_a^{k_a}}\\
+		&= \frac{N_a^{k_a}}{k_a !} 1\brackets{1 - \frac{1}{N_a}}\brackets{1 - \frac{2}{N_a}}\cdots \brackets{1 - \frac{k_a -1}{N_a}} \overset{N_a \to \infty}{\sim} \frac{N_a^{k_a}}{k_a !}.
+	\end{align*}
+	Here was the notation $``a(l) \sim b(l)'' \for l \to \infty$ for asymptotic equivalence used, this means for the statement $``\frac{a(l)}{b(l)}'' \to 1 \text{ in the limit } l \to \infty$. Then we have
+	\begin{align*}
+		\Hyper(n,N,\vec{k}) 
+		&= \frac{\brackets{\prod_{a \in E} 
+		\binom{N_a}{k_a}}}{\binom{N}{n}}
+		\sim \frac{
+				   \brackets{
+                             \prod_{a \in E} \frac{N_a^{k_a}}
+                             {k_a !}
+                         }}{\frac{N^n}{n!}}\\
+		&= \binom{n}{\vec{k}} \prod_{a \in E} \brackets{\frac{N_a}{N}}^{k_a} \to \Multi(n,\rho(a))(\vec{k}).
+	\end{align*} 
+	and this is the desired statement we wanted to proof.
+\end{proof}
+%%%%%%%%%%%%%%%%%%%% Aufgabe 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{}
+
+\begin{solution}\ $n$ stand for the number of drawings and $N = b+w$, the number of ``balls'' in the urn.
+	\begin{enumerate}[label=\alph*)]
+		\item The event space is $\Omega_1 = \set{1,\dots, N}$ for the unsorted drawings.
+		\item Can use the Uniform-distribution for probability measure $\Meas = \Uni(\Omega_1) = \frac{1}{\abs{\Omega_1}}$.
+		\item The event space for this sorted case should be $\Omega_2 = \set{0,1}^n$, where $n$ is for the times of drawing and $n \in \N$.
+		\item Set $X_1$ as random variable, defined as 
+		\begin{align*}
+			X_1: \Omega_1 \to \Omega_2 \with 
+			X(x) = \begin{cases}
+				1 \quad &x \text{ is black}\\
+				0 \quad &x \text{ is white}
+			\end{cases}
+		\end{align*}
+		with probability measures for black and white balls:
+		\begin{align*}
+			\Meas(X_1^{-1}(\set{0})) = \frac{\abs{w}}{\abs{\Omega_2}} = \frac{\abs{w}}{2^n}\\
+			\Meas(X_1^{-1}(\set{1})) = \frac{\abs{b}}{\abs{\Omega_2}} = \frac{\abs{b}}{2^n}.
+		\end{align*}
+		\item Event space for colored case is $\Omega_3 = \set{0,\dots, N}$.
+		\item The random variable for this case should be $X_2 : \Omega_2 \to \Omega_3$
+		\begin{align*}
+			X_2: \set{0,1}^n \to \set{0,1,..,N} \with
+			X_2(t) = \begin{cases}
+			0 \quad &\text{ in case 0 black ones drawn}\\
+			\vdots &\vdots\\
+			N \quad &\text{ in case $N$ black ones drawn}.
+			\end{cases}
+		\end{align*}
+		Then we get the following probability measure:
+		\begin{align*}
+			\Meas(X = k) = \frac{\binom{b}{k}\binom{N-b}{n-k}}{\binom{N}{n}} = \frac{\binom{b}{k}\binom{w}{n-k}}{\binom{N}{n}}\\ \for k \in \Omega_3.
+		\end{align*}
+	\end{enumerate}
+\end{solution}
+%%%%%%%%%%%%%%%%%%%% Aufgabe 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{}
+
+\begin{solution}\
+	Again $b$ for black and $w$ for white balls.
+	\begin{enumerate}[label=\alph*)]
+		\item Which probability wins black? Black can win in two ways:
+		\begin{enumerate}[label=\arabic*)]
+			\item $B$ (black) wins instant (with the first try drawing a black ball), or \label{instant:winning}
+			\item $B$ draws white, $W$ draws black ... then, the probability for Black winning is \label{longer:winning}
+			\begin{align*}
+			\Meas(B) &= \underbrace{\frac{b}{b+w}}_{\ref{instant:winning}} + \underbrace{ \frac{w}{b+w} \mal \frac{b}{b+w} \mal \frac{b}{w+b} + \dots}_{\ref{longer:winning}}\\
+			&= \sum_{i \ge 1} \frac{b^i}{(s+w)^i}\mal \frac{w^{i-1}}{(b+w)^{i-1}}\\
+								&= \sum_{i \ge 1} \frac{b^i w^{i-1}}{(b+w)^{i-1}}\\
+								&= \sum_{i \ge 1} \frac{b}{b+w}\brackets{\frac{b^{i-1} w^{i-1}}{(b+w)^{2i -2}}}\\
+								&= \sum_{i \ge 1} \frac{b}{b+w}\brackets{\frac{bw}{(b+w)^2}}^{i-1}\\
+								&= \brackets{\frac{b}{b+w}} \mal \underbrace{\sum_{i \ge 1} \brackets{\frac{bw}{(b+w)^2}}^{i-1}}_{\text{geom. series conv. for } \abs{\frac{bw}{(b+w)^2}}\overset{(*)}{<}1}\\
+								&= \frac{b}{b+w} \mal \frac{b^2 + 2bw + w^2}{b^2+sw+w^2}\\
+								&= \frac{s\mal (b+w)}{s^2 + sw + w^2}
+			\end{align*}
+			$(*)$: holds here because $\abs{\frac{bw}{(b+w)^2}} < 1$, $b$ and $w$ are whole numbers!\\
+			With which probability wins White?\\
+			There is only a choice between black or white, so this can be easily calculated for white:
+			\begin{align*}
+				\Meas(w) &= 1 - \Meas(b)\\
+				&= 1 - \frac{b(b+w)}{s^2 + bw + w^2}\\
+				&= \frac{b^2 + bw + w^2 - b^2 - bw}{b^2 + bw + w^2}\\
+				&= \frac{w^2}{b^2 + bw + w^2}
+			\end{align*}
+		\end{enumerate}
+		\item For the same winning probability for $b \and w$, i found two solutions:
+		\begin{enumerate}[label=\arabic*)]
+			\item $\Meas(b) = \Meas(w)$:
+			\begin{align*}
+				\frac{b(b+w)}{b^2+bw+w^2} &= \frac{w^2}{b^2 + bw + w^2}\\
+				b^2+bw) &= w^2 \quad \text{ divide by $w^2$, because $w^2 >0$}\\
+				1 &= \frac{b^2}{w^2} + \frac{bw}{w^2}\\
+				1 &= \brackets{\frac{b}{w}}^2 + \frac{b}{w} \quad \text{ set: } x:= \frac{b}{w}\\
+				1 &= x^2 + x \implies x_{1,2} = \frac{-1 \pm \sqrt{5}}{2}
+			\end{align*}
+			Now we need to exclude one of the solutions. $x$ can not be $\frac{-1 - \sqrt{5}}{2}$, because $x$ has to be a positive number $\implies \frac{-1 + \sqrt{5}}{2}$ and this is also the golden ratio and i get for the winning ratio $b:w \approx 0,61$.
+			\item 
+			\begin{align*}
+				\frac{b(b+w)}{b^2 + bw + w^2} 
+				&= 1 - \frac{b(b+w)}{b^2 + bw + w^2}\\
+				2 \mal \frac{b(b+w)}{b^2 + bw + w^2} 
+				&= 1\\
+				\frac{b(b+w)}{b^2 + bw + w^2} 
+				&= \frac{1}{2} \quad \text{ set } \Psi := \frac{b}{b+w}\\
+				\frac{\Psi}{\Psi^2 - \Psi + 1} 
+				&= \frac{1}{2}\\
+				\Psi^2 - 3\Psi + 1 
+				&= 0\\
+				\intertext{roots:}
+				\Psi_{1,2} 
+				&= \frac{3 \pm \sqrt{5}}{2}
+			\end{align*}
+				So Again can exclude $\frac{3 + \sqrt{5}}{2}$ as solution to the problem, because it would be $\Psi > 1$ and that is not possible $\implies \Psi = \frac{3 - \sqrt{5}}{2} \approx 0,38$, this means the ratio black versus $(b+w)$ is $\approx 0,38$ and ratio white versus $(b+w)$ is $\approx 0,38$ and this implies $\frac{b}{w} \approx \frac{0,38}{0,62} \approx 0,61$. 
+			\end{enumerate}
+			\item No idea. :( 
+		\end{enumerate}
+	\end{solution}
+
+%%%%%%%%%%%%%%%%%%%% Aufgabe 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
