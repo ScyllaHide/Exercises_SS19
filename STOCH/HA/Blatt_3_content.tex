@@ -70,7 +70,7 @@ A conjurer has a fair and a double-headed coin in his pocket. He will throw the 
 	\item The second toss is again head. How high is the probability that he tossed with the fair coin?
 	\item The third toss is tail. How high is the probability that he tossed with the fair coin?
 \end{enumerate}
-\begin{proof}
+\begin{solution}
 	Let $F$ stand for fair, $U$ for unfair and $H, T$ for head and tail:
 	\begin{align*}
 		\Meas(F) = \Meas(U) = \frac{1}{2}\\
@@ -80,20 +80,30 @@ A conjurer has a fair and a double-headed coin in his pocket. He will throw the 
 	\begin{enumerate}
 		\item We observe
 		\begin{align*}
-			\Meas(F \mid H) &= \frac{\Meas(H \mid F)\Meas(F)}{\Meas(H)} = \frac{3}{4}\\
+			\Meas(F \mid H) &= \frac{\Meas(H \mid F)\Meas(F)}{\Meas(H)} = \frac{1}{3}\\
 			\Meas(H) &= \Meas(H \mid F)\Meas(F) + \Meas(H \mid U)\Meas(U)\\
 			&= \frac{1}{2} \cdot \frac{1}{2} + 1 \cdot \frac{1}{2}\\
 			&= \frac{3}{4}
 		\end{align*}
 		\item ... %TODO
 	\end{enumerate}
-\end{proof}
+\end{solution}
 %%%%%%%%%%%%%%%%%%%% Aufgabe 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{}
 Let $(\Omega, \F, \Meas)$ and an index set $I \neq \emptyset$ and $A_i, i \in I$ independent events. Proof also that the family $\set{\Omega, A_i , i \in I}$ are independent.
-\begin{solution}
-	...
-\end{solution}
+\begin{proof}
+	Independence is only defined for finite index sets, so we have to set $\emptyset \neq J \subset I, \with \abs{J} < \infty$. 
+	We get
+	\begin{align*}
+		\Meas(\bigcap_{i \in J}A_i) = \prod_{i \in J}\Meas(A_i). \label{prob3}\tag{$\alpha$}
+	\end{align*}
+	Because all $A_i \in \F$ holds $A_i \subseteq \Omega$ and this implies $\bigcap_{i \in J} A_i = \bigcap_{i \in J} A_i \cap \Omega$. Now we know that $\Meas(\Omega) = 1$, so we can multiply both sides of equation \ref{prob3}
+	\begin{align*}
+		\Meas(\bigcap_{i \in J}A_i \cap \Omega) = \prod_{i \in J}\Meas(A_i)\Meas(\Omega)
+	\end{align*}
+	for every arbitrary subset $\emptyset \neq J \subset I \with \abs{J} < \infty$. 
+	This shows that also the family $\set{\Omega, A_i , i \in I}$ is independent.
+\end{proof}
 %%%%%%%%%%%%%%%%%%%% Aufgabe 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{}(compare Corollary 3.18 lecture)
 $(\Omega, \F, \Meas)$ a probability space and $\F_{i,j} \subseteq \F, 1 \le i \le n, 1 \le j \le m(i)$ independent, $\cap$-stable families with $\Omega \in \F_{i,j}$ for all $i,j$. Proof that the families
