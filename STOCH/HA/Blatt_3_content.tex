@@ -41,7 +41,7 @@ Let $(\Omega, \F, \Meas)$ a probability space.
 		\begin{align*}
 			\Meas(\bigcap_{k=1}^n A^C_k) &\overset{\star}{=} \prod_{k=1}^n \Meas(A_k^C)\\
 			&= \prod_{k=1}^n (1-\Meas(A_k))\\
-			&\le \prod_{k=1}^n \exp(-\Meas(A_k)) \qquad \text{ use $e^{-x} \ge 1 - x$}\\
+			&\le \prod_{k=1}^n \exp(-\Meas(A_k)) \quad \text{ use $e^{-x} \ge 1 - x$}\\
 			&= \exp(-\sum_{k=1}^n \Meas(A_k))
 		\end{align*}
 		and that was the claim.
@@ -50,7 +50,7 @@ Let $(\Omega, \F, \Meas)$ a probability space.
 			\Meas(A \mid C) = \frac{\Meas((A\cap C))}{\Meas(C)} &\ge \frac{\Meas((B\cap C))}{\Meas(C)} = \Meas(B\mid C)\\
 			\Meas(A \mid C^C) = \frac{\Meas((A\cap C^C))}{\Meas(C^C)} &\ge \frac{\Meas((B\cap C^C))}{\Meas(C^C)} = \Meas(B\mid C^C)
 		\end{align*}
-		Putting both inequalities together, we get
+		Putting both inequalities together, we get (have used here that $0 <\Meas(C)<1$)
 		\begin{align*}
 			\Meas(A \cap C) + \Meas(A \cap C^C) &\ge \Meas(B \cap C) + \Meas(B \cap C^C)\\
 			\Meas((A \cap C) \cup (A \cap C^C)) &\ge \Meas((B \cap C) \cup (B \cap C^C))\\
@@ -85,7 +85,20 @@ A conjurer has a fair and a double-headed coin in his pocket. He will throw the 
 			&= \frac{1}{2} \cdot \frac{1}{2} + 1 \cdot \frac{1}{2}\\
 			&= \frac{3}{4}
 		\end{align*}
-		\item ... %TODO
+		\item We observe
+		\begin{align*}
+			\Meas(F\mid H) &= \frac{\Meas(H \mid F)\Meas(F)}{\Meas(H\mid F)\Meas(F) + \Meas(H \mid F)\Meas(F)}\\
+			&= \frac{\frac{1}{4}\frac{1}{2}}{\frac{1}{4}\mal \frac{1}{2} + 1 \mal 1 \mal \frac{1}{2}}\\
+			&= \frac{1}{5} \approx 20\%
+		\end{align*}
+		\item We observe
+		\begin{align*}
+			\Meas(H \mid F) = \frac{1}{2}\frac{1}{2}\frac{1}{2}
+		\end{align*}
+		of course for 3 times head tossed with the fair coin. With that follows
+		\begin{align*}
+			\Meas(F \mid H) = \frac{\Meas(H \mid F)\Meas(F)}{\Meas(H \mid F)\Meas(F) + \Meas(H \mid )} %TODO
+		\end{align*}
 	\end{enumerate}
 \end{solution}
 %%%%%%%%%%%%%%%%%%%% Aufgabe 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -118,3 +131,33 @@ are $\cap$-stable, independent and also holds $\F_{i,1},\dots, \F_{i,m(i)} \subs
 %%%%%%%%%%%%%%%%%%%% Aufgabe 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{*}
 Find a counterexample, that independent families generated through $\sigma$-algebras are not independent.
+
+\begin{proof}
+	Consider the experiment: roll a dice with a six-sided fair dice. Set: $\Omega = \set{1,2,3,4,5,6}, \F = \pows(\Omega)$ and the partition into \\
+	$\T = \set{Q_1, Q_2} \and \S = \set{S_1}$ with
+	\begin{enumerate}[label=]
+		\item $Q_1 := \set{1,4,2}$
+		\item $Q_2 := \set{1,4,6}$
+		\item $S_1 := \set{1,3}$
+	\end{enumerate}
+	First have to show $\T \and \S$ are independent. With definition $\T \and \S$ are independent, if
+	\begin{align*}
+		\Meas(Q_i \cap S_i) = \Meas(A_i)\Meas(S_i)\\
+		\text{ for all } A_i \in \A, S_i \in \S \quad \forall i \in I \and \abs{I} < \infty.
+		\intertext{Then}
+		\Meas(Q_1 \cap S_1) = \Meas(\set{1}) = \frac{1}{6} = \frac{3}{6} \mal \frac{2}{6} = \Meas(Q_1)\Meas(S_1)\\
+		\Meas(Q_2 \cap S_1) = \Meas(\set{1}) = \frac{1}{6} = \frac{3}{6} \mal \frac{2}{6} = \Meas(Q_2)\Meas(S_1)		
+	\end{align*}
+	this shows that $\T, \S$ are stochastic independent. Now let us check the generators $\sigma(\T) \and \sigma(\S)$. Lets assume $\sigma(\T) \and \sigma(\S)$ are stochastic independent, then we would need
+	\begin{align*}
+		\Meas(Q_i \cap S_i) = \Meas(Q_i)\Meas(S_i) \quad \forall A_i \in \sigma(\T), B_i \in \sigma(\S), i \in I \and \abs{I} < \infty.
+	\end{align*}
+	As we showed last term in MINT, intersections of elements in $\sigma$-algebra are again in the $\sigma$-algebra. Now we search for a counterexample with $Q_1 \cap Q_2 \in \sigma(\T)$. Consider
+	\begin{align*}
+		\Meas((Q_1 \cap Q_2)\cap S_1) 
+		&= \Meas(\set{1,4} \cap \set{1,3}) = \Meas(\set{1}) = \frac{1}{6}\\
+		\Meas(Q_1 \cap Q_2) &= \Meas(\set{1,4}) = \frac{2}{6}\\
+		\Meas(S_1) &= \Meas(\set{1,3}) = \frac{2}{6}.
+	\end{align*}
+	Because $\frac{1}{6} \neq \frac{1}{9} = \frac{2}{6}\mal \frac{2}{6}$ $(\Meas((Q_1 \cap Q_2)\cap S_1) \neq \Meas(Q_1 \cap Q_2)\cap \Meas(S_1))$ and this gives that the $\sigma$-algebra generators $\sigma(\T) \and \sigma(\S)$ are stochastic dependent.
+\end{proof}
