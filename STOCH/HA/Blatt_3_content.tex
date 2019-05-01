@@ -1,3 +1,4 @@
+% !TeX spellcheck = en_US
 % This work is licensed under the Creative Commons
 % Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy
 % of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or
@@ -5,25 +6,25 @@
 
 \section{3rd Homework STOCH}
 \subsection{}
-Let $(\Omega, \F, \Meas)$ a probability space.
+Let $(\Omega, \F, \meas)$ a probability space.
 \begin{enumerate}
-	\item Let $A,B \in F \with \Meas(A) >0$. Proof
+	\item Let $A,B \in F \with \meas(A) >0$. Proof
 	\begin{align*}
-		\Meas(A\cap B \mid A\cup B) \le \P(A \cap B \mid A).
+		\meas(A\cap B \mid A\cup B) \le \P(A \cap B \mid A).
 	\end{align*}
 	\item Let $A_1 , A_2 , \dots , A_n \in \F$ independent events. Proof
 	\begin{align*}
-		\Meas(\set{\bigcap_{k=1}^n} A^C_k) \le \exp\brackets{- \sum_{k=1}^{n} \Meas(A_k)}
+		\meas(\set{\bigcap_{k=1}^n} A^C_k) \le \exp\brackets{- \sum_{k=1}^{n} \meas(A_k)}
 	\end{align*}
 	\item Proof: Let $A,B,C \in F \with 0 < \P(C) < 1$. Then
 	\begin{align*}
-		\Meas(A\mid C) \ge \Meas(B \mid C) \and \Meas(A \mid C^C) \ge \Meas(B \mid C^C) \implies \Meas(A) \ge \Meas(B).
+		\meas(A\mid C) \ge \meas(B \mid C) \and \meas(A \mid C^C) \ge \meas(B \mid C^C) \implies \meas(A) \ge \meas(B).
 	\end{align*}
 	\item Let $A, B \in \F$. Proof or disproof the claim
 	\begin{align*}
-		\Meas(A\cap B) = \Meas(A)\meas(B) \implies \Meas(B \mid A) = \Meas(A^C).
+		\meas(A\cap B) = \meas(A)\meas(B) \implies \meas(B \mid A) = \meas(A^C).
 	\end{align*}
-	\item Proof or disproof. There are events $A,B \in \F \with 0 < \meas(B) < 1, \Meas(A\mid B) = \Meas(A)$ and $\Meas(A \cap B) = \Meas(A \cup B)$.
+	\item Proof or disproof. There are events $A,B \in \F \with 0 < \meas(B) < 1, \meas(A\mid B) = \meas(A)$ and $\meas(A \cap B) = \meas(A \cup B)$.
 	\begin{align*}
 	\end{align*}
 \end{enumerate}
@@ -32,33 +33,59 @@ Let $(\Omega, \F, \Meas)$ a probability space.
 	\begin{enumerate}
 		\item Start with definition:
 		\begin{align*}
-			\Meas(A \cap B \mid A \cup B) &= \frac{\Meas((A\cap B)\cap (A \cup B))}{\Meas(A \cup B)}\\
-			&= \frac{\Meas((A\cap B)\cap A)}{\Meas(A \cup B)}\\
-			&\le \frac{\Meas((A\cap B)\cap A)}{\Meas(A)}\\
-			&= \Meas(A\cap B \mid A)
+			\meas(A \cap B \mid A \cup B) &= \frac{\meas((A\cap B)\cap (A \cup B))}{\meas(A \cup B)}\\
+			&= \frac{\meas((A\cap B)\cap A)}{\meas(A \cup B)}\\
+			&\le \frac{\meas((A\cap B)\cap A)}{\meas(A)} \text{ this is alright, because } \meas(A) > 0\\
+			&= \meas(A\cap B \mid A)
 		\end{align*}
-		\item With Lemma 3.16 is also the family of sets $A^C_1 , \dots, A^C_n \in \F$ stochastic independent and this implies $\Meas(\bigcap_{k=1}^n A_k^C) = \prod_{k=1}^{n} \Meas(A_k^C)$ ($\star$). Then we have
+		\item With Lemma 3.16 is also the family of sets $A^C_1 , \dots, A^C_n \in \F$ stochastic independent and this implies $\meas(\bigcap_{k=1}^n A_k^C) = \prod_{k=1}^{n} \meas(A_k^C)$ ($\star$). Then we have
 		\begin{align*}
-			\Meas(\bigcap_{k=1}^n A^C_k) &\overset{\star}{=} \prod_{k=1}^n \Meas(A_k^C)\\
-			&= \prod_{k=1}^n (1-\Meas(A_k))\\
-			&\le \prod_{k=1}^n \exp(-\Meas(A_k)) \quad \text{ use $e^{-x} \ge 1 - x$}\\
-			&= \exp(-\sum_{k=1}^n \Meas(A_k))
+			\meas(\bigcap_{k=1}^n A^C_k) &\overset{(\star)}{=} \prod_{k=1}^n \meas(A_k^C)\\
+			&= \prod_{k=1}^n (1-\meas(A_k))\\
+			&\le \prod_{k=1}^n \exp\brackets{-\meas(A_k)} \quad \text{ use $e^{-x} \ge 1 - x$}\\
+			&= \exp\brackets{-\sum_{k=1}^n \meas(A_k)}
 		\end{align*}
 		and that was the claim.
-		\item Use again the definition of $\Meas(\star \mid \ast)$, we get
+		\item Use again the definition of $\meas(\star \mid \ast)$, we get
 		\begin{align*}
-			\Meas(A \mid C) = \frac{\Meas((A\cap C))}{\Meas(C)} &\ge \frac{\Meas((B\cap C))}{\Meas(C)} = \Meas(B\mid C)\\
-			\Meas(A \mid C^C) = \frac{\Meas((A\cap C^C))}{\Meas(C^C)} &\ge \frac{\Meas((B\cap C^C))}{\Meas(C^C)} = \Meas(B\mid C^C)
+			\meas(A \mid C) = \frac{\meas((A\cap C))}{\meas(C)} &\ge \frac{\meas((B\cap C))}{\meas(C)} = \meas(B\mid C)\\
+			\meas(A \mid C^C) = \frac{\meas((A\cap C^C))}{\meas(C^C)} &\ge \frac{\meas((B\cap C^C))}{\meas(C^C)} = \meas(B\mid C^C).
 		\end{align*}
-		Putting both inequalities together, we get (have used here that $0 <\Meas(C)<1$)
+		Putting both inequalities together, we get (have used here that $0 <\meas(C)<1$, otherwise i could not cancel out $\meas(C) \and \meas(C^C)$ in the fraction)
 		\begin{align*}
-			\Meas(A \cap C) + \Meas(A \cap C^C) &\ge \Meas(B \cap C) + \Meas(B \cap C^C)\\
-			\Meas((A \cap C) \cup (A \cap C^C)) &\ge \Meas((B \cap C) \cup (B \cap C^C))\\
-			\Meas((A \cap C) \cup (A \setminus C)) &\ge \Meas((B \cap C) \cup (B \setminus C))\\
-			\Meas(A) &\ge \Meas(B)
+			\meas(A \cap C) + \meas(A \cap C^C) &\ge \meas(B \cap C) + \meas(B \cap C^C)\\
+			\meas((A \cap C) \cup (A \cap C^C)) &\ge \meas((B \cap C) \cup (B \cap C^C))\\
+			\meas((A \cap C) \cup (A \setminus C)) &\ge \meas((B \cap C) \cup (B \setminus C))\\
+			\meas(A) &\ge \meas(B)
 		\end{align*}
-		\item %TODO
-		\item %TODO
+		\item the claim is wrong, because here is a counterexample: Let us take the roll a dice experiment with six-sided fair dice and use the uniform distribution $\meas = \Uni(\Omega)$, roll the dice two times with $\abs{\Omega} = 36$. Set
+		\begin{align*}
+			A &= \text{ even number in the ``first rolling''}\\
+			B &= \text{ second rolling with numbers are }>4.
+			\intertext{Will give us the follwing sets}
+			A &= \set{(2,i), (4,i), (6,i) \mid i = 1,\dots, 6} \implies \abs{A} = 18\\
+			B &= \set{(i,5), (i,6) \mid i = 1,\dots, 6} \implies \abs{B} = 12\\
+			A\cap B &= \set{(2,5), (2,6), (4,5), (4,6), (6,5), (6,6)} \implies \abs{A\cap B} = 6\\
+			\meas(A\cap B) &= \frac{6}{36} = \frac{1}{6} = \frac{1}{2}\frac{1}{3} = \meas(A)\meas(B) \quad \checkmark
+		\end{align*}
+		It holds
+		\[
+		\meas(B \mid A) = \frac{\meas(B\cap A)}{\meas(A)} = \frac{6}{18} = \frac{1}{3},
+		\]
+		but we get
+		\[
+			\meas(A^C) = 1 - \meas(A) = 1-\frac{1}{2} = \frac{1}{2}.
+		\]
+		Therefore the claim is false.
+		\item Let $\meas(A) = \meas(A \mid B) = \frac{\meas(A \cap B)}{\meas(B)} \implies \meas(A \cap B) = \meas(A) \cdot \meas(B) \implies $ stochastic independent. Now set  $(\Omega, \F, \meas)$ as the probability space with the following properties
+		\[
+		\Omega = \set{a} \quad \F = \pows(\Omega)\quad \and \quad \meas(\Omega) = 1, \meas(\emptyset) = 0
+		\]
+		As one can check $\meas$ defines a probability measure. But there exists no event $B \in \F$ with $0 < \meas(B) < 1$, because
+		\[
+		\meas(\emptyset) = 0\quad \meas(\set{a}) = 1.
+		\]
+		So the claim is false.
 	\end{enumerate}
 \end{proof}
 
@@ -71,63 +98,97 @@ A conjurer has a fair and a double-headed coin in his pocket. He will throw the 
 	\item The third toss is tail. How high is the probability that he tossed with the fair coin?
 \end{enumerate}
 \begin{solution}
+	Using here proposition 3.9.
 	Let $F$ stand for fair, $U$ for unfair and $H, T$ for head and tail:
 	\begin{align*}
-		\Meas(F) = \Meas(U) = \frac{1}{2}\\
-		\Meas(H \mid F) = \Meas(T \mid F) = \frac{1}{2}\\
-		\Meas(H \mid U) = 1 \and \Meas(T \mid U) = 0
+		\meas(F) = \meas(U) = \frac{1}{2}\\
+		\meas(H \mid F) = \meas(T \mid F) = \frac{1}{2}\\
+		\meas(H \mid U) = 1 \and \meas(T \mid U) = 0
 	\end{align*}
 	\begin{enumerate}
 		\item We observe
 		\begin{align*}
-			\Meas(F \mid H) &= \frac{\Meas(H \mid F)\Meas(F)}{\Meas(H)} = \frac{1}{3}\\
-			\Meas(H) &= \Meas(H \mid F)\Meas(F) + \Meas(H \mid U)\Meas(U)\\
+			\meas(F \mid H) &= \frac{\meas(H \mid F)\meas(F)}{\meas(H)} = \frac{1}{3}\\
+			\meas(H) &= \meas(H \mid F)\meas(F) + \meas(H \mid U)\meas(U)\\
 			&= \frac{1}{2} \cdot \frac{1}{2} + 1 \cdot \frac{1}{2}\\
 			&= \frac{3}{4}
 		\end{align*}
+		The probability that has has tossed the fair coin is $\approx 33\%$.
 		\item We observe
 		\begin{align*}
-			\Meas(F\mid H) &= \frac{\Meas(H \mid F)\Meas(F)}{\Meas(H\mid F)\Meas(F) + \Meas(H \mid F)\Meas(F)}\\
+			\meas(F\mid H) &= \frac{\meas(H \mid F)\meas(F)}{\meas(H\mid F)\meas(F) + \meas(H \mid F)\meas(F)}\\
 			&= \frac{\frac{1}{4}\frac{1}{2}}{\frac{1}{4}\mal \frac{1}{2} + 1 \mal 1 \mal \frac{1}{2}}\\
 			&= \frac{1}{5} \approx 20\%
 		\end{align*}
+		The probability that the conjurer has uses the fair coin is $\approx 20 \%$.
 		\item We observe
 		\begin{align*}
-			\Meas(H \mid F) = \frac{1}{2}\frac{1}{2}\frac{1}{2}
+			\meas(H \mid F) = \frac{1}{2}\frac{1}{2}\frac{1}{2}
 		\end{align*}
 		of course for 3 times head tossed with the fair coin. With that follows
 		\begin{align*}
-			\Meas(F \mid H) = \frac{\Meas(H \mid F)\Meas(F)}{\Meas(H \mid F)\Meas(F) + \Meas(H \mid )} %TODO
+			\meas(F \mid H) 
+			&= \frac{\meas(H \mid F)\meas(F)}{\meas(H \mid F)\meas(F) + \meas(H \mid F)\meas(F)}\\
+			&= \frac{\frac{1}{2}\frac{1}{2}\frac{1}{2}\frac{1}{2}}{\frac{1}{2}\frac{1}{2}\frac{1}{2}\frac{1}{2} + 0}\\
+			&= 1 \rightarrow 100\%
 		\end{align*}
+		The probability that the fair coin was used is $\approx 100\%$.
 	\end{enumerate}
 \end{solution}
 %%%%%%%%%%%%%%%%%%%% Aufgabe 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{}
-Let $(\Omega, \F, \Meas)$ and an index set $I \neq \emptyset$ and $A_i, i \in I$ independent events. Proof also that the family $\set{\Omega, A_i , i \in I}$ are independent.
+Let $(\Omega, \F, \meas)$ and an index set $I \neq \emptyset$ and $A_i, i \in I$ independent events. Proof also that the family $\set{\Omega, A_i , i \in I}$ are independent.
 \begin{proof}
 	Independence is only defined for finite index sets, so we have to set $\emptyset \neq J \subset I, \with \abs{J} < \infty$. 
 	We get
 	\begin{align*}
-		\Meas(\bigcap_{i \in J}A_i) = \prod_{i \in J}\Meas(A_i). \label{prob3}\tag{$\alpha$}
+		\meas(\bigcap_{i \in J}A_i) = \prod_{i \in J}\meas(A_i). \label{prob3}\tag{$\alpha$}
 	\end{align*}
-	Because all $A_i \in \F$ holds $A_i \subseteq \Omega$ and this implies $\bigcap_{i \in J} A_i = \bigcap_{i \in J} A_i \cap \Omega$. Now we know that $\Meas(\Omega) = 1$, so we can multiply both sides of equation \ref{prob3}
+	Because all $A_i \in \F$ holds $A_i \subseteq \Omega$ and this implies $\bigcap_{i \in J} A_i = \bigcap_{i \in J} A_i \cap \Omega$. Now we know that $\meas(\Omega) = 1$, so we can multiply both sides of equation \ref{prob3}
 	\begin{align*}
-		\Meas(\bigcap_{i \in J}A_i \cap \Omega) = \prod_{i \in J}\Meas(A_i)\Meas(\Omega)
+		\meas(\bigcap_{i \in J}A_i \cap \Omega) = \prod_{i \in J}\meas(A_i)\meas(\Omega)
 	\end{align*}
 	for every arbitrary subset $\emptyset \neq J \subset I \with \abs{J} < \infty$. 
 	This shows that also the family $\set{\Omega, A_i , i \in I}$ is independent.
 \end{proof}
 %%%%%%%%%%%%%%%%%%%% Aufgabe 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{}(compare Corollary 3.18 lecture)
-$(\Omega, \F, \Meas)$ a probability space and $\F_{i,j} \subseteq \F, 1 \le i \le n, 1 \le j \le m(i)$ independent, $\cap$-stable families with $\Omega \in \F_{i,j}$ for all $i,j$. Proof that the families
+$(\Omega, \F, \meas)$ a probability space and $\F_{i,j} \subseteq \F, 1 \le i \le n, 1 \le j \le m(i)$ independent, $\cap$-stable families with $\Omega \in \F_{i,j}$ for all $i,j$. Proof that the families
 \begin{align*}
 	\F_i^{\cap} := \set{F_{i,1} \cap \cdots \cap F_{i, m(i)} \colon F_{i,j} \in \F_{i,j}, 1 \le j \le m(i)} \quad 1 \le i \le n
 \end{align*}
 are $\cap$-stable, independent and also holds $\F_{i,1},\dots, \F_{i,m(i)} \subseteq \F_i^{\cap}$.
 
-\begin{solution}
-	...
-\end{solution}
+\begin{proof}
+	\begin{enumerate}
+		\item \emph{$\cap$-stable:} Let $A,B \in \F_i^{\cap}$, for $A$ and $B$ holds
+			\begin{align*}
+				A = A_{i,1} \cap A_i, m(i) \with A_{i,j} \in \F_{i,j} \quad \forall j \\
+				B = B_{i,1} \cap B_i, m(i) \with B_{i,j} \in \F_{i,j} \quad \forall j
+			\end{align*}
+		Because $A_{i,j}, B_{i,j} \in \F_{i,j}$ and $\F_{i,j}$ is $\cap$-stable (this means of course the intersection arbitrary sets in $\F_{i,j}$ is again in $\F_{i,j}$) we get
+		\[
+			A_{i,j} \cap B_{i,j} \in \F_{i,j} \quad \forall j
+		\]
+		It follows: $A\cap B \in \F_i^{\cap}$ for arbitrary $A,B \in \F_i^{\cap}$. Therefore is $\F_i^{\cap}$ $\cap$-stable as desired.
+		\item \emph{Independence:} Let $A,B \in \F_i^{\cap}$, for $A,B$ we have
+		\begin{align*}
+			A = A_{i,1} \cap A_i, m(i) \with A_{i,j} \in \F_{i,j} \quad \forall j \\
+			B = B_{i,1} \cap B_i, m(i) \with B_{i,j} \in \F_{i,j} \quad \forall j
+		\end{align*}
+		Have $A_{i,j}, B_{i,j} \F_{i,j}$ and $\F_{i,j}$ is independent, this means for arbitrary sets $Q, K \in \F_{i,j}$ holds: $\meas(Q\cap K) = \meas(Q)\meas(k)$, with that follows
+		\[
+			\meas(A_{i,j} \cap B_{i,j}) = \meas(A_{i,j}\meas(B_{i,j})) \text{ for all }j
+		\]
+		We can conclude $\forall j$
+		\[
+			\meas(A\cap B) = \meas(A)\meas(B) \quad \forall A,B \in \F_i^{\cap}
+		\]
+		and we arrived at our desired outcome.
+		\item Proof $\F_{i,1}, \dots, \F_{i,m(i)} \subseteq \F_i^{\cap}$:
+		Let us choose $\F_{i,1} \forall F_{i,1} \in \F_{i,1}$ and this can be represented as $F_{i,1} \cap \Omega \cap \cdots \cap \Omega$ implies $F_{i,1} \in \F_{i,1}$ are elements of $\F_i^{\cap}$. For $j \neq 1$ this works analog. We conclude that $\F_{i,j} \subseteq \F_i^{\cap} \quad \forall j , 1\le j \le m(i)$ and thats what we were longing for.
+	\end{enumerate}
+\end{proof}
 %%%%%%%%%%%%%%%%%%%% Aufgabe 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{*}
 Find a counterexample, that independent families generated through $\sigma$-algebras are not independent.
@@ -142,22 +203,22 @@ Find a counterexample, that independent families generated through $\sigma$-alge
 	\end{enumerate}
 	First have to show $\T \and \S$ are independent. With definition $\T \and \S$ are independent, if
 	\begin{align*}
-		\Meas(Q_i \cap S_i) = \Meas(A_i)\Meas(S_i)\\
+		\meas(Q_i \cap S_i) = \meas(A_i)\meas(S_i)\\
 		\text{ for all } A_i \in \A, S_i \in \S \quad \forall i \in I \and \abs{I} < \infty.
-		\intertext{Then}
-		\Meas(Q_1 \cap S_1) = \Meas(\set{1}) = \frac{1}{6} = \frac{3}{6} \mal \frac{2}{6} = \Meas(Q_1)\Meas(S_1)\\
-		\Meas(Q_2 \cap S_1) = \Meas(\set{1}) = \frac{1}{6} = \frac{3}{6} \mal \frac{2}{6} = \Meas(Q_2)\Meas(S_1)		
+		\intertext{Then we got}
+		\meas(Q_1 \cap S_1) = \meas(\set{1}) = \frac{1}{6} = \frac{3}{6} \mal \frac{2}{6} = \meas(Q_1)\meas(S_1)\\
+		\meas(Q_2 \cap S_1) = \meas(\set{1}) = \frac{1}{6} = \frac{3}{6} \mal \frac{2}{6} = \meas(Q_2)\meas(S_1)		
 	\end{align*}
 	this shows that $\T, \S$ are stochastic independent. Now let us check the generators $\sigma(\T) \and \sigma(\S)$. Lets assume $\sigma(\T) \and \sigma(\S)$ are stochastic independent, then we would need
 	\begin{align*}
-		\Meas(Q_i \cap S_i) = \Meas(Q_i)\Meas(S_i) \quad \forall A_i \in \sigma(\T), B_i \in \sigma(\S), i \in I \and \abs{I} < \infty.
+		\meas(Q_i \cap S_i) = \meas(Q_i)\meas(S_i) \quad \forall A_i \in \sigma(\T), B_i \in \sigma(\S), i \in I \and \abs{I} < \infty.
 	\end{align*}
 	As we showed last term in MINT, intersections of elements in $\sigma$-algebra are again in the $\sigma$-algebra. Now we search for a counterexample with $Q_1 \cap Q_2 \in \sigma(\T)$. Consider
 	\begin{align*}
-		\Meas((Q_1 \cap Q_2)\cap S_1) 
-		&= \Meas(\set{1,4} \cap \set{1,3}) = \Meas(\set{1}) = \frac{1}{6}\\
-		\Meas(Q_1 \cap Q_2) &= \Meas(\set{1,4}) = \frac{2}{6}\\
-		\Meas(S_1) &= \Meas(\set{1,3}) = \frac{2}{6}.
+		\meas((Q_1 \cap Q_2)\cap S_1) 
+		&= \meas(\set{1,4} \cap \set{1,3}) = \meas(\set{1}) = \frac{1}{6}\\
+		\meas(Q_1 \cap Q_2) &= \meas(\set{1,4}) = \frac{2}{6}\\
+		\meas(S_1) &= \meas(\set{1,3}) = \frac{2}{6}.
 	\end{align*}
-	Because $\frac{1}{6} \neq \frac{1}{9} = \frac{2}{6}\mal \frac{2}{6}$ $(\Meas((Q_1 \cap Q_2)\cap S_1) \neq \Meas(Q_1 \cap Q_2)\cap \Meas(S_1))$ and this gives that the $\sigma$-algebra generators $\sigma(\T) \and \sigma(\S)$ are stochastic dependent.
+	Because $\frac{1}{6} \neq \frac{1}{9} = \frac{2}{6}\mal \frac{2}{6}$ $(\meas((Q_1 \cap Q_2)\cap S_1) \neq \meas(Q_1 \cap Q_2)\cap \meas(S_1))$ and this gives that the $\sigma$-algebra generators $\sigma(\T) \and \sigma(\S)$ are stochastic dependent.
 \end{proof}
