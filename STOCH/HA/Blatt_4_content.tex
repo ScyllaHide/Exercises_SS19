@@ -28,9 +28,9 @@
 		\begin{proof}[\textbf{Proof.}]
 			Let $N$ and $M$ disjoint sets with $\abs{N} = n \and \abs{M} = m$. For $j = 0,1,\dots,k$ let
 			\begin{align*}
-				P_j := \set{P \subseteq N \bigcupdot : \abs{P} = k \and \abs{P \cap N} = j\;(\and \abs{P\cap M} = k-j)},
+				P_j := \set{P \subseteq N \bigcupdot M: \abs{P} = k \and \abs{P \cap N} = j\;(\and \abs{P\cap M} = k-j)},
 			\end{align*}
-			There are $\binom{n}{j}$ many $j$-elements subsets of $N$ and $\binom{m}{k-j}$ many $(k-j)$-elements subsets of $M$. For die cardinality of $P_j$ holds, that $\abs{P_j} = \binom{n}{j} \mal \binom{m}{k-j}$. And the sets $P_0, P_1, \dots, P_k$ pairwise disjoint. With the help of the Sum rule follows
+			There are $\binom{n}{j}$ many $j$-elementary subsets of $N$ and $\binom{m}{k-j}$ many $(k-j)$-elementary subsets of $M$. For die cardinality of $P_j$ holds, that $\abs{P_j} = \binom{n}{j} \mal \binom{m}{k-j}$. And the sets $P_0, P_1, \dots, P_k$ pairwise disjoint. With the help of the sum rule follows
 			\begin{align*}
 				\binom{n+m}{k} = \sum_{j=0}^k \abs{P_j} = \sum_{j=0}^k \binom{n}{j} \mal \binom{m}{k-j}.
 			\end{align*}
@@ -54,9 +54,10 @@
 	\begin{align*}
 		\meas(X \ge i+j, X\ge i) &= \frac{\meas(x \ge i+j, X \ge i)}{\meas(X \ge i)}\\
 		&= \frac{\sum_{k=i+j}^{\infty} p(1-p)^k}{\sum_{k=i}^{\infty} p(1-p)^{\infty} (1-p)^k}\\
-		&= \frac{(1-p)^{i+j} \sum_{k=i+j}(1-p)^k}{(1-p)^i \sum_{k=0}^{\infty (1-p)^k}} \qquad \text{ geom. series}\\
-		&= (1-p)^i\\
+		&= \frac{(1-p)^{i+j} \sum_{k=i+j}(1-p)^k}{(1-p)^i \sum_{k=i}^{\infty} (1-p)^k} \qquad \text{ geom. series}\\
+		&= (1-p)^j\\
 		&= \frac{p(1-p)^j}{p}\\
+		&= \frac{1}{1-(1-p)}\mal p(1-p)^j\\
 		&= p(1-p)^j \mal \sum_{k=0}^{\infty} (1-p)^k\\
 		&= \sum_{k=0}^{\infty} p(1-p)^k = \meas(X \ge j).
 	\end{align*}
@@ -96,7 +97,7 @@
 	\meas(X=1) = \frac{1}{2} \qquad& \meas(Y=1) = \frac{1}{2}
 	\end{align*}
 	\begin{align*}
-	\meas(X,Y) &= \frac{1}{9} \for (X,Y) \in \set{(-1,0),(1,1)}\\
+	\meas(X,Y) &= \frac{1}{3} \for (X,Y) \in \set{(1,0),(-1,0),(1,1)}\\
 	\meas(X=-1, Y=1) &= 0 \neq \meas(X=-1)\mal \meas(Y=-1) = \frac{1}{4}\\ 
 	&\implies X,Y \text{ dependent}\\
 	&(X^2, Y^2) \in \set{(1,0), (1,1)}
@@ -105,7 +106,7 @@
 	\meas(Y^2 = 0) &= \frac{1}{2}\\
 	\meas(Y^2 = 1) &= \frac{1}{2}\\
 	\intertext{Then we have}
-	\meas(X^2 =1, Y^2 = 0) = \frac{1}{2} &= \frac{1}{2} = 1 \mal \frac{1}{2}\\
+	\meas(X^2 =1, Y^2 = 0) &= \frac{1}{2} = 1 \mal \frac{1}{2}\\
 	\meas(X^2 = 1, Y^2 = 1) &= \frac{1}{2} = 1 \mal \frac{1}{2}.\\
 	\intertext{So we have $X^2,Y^2$ are independent as desired.} 
 	\end{align*}
@@ -114,7 +115,7 @@
 %%%%%%%%%%%%%%%%%%%% Aufgabe 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{*}
-Buffon needle problem for a short needle.
+That is Buffon's needle problem for a short needle.
 \begin{solution} %TODO take a look if a is really t compared to wikipedia
 	Let $d$ be the distance from the center of the needle to the closest parallel line $y_k = 2ak,k \in \Z$ and $\alpha$ the acute angle between the needle and the one of the parallel lines $y_k$. These are the two random variables with the uniform probability density functions.\\
 	For $x\in [0,\frac{a}{2}]$:
@@ -131,7 +132,7 @@ Buffon needle problem for a short needle.
 		0 \quad & \text{ else}.
 		\end{cases}
 	\]
-	The two random variables, $x \and \alpha$ are independent (why?), so we can use the joint probability distribution:
+	The two random variables, $x \and \alpha$ are independent, so we can use the joint probability distribution:
 	\[
 		F(x,\alpha) = \begin{cases}
 			\frac{4}{a\pi} \quad & 0 \le x \le \frac{a}{2},\;0\le \alpha \le \frac{\pi}{2}\\
@@ -140,7 +141,7 @@ Buffon needle problem for a short needle.
 	\]
 	The needle crosses a line, if
 	\[
-		x \le \frac{l}{x} \sin \alpha.
+		x \le \frac{l}{2} \sin \alpha.
 	\]
 	Now only integrate over $F(x,\alpha)$ to get the probability that the needle will cross a line:
 	\[
