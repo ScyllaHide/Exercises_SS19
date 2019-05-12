@@ -1,7 +1,5 @@
-
-STOCH/Lösungen/Blatt 1.synctex.gz
-*.gz
-*.pdf
-*.out
-*.log
 *.aux
+*.log
+*.out
+*.pdf
+*.gz
