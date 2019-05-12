@@ -13,7 +13,7 @@
 
 	\documentclass{scrartcl} 
 	
-	\input{\directoryPrefix packages}
+	\input{\directoryPrefix packages_english}
 	\input{\directoryPrefix theoremenvironments_english}
 	\input{\directoryPrefix commands}
 	\input{\directoryPrefix commands_Willi}
@@ -27,9 +27,9 @@
 	\ihead{#1}
 	\chead{}
 	\ohead{#2}
-	\ifoot{Blatt #3}
+	\ifoot{Sheet #3}
 	\cfoot{Version: \today}
-	\ofoot{Seite \pagemark}
+	\ofoot{Page \pagemark}
 }
 
 \newcommand{\TemplateSummary}[2]{
@@ -42,13 +42,13 @@
 	\onehalfspacing
 	\pagestyle{fancy}
 	
-	\chead{Zusammenfassung #2}
+	\chead{Summary #2}
 	\lfoot{Version: \today}
-	\rfoot{Seite \thepage}
+	\rfoot{Page \thepage}
 	\lhead{}
 	\rhead{#1}
 
-	\input{\directoryPrefix packages}
+	\input{\directoryPrefix packages_english}
 	\input{\directoryPrefix theoremenvironments_english}
 	\input{\directoryPrefix commands}
 	\input{\directoryPrefix commands_Willi}
