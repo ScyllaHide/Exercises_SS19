@@ -1,0 +1,88 @@
+% !TeX spellcheck = en_US
+% This work is licensed under the Creative Commons
+% Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy
+% of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or
+% send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+\section{4th Homework STOCH}
+\subsection{}
+\begin{proof}
+	
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%% Aufgabe 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{}
+\begin{solution}
+	...
+\end{solution}
+%%%%%%%%%%%%%%%%%%%% Aufgabe 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{}
+\begin{solution}
+	...
+\end{solution}
+%%%%%%%%%%%%%%%%%%%% Aufgabe 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{}
+\begin{proof}
+	The Zähldichte of $X \and Y$ was $\rho(k) = p(1-p)^k$
+	\begin{align*}
+		\rho_X(k) = \lambda(1-\lambda)^k \and \rho_Y (k) = \mu(1-\mu)^k
+	\end{align*}
+	\begin{itemize}
+		\item For $\lambda + \mu -\lambda \mu > 0$ we have
+		\begin{align*}
+			1 > (1-\lambda)(1-\mu) = \lambda \mu -\lambda -\mu + 1 &\implies 0 > \lambda \mu - \lambda - \mu\\
+			&= \implies 0 < \lambda + \mu - \lambda \mu
+		\end{align*}
+		\item And for $\lambda + \mu - \lambda \mu < 1$ we get
+		\begin{align*}
+			0 < (1-\lambda)(1-\mu) = 1 - \lambda - \mu + \lambda\mu \implies \lambda + \mu - \lambda \mu < 1
+		\end{align*}
+		\item The distribution for $Z := \min\set{X,Y}$ is
+	\end{itemize}
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%% Aufgabe 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{}
+\begin{proof}
+	The definition of expected value was:
+	\[
+	\E[X] = \int_{\O} X(\omega)\meas(\d \omega) = \int_{\R} \P(X \in \d x)
+	\]
+	\begin{enumerate}
+		\item The density function of uniform distribution: 
+		\[
+			\rho(x) = \frac{1}{\lambda(\O)}
+		\]
+		With that given we can calculate the expected value for the uniform distribution:
+		\begin{align*}
+			\E[X] &= \int_{\R} \id_{\R} (X) \mal \rho(X) \d x\\
+			&= \int_a^b x \mal \frac{1}{b-a} \d x\\
+			&= \frac{1}{b-a} [\frac{1}{2} x^2]_a^b\\
+			&= \frac{1}{2} \frac{(b+a)(b-a)}{(b-a)} = \frac{b+a}{2}
+		\end{align*}
+		\item From the lecture notes we get the definition of Gamma distribution and $X$ has the probability density function: %TODO all alphas a lambda and betas are r!
+		% https://proofwiki.org/wiki/Expectation_of_Gamma_Distribution
+		\[
+			\rho_X (x) = \frac{\lambda^r x^{\lambda -1}e^{-\lambda x}}{\Gamma(r)}
+		\] with $\Gamma(r) = \int_{x=0}^{\infty} x^{r-1}e^{-x}\d x$ the Gamma function. And for the definition of the expected value of a continuous random variable we get
+		\[
+			\E[X] = \int_{x=0}^{\infty}x \rho_X (x) \d x
+		\]
+		Hence
+		\begin{align*}
+			\E [X] &= \frac{\lambda^r}{\Gamma(r)} \int_0^{\infty} x^r e^{-\lambda x} \d x\\
+			&= \frac{\lambda^r}{\Gamma(r)} \int_0^{\infty} \frac{t}{\lambda}^r e^{-t} \frac{\d t}{\lambda}\quad \text{sub. } t = \lambda x\\
+			&= \frac{\lambda^r}{\lambda^{r+1}\Gamma(r)}\int_0^{\infty} t^r e^{-t} \d t\\
+			&= \frac{\lambda^r}{\lambda \Gamma(r)} \quad \text{ definition of gamma function}\\
+			&= \frac{\Gamma(r + 1)}{\lambda\Gamma(r)}
+		\end{align*}
+		\begin{align*}
+			test
+		\end{align*}
+	\end{enumerate}
+\end{proof}
+
+\subsection{*}
+\begin{proof}
+	...
+\end{proof}
