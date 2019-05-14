@@ -10,13 +10,13 @@
 \begin{proof} %TODO restructure!
 	The whole system fails if $\max(\min(T_A , T_B), \min(T_C, T_D))$, because we have pairs of components:
 	\begin{align*}
-		\text{dead of } [A,B] \text{ with } \min(T_A, T_B)\\
-		\text{dead of } [C,D] \text{ with } \min(T_C, T_D)
+		\text{outage of } [A,B] \text{ with } \min(T_A, T_B)\\
+		\text{outage of } [C,D] \text{ with } \min(T_C, T_D)
 	\end{align*}
 	Because
 	\begin{align*}
-		T_k \sim \exp(\lambda) \Longleftrightarrow \rho(X) = \lambda e^{-\lambda x} \quad \with k \in \set{A,B,C,D}\\
-		\Longleftrightarrow \text{ probability mass function}.
+		T_k \sim \exp(\lambda) &\Longleftrightarrow \rho(x) = \lambda e^{-\lambda x} \quad \with k \in \set{A,B,C,D}\\
+		&\Longleftrightarrow \text{ probability mass function}.
 	\end{align*}
 	\begin{align*} %TODO flip backward, because i use the claim :/
 		\meas(T< t) &= \meas(A) = \int_A \rho(x) \d x = [-e^{-\lambda x}]_A \label{5_1:eq1}\tag{$\star$}\\
@@ -24,12 +24,13 @@
 	\end{align*}
 	Now we want to find out, how this looks for $T_{AB} \and T_{CD}$, so we need to square the integral \eqref{5_1:eq1}.
 	\begin{align*}
-		\meas(T<t) &= \brackets{\int_0^t e^{-2 \lambda x} \d x}^2 %TODO 2 \lambda?
+		\meas(T<t) &= \brackets{\int_0^t 2 \lambda e^{-2 \lambda x} \d x}^2
 		\\
 		&= \meas(T_{AB} < t) \mal \meas(T_{CD}<t)\\
 		&= \meas(T_{AB} < t, T_{CD} < t).
 	\end{align*} 
 	This means, that $T_{AB} \sim \Exp(\lambda + \lambda) = \Exp(2\lambda)$-distributed (analog for $T_{AB}$). So we can define $T_{AB} := T_A + T_B \sim \Exp(\lambda \lambda) = \Exp(2\lambda)$. Also important is $\meas(T_B < t+s) \mid T_A < s) = \meas(T_B <t)$.
+	WLOG we can always assume that $A$ fails before $B$, same for the pair $C,D$ $T_{AB}$ describes the downtime point of the subsystem $AB$ and $T_{CD}$ the downtime point of the subsystem $CD$. Then we have always $T_{AB} = T_A \sim \Exp(\lambda)$.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%% Aufgabe 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -46,17 +47,18 @@
 		\begin{enumerate}
 			\item $X+Y$ is first up
 			\begin{align*}
-				\rho_{X+Y}(x) &= \int_{0}^x \rho(x+y)\rho(y) \d y\\
-				&= \lambda^2 \int_{0}^x e^{-\lambda(x-y)}\lambda e^{-\lambda y}\d y\\
+				\rho_{X+Y}(x) &= \int_{0}^x \rho(x-y)\rho(y) \d y\\
+				&= \lambda^2 \int_{0}^x e^{-\lambda(x-y)} e^{-\lambda y}\d y\\
 				&= \lambda^2 e^{-\lambda x} \int_{0}^x \indi \d y\\
 				&= \lambda^2 e^{-\lambda x} x \quad\text{ with } \lambda = 1 \text{ here.}
 			\end{align*}
 			\item $\frac{X}{X+Y}$ is the second convolution
 			\begin{align*}
-				\rho_{\frac{X}{X+Y}} (x) &= \int_0^x
+				\rho_{\frac{X}{X+Y}} (x) &= \int_0^x ...
 			\end{align*}
+			Should work with the transformation formula MINT prop 18.1 - Schilling. But it is far to late now to iterate through this.
 		\end{enumerate}
-		\item  
+		\item ... Would like to get a hint here, so I can try on my own ... :(
 		\begin{align*}
 			...
 		\end{align*}
@@ -64,35 +66,61 @@
 \end{solution}
 %%%%%%%%%%%%%%%%%%%% Aufgabe 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{}
-\begin{proof} %TODO recheck! alternative proof, with expected value, but X needs to square integrable
-	\item Let $(\O, \F, \meas)$ be a probability space with a random variable $X$. To show that $X$ is independent of itself, if a constant $c$ exists, s.t. $\meas(X =c) = 1$ holds.
-	For every measurable set $A \in \F$, applying the independence of events $\set{X \in A} \and \set{X \in A}$ yields
-	\begin{align*}
-	\meas(X \in A) = \meas(X \in A)\meas(X \in A) \implies \meas(x \in A) \in \set{0,1}.
-	\end{align*}
-	(The constants $c$ are 1 and 0.)\\
-	Hence $\meas = \delta$ dirac measure and therefore $X$ is constant.
-	\item (alternative idea:) Would be to use the expected value, but then we would require $X$ to be square integrable(not given). (Only as a side note.)
+\begin{proof} Let $(\O, \F, \meas)$ be a probability space with a random variable $X$. To show that $X$ is independent of itself, if a constant $c$ exists, s.t. $\meas(X =c) = 1$ holds.
+	\begin{enumerate}
+		\item $\Longrightarrow$:
+		For every measurable set $A \in \F$, applying the independence of events $\set{X \in A} \and \set{X \in A}$ yields
+		\begin{align*}
+		\meas(X \in A) = \meas(X \in A)\meas(X \in A) \implies \meas(X \in A) \in \set{0,1}.
+		\end{align*}
+		(The constants $c$ are 1 and 0.)\\
+		Hence $\meas = \delta$ dirac measure and therefore $X$ is constant.
+		\item $\Longleftarrow$: It holds
+		\begin{align*}
+		\meas(\underbrace{X \cap X}_{=X}) = \meas(X) = 1 = \meas(X=c)
+		\end{align*}
+		and this implies that $X$ is independent of itself and that is what we desired.
+		\item (alternative idea:) Would be to use the expected value, but then we would require $X$ to be square integrable(not given). (Only as a side note.)
+	\end{enumerate}
 \end{proof}
 %%%%%%%%%%%%%%%%%%%% Aufgabe 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{}
 \begin{proof}
-	The probability mass function of $X \and Y$ is $\rho(k) = p(1-p)^k$
-	\begin{align*}
-		\rho_X(k) = \lambda(1-\lambda)^k \and \rho_Y (k) = \mu(1-\mu)^k
-	\end{align*}
-	\begin{itemize}
-		\item For $\lambda + \mu -\lambda \mu > 0$ we have
+	\begin{enumerate}
+		\item To show: $\rho := \lambda + \mu - \lambda\mu \in (0,1)$
 		\begin{align*}
-			1 > (1-\lambda)(1-\mu) = \lambda \mu -\lambda -\mu + 1 &\implies 0 > \lambda \mu - \lambda - \mu\\
-			&\implies 0 < \lambda + \mu - \lambda \mu
+			\lambda + \mu - \lambda\mu = \lambda(1-\mu) + \mu
 		\end{align*}
-		\item And for $\lambda + \mu - \lambda \mu < 1$ we get
-		\begin{align*}
-			0 < (1-\lambda)(1-\mu) = 1 - \lambda - \mu + \lambda\mu \implies \lambda + \mu - \lambda \mu < 1
-		\end{align*}
-		\item The distribution for $Z := \min\set{X,Y}$ is
-	\end{itemize}
+		Now we see, that $(1-\mu) \in (0,1)$, $\lambda(1-\mu) \in (0,1)$ and also $\lambda\mu = \lambda(1-\mu) + \mu \in (0,1)$ and this implies $\rho \in (0,1)$. 
+		\item Calculating the distribution of $Z := \min{X,Y}$.
+			\begin{enumerate}
+				\item The geometric distribution was given for $X,Y$ so we have the CDFs \label{prob:5_4:1}
+				\begin{align*}
+					F_X (k) = \meas(x \le k) = \sum_{k' = 1}^k \meas(x=k') = \sum_{k' = 1}^k \lambda (1- \lambda^{k' - 1}) \overset{(\ast)}{=} 1 - (1 -\lambda)^k\\
+					F_Y (k) = \meas(y \le k) = \sum_{k' = 1}^k \meas(x=k') = \sum_{k' = 1}^k \mu (1- \mu^{k' - 1}) \overset{(\ast)}{=} 1 - (1 -\mu)^k
+				\end{align*}
+				$(\ast)$ follows simply from the finite geometric series.
+				\item Because of \ref{prob:5_4:1} for $X$ or $Y$ follows \label{prob:5_4:2}
+				\begin{align*}
+				\meas(x > k) &= 1- \meas(X \le k) = 1-(1-(1-\lambda)^k) = (1-\lambda)^k\\
+				\meas(y > k) &= 1 - \meas(y \le k) = (1-\mu)^k
+				\end{align*}
+				\item from \ref{prob:5_4:2} follows for $Z$: \label{prob:5_4:3}
+				\begin{align*}
+				\meas(Z > k) &= \meas(\min\set{X,Y} > k)\\
+				&= \meas(X > k \and Y > k)\\
+				\overset{(\star)}&{=} \meas(X > k)\meas(Y >k)\\
+				&= (1-\lambda)^k (1-\mu)^k\\
+				&= \set{(1-\lambda)(1-\mu)}^k
+				\end{align*}
+				\item And finally from \ref{prob:5_4:3} follows for $\meas(Z \le k)$:
+				\begin{align*}
+				\meas(Z \le K) &= 1 - \meas(Z \le k)\\
+				&= 1 - \set{(1-\lambda)(1-\mu)}^k
+				\end{align*}
+				And this is the CDF (cummulative ditribution function) of $\min(x,y)$.
+			\end{enumerate}
+	\end{enumerate}
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%% Aufgabe 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -114,36 +142,34 @@
 			&= \frac{1}{b-a} [\frac{1}{2} x^2]_a^b\\
 			&= \frac{1}{2} \frac{(b+a)(b-a)}{(b-a)} = \frac{b+a}{2}
 		\end{align*}
-		\item From the lecture notes we get the definition of Gamma distribution and $X$ has the probability density function: %TODO all alphas a lambda and betas are r!
+		\item From the lecture notes we get the definition of Gamma distribution (and the identity $\Gamma(r+1) = r\Gamma(r)$ we proved in MINT last term)and $X$ has the probability density function:
 		% https://proofwiki.org/wiki/Expectation_of_Gamma_Distribution
 		\[
-			\rho_X (x) = \frac{\lambda^r x^{\lambda -1}e^{-\lambda x}}{\Gamma(r)}
+			\rho_X (x) = \frac{r^{\lambda} x^{r -1}e^{-\lambda x}}{\Gamma(\lambda)}
 		\] with $\Gamma(r) = \int_{x=0}^{\infty} x^{r-1}e^{-x}\d x$ the Gamma function. And for the definition of the expected value of a continuous random variable we get
 		\[
 			\E[X] = \int_{x=0}^{\infty}x \rho_X (x) \d x
 		\]
 		Hence
 		\begin{align*}
-			\E [X] &= \frac{\lambda^r}{\Gamma(r)} \int_0^{\infty} x^r e^{-\lambda x} \d x\\
-			&= \frac{\lambda^r}{\Gamma(r)} \int_0^{\infty} \frac{t}{\lambda}^r e^{-t} \frac{\d t}{\lambda}\quad \text{sub. } t = \lambda x\\
-			&= \frac{\lambda^r}{\lambda^{r+1}\Gamma(r)}\int_0^{\infty} t^r e^{-t} \d t\\
-			&= \frac{\lambda^r}{\lambda \Gamma(r)} \quad \text{ definition of gamma function}\\
-			&= \frac{\Gamma(r + 1)}{\lambda\Gamma(r)}
-		\end{align*}
-		\begin{align*}
-			test
+			\E [X] &= \frac{r^\lambda}{\Gamma(\lambda)} \int_0^{\infty} x^{\lambda} e^{-r x} \d x\\
+			&= \frac{r^{\lambda}}{\Gamma(\lambda)} \int_0^{\infty} \frac{t}{r}^{\lambda} e^{-t} \frac{\d t}{r}\quad \text{sub. } t = rx\\
+			&= \frac{r^{\lambda}}{r^{\lambda +1}\Gamma(\lambda)}\int_0^{\infty} t^{\lambda} e^{-t} \d t\\
+			&= \frac{\Gamma(\lambda+1)}{\lambda \Gamma(\lambda)} \quad \text{ definition of gamma function}\\
+			&= \frac{r \cancel{\Gamma(\lambda)}}{\lambda \cancel{\Gamma(\lambda)}}\\
+			&= \frac{\lambda}{r}
 		\end{align*}
 	\end{enumerate}
 \end{proof}
 
 \subsection{*}
 \begin{proof}
-	Just a sketch right now, need to make rigid later %TODO make rigid!
-	\begin{align*} %TODO is this dependent on the intervall i am looking at? or just look up negbin \to poisson and apply the same methods?
+	Just a sketch right now, need to make it rigid, but it is so late already ...
+	\begin{align*}
 		\negBin(n,p) &= \binom{k+r+1}{1-p}^r p^k\\
 		&= \frac{(k+r-1)!}{k!(r-1)!}\mal (1-p)^{\frac{1}{p}\mal rp}p^k\\
 		&\approx \frac{(k+r-1)(k+r-2)\cdots(k+1)}{(r-1)!}\set{(1-p)^{\frac{1}{p}}}^{rp}p^k\\
 		&\approx \frac{k^{r-1}}{\Gamma(r)}e^{-rp}p^k\\
-		&= \Gam(r,\frac{1}{p})
+		&= \Gam\brackets{r,\frac{1}{p}}
 	\end{align*}
 \end{proof}
