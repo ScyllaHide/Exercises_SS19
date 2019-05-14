@@ -5,25 +5,79 @@
 % send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
 \section{5th Homework STOCH}
+%%%%%%%%%%%%%%%%%%%% Aufgabe 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{}
-\begin{proof}
-	...
+\begin{proof} %TODO restructure!
+	The whole system fails if $\max(\min(T_A , T_B), \min(T_C, T_D))$, because we have pairs of components:
+	\begin{align*}
+		\text{dead of } [A,B] \text{ with } \min(T_A, T_B)\\
+		\text{dead of } [C,D] \text{ with } \min(T_C, T_D)
+	\end{align*}
+	Because
+	\begin{align*}
+		T_k \sim \exp(\lambda) \Longleftrightarrow \rho(X) = \lambda e^{-\lambda x} \quad \with k \in \set{A,B,C,D}\\
+		\Longleftrightarrow \text{ probability mass function}.
+	\end{align*}
+	\begin{align*} %TODO flip backward, because i use the claim :/
+		\meas(T< t) &= \meas(A) = \int_A \rho(x) \d x = [-e^{-\lambda x}]_A \label{5_1:eq1}\tag{$\star$}\\
+		&= [-e^{-2\lambda x}]_0^t = 1 - e^{-2\lambda t}
+	\end{align*}
+	Now we want to find out, how this looks for $T_{AB} \and T_{CD}$, so we need to square the integral \eqref{5_1:eq1}.
+	\begin{align*}
+		\meas(T<t) &= \brackets{\int_0^t e^{-2 \lambda x} \d x}^2 %TODO 2 \lambda?
+		\\
+		&= \meas(T_{AB} < t) \mal \meas(T_{CD}<t)\\
+		&= \meas(T_{AB} < t, T_{CD} < t).
+	\end{align*} 
+	This means, that $T_{AB} \sim \Exp(\lambda + \lambda) = \Exp(2\lambda)$-distributed (analog for $T_{AB}$). So we can define $T_{AB} := T_A + T_B \sim \Exp(\lambda \lambda) = \Exp(2\lambda)$. Also important is $\meas(T_B < t+s) \mid T_A < s) = \meas(T_B <t)$.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%% Aufgabe 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{}
 \begin{solution}
-	...
+	\begin{enumerate}
+		\item We have for the $X,Y$-measures:
+		\begin{align*}
+			\meas_X ((0,\infty)) = \int_{0}^{\infty} e^{-x} \d x\\
+			\meas_Y ((0,\infty)) = \int_{0}^{\infty} e^{-y} \d y
+		\end{align*}
+		because $X,Y \sim \Exp(1)$.
+		We need to make a few convolutions to obtain the needed probability mass functions (pmfs):
+		\begin{enumerate}
+			\item $X+Y$ is first up
+			\begin{align*}
+				\rho_{X+Y}(x) &= \int_{0}^x \rho(x+y)\rho(y) \d y\\
+				&= \lambda^2 \int_{0}^x e^{-\lambda(x-y)}\lambda e^{-\lambda y}\d y\\
+				&= \lambda^2 e^{-\lambda x} \int_{0}^x \indi \d y\\
+				&= \lambda^2 e^{-\lambda x} x \quad\text{ with } \lambda = 1 \text{ here.}
+			\end{align*}
+			\item $\frac{X}{X+Y}$ is the second convolution
+			\begin{align*}
+				\rho_{\frac{X}{X+Y}} (x) &= \int_0^x
+			\end{align*}
+		\end{enumerate}
+		\item  
+		\begin{align*}
+			...
+		\end{align*}
+	\end{enumerate}
 \end{solution}
 %%%%%%%%%%%%%%%%%%%% Aufgabe 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{}
-\begin{solution}
-	...
-\end{solution}
+\begin{proof} %TODO recheck! alternative proof, with expected value, but X needs to square integrable
+	\item Let $(\O, \F, \meas)$ be a probability space with a random variable $X$. To show that $X$ is independent of itself, if a constant $c$ exists, s.t. $\meas(X =c) = 1$ holds.
+	For every measurable set $A \in \F$, applying the independence of events $\set{X \in A} \and \set{X \in A}$ yields
+	\begin{align*}
+	\meas(X \in A) = \meas(X \in A)\meas(X \in A) \implies \meas(x \in A) \in \set{0,1}.
+	\end{align*}
+	(The constants $c$ are 1 and 0.)\\
+	Hence $\meas = \delta$ dirac measure and therefore $X$ is constant.
+	\item (alternative idea:) Would be to use the expected value, but then we would require $X$ to be square integrable(not given). (Only as a side note.)
+\end{proof}
 %%%%%%%%%%%%%%%%%%%% Aufgabe 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{}
 \begin{proof}
-	The Zähldichte of $X \and Y$ was $\rho(k) = p(1-p)^k$
+	The probability mass function of $X \and Y$ is $\rho(k) = p(1-p)^k$
 	\begin{align*}
 		\rho_X(k) = \lambda(1-\lambda)^k \and \rho_Y (k) = \mu(1-\mu)^k
 	\end{align*}
@@ -31,7 +85,7 @@
 		\item For $\lambda + \mu -\lambda \mu > 0$ we have
 		\begin{align*}
 			1 > (1-\lambda)(1-\mu) = \lambda \mu -\lambda -\mu + 1 &\implies 0 > \lambda \mu - \lambda - \mu\\
-			&= \implies 0 < \lambda + \mu - \lambda \mu
+			&\implies 0 < \lambda + \mu - \lambda \mu
 		\end{align*}
 		\item And for $\lambda + \mu - \lambda \mu < 1$ we get
 		\begin{align*}
@@ -84,5 +138,12 @@
 
 \subsection{*}
 \begin{proof}
-	...
+	Just a sketch right now, need to make rigid later %TODO make rigid!
+	\begin{align*} %TODO is this dependent on the intervall i am looking at? or just look up negbin \to poisson and apply the same methods?
+		\negBin(n,p) &= \binom{k+r+1}{1-p}^r p^k\\
+		&= \frac{(k+r-1)!}{k!(r-1)!}\mal (1-p)^{\frac{1}{p}\mal rp}p^k\\
+		&\approx \frac{(k+r-1)(k+r-2)\cdots(k+1)}{(r-1)!}\set{(1-p)^{\frac{1}{p}}}^{rp}p^k\\
+		&\approx \frac{k^{r-1}}{\Gamma(r)}e^{-rp}p^k\\
+		&= \Gam(r,\frac{1}{p})
+	\end{align*}
 \end{proof}
