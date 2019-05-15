@@ -1,0 +1,104 @@
+Sei $\G \le \O(V)$ und $V$ ein euklidischer Vektorraum mit Skalarprodukt $(\cdot, \cdot)$.
+\begin{*definition}
+	Spiegelung ist $Sx = x$ $x \in \P$ und $Sx = -x x \in \P^{\perp}$ wobei $\P$ eine fixierte Hyperebene ist. Sei nun $0 \neq r \in \P^{\perp}$. Dann lässt sich eine Transformation $S_r$ definieren durch das Setzen von
+	\begin{align*}
+		S_r x = x - \frac{2(x,r)r}{(r,r)} \quad \forall x \in V
+	\end{align*}
+	Sprechweise: $S_r$ ist die Spiegelung \emph{durch} $\P$ oder auch die Spiegelung \emph{entlang} $r$.
+\end{*definition}
+Sei $S \in \G$ eine Spiegelung durch die Hyperbene $\P$.
+\begin{*definition}
+	Wurzeln von $\G$ werden Einheitsvektoren $\pm r$ genannt, welche senkrecht zu $\P$ sind, so dass $S = S_r$ gilt.
+\end{*definition}
+Wähle einen Vektor $t \in V$ aus, sodass $(t,r) \neq 0$ für jede Wurzel $r \in \G$. Dann ergibt sich folgende Aufteilung des Wurzelsystems $\Delta$ in zwei Teilmenge
+\begin{align*}
+	\Delta_t^{\pm} = \set{r \in \Delta \colon (t,r) \gtrless 0}
+\end{align*}
+\begin{*definition}
+	\begriff{t-Basis} wird eine Teilmenge $\Pi$ von $\Delta_t^+$ genannt, wenn gilt
+	\begin{enumerate}
+		\item $\Pi$ ist minimal, d.h. das jedes $r \in \Delta_t^+$ ist eine Linearkombination von Elementen aus $r_i \in \Pi$, da sonst $\Pi$ kein Erzeugendensystem mehr von $\Delta_t^+$ ist.
+		\item Bei den Linearkombinationen sind alle Koeffizienten positiv. 
+	\end{enumerate}
+\end{*definition}
+\begin{*definition}
+	Ein Vektor $x \in V$ wird t-positiv genannt, wenn $x$ aus einer Linearkombination mit nichtpositiven Koeffizienten geschrieben werden kann.
+\end{*definition}
+Betrachte $x$ $t$-positiv und dann ergibt sich für das Skalarprodukt $(t,x) \ge 0$. Für $t$-negativ gilt ``$\le 0$''.
+
+\begin{proposition}
+	\proplbl{4_1_4}
+	Wenn $r_i, r_j$ in $\Pi$ mit $i\neq j$ und $\lambda_i, \lambda_j$ sind positive reelle Zahlen.\\
+	Dann ist der Vektor $x = \lambda_i r_i - \lambda_j r_j$ weder $t$-positiv noch $t$-negativ.
+\end{proposition}
+\begin{proof} Der Beweis ist indirekt, es wird angenommen, dass $x$ $t$-positiv bzgl der Basis $\Pi$ ist, dann wird das Skalarprodukt $(t,x)$ ausgewertet, sodass es zu einen Widerspruch führt der Form $0 > 0$ indem das Skalarprodukt auseinander gezogen wird.
+	\begin{enumerate}
+		\item Angenommen $x$ wäre positiv, dann könnte $x$ geschrieben werden als
+		\[
+			x = \lambda_i r_i - \lambda_j r_j = \sum_{k=1}^m \mu_k r_k
+		\]
+		mit $\mu_k \ge 0$. Wenn $\lambda_i > \mu_i$, dann folgt
+		\begin{align*}
+			0 = 
+		\end{align*}
+	\end{enumerate}
+\end{proof}
+\begin{proposition}
+	Angenommen, dass $r_i, r_j \in \Pi \mit i \neq j$. Sei $S_i$ die Spiegelung entlang $r_i$.\\
+	Dann ist $S_i r_j \in \Delta_t^+ \und (r_i,r_j) \le 0$.
+\end{proposition}
+\begin{proof}
+	Ist ein direkter Beweis es wird die Definition von Spiegelung benutzt und die ``Neutralität'' eines Linearkombination, die in \propref{4_1_4} bewiesen wurde. 
+\end{proof}
+\begin{*remark}
+	Geometrisch bedeutet $(r_i, r_j) \le 0$, dass der Winkel zwischen den Vektoren $r_i \und r_j$ spitzwinklig ist, folgt aus der Definition des Skalarprodukts.
+\end{*remark}
+\begin{proposition}
+	Angenommen, dass $x_1, \dots, x_m \in V$ sind alle auf der gleichen Seite der Hyperfläche, d.h $(x,x_i) >0 \mit 1\le i \le m$ für ein $x \in V$.\\
+	Wenn $(x_i,x_j) \le 0$ für $i\neq j$, dann ist die Menge $\set{x_1,\dots,x_m}$ linear unabhängig. 
+\end{proposition}
+\begin{proof}
+	...
+\end{proof}
+\begin{theorem}
+	Wenn $\Pi$ $t$-Basis für $\Delta$ ist, dann ist $\Pi$ auch eine Basis für $V$.
+\end{theorem}
+\begin{proof}
+	...
+\end{proof}
+\begin{proposition}
+	Es gibt genau eine $t$-Basis für $\Delta$.
+\end{proposition}
+\begin{proof}
+	...
+\end{proof}
+\begin{proposition}
+	Angenommen, dass $S_{r_i}$ eine Spiegelung entlang $r_i \in \Pi = \set{r_1, \dots, r_n}$ ist.\\
+	Wenn $r \in \Delta_t^+$, aber $r \neq r_i$, dann gilt $S_{r_i}r \in \Delta_t^+$.
+\end{proposition}
+\begin{*definition}
+	\begin{itemize}
+		\item \begriff{Fundamental Wurzeln} oder \begriff{einfache Wurzel} werden die Wurzeln $r_1, \dots, r_n$ in der Basis $\Pi$ genannt.
+		\item \begriff{Fundamental Spiegelung} von $\G$ werden die $S_1, \dots, S_n$ entlang der Wurzeln $r_1, \dots, r_n$ genannt.
+	\end{itemize}
+\end{*definition}
+Bezeichne temporär mit $\G_t$ die Untergruppe $\rangle S_i \colon 1 \le i \le n\langle$ von $\G$. In \propref{4_1_12} wird gezeigt, dass $\G_t = \G$ gilt und damit das $\G$ erzeugt wird von den Fundamental Spiegelungen.
+\begin{proposition}
+	Wenn $x \in V$, dann gibt es eine Transformation $T \in \G_t$, so dass $(Tx, r_i) \ge 0$ für alle $r_i \in \Pi$ ist.
+\end{proposition}
+\begin{proof}
+	...
+\end{proof}
+\begin{proposition}
+	Wenn $r \in \Delta^+$, dann ist $Tr \in \Pi$ für einige $T \in \G_t$.
+\end{proposition}
+\begin{proof}
+	...
+\end{proof}
+\begin{theorem}
+	\proplbl{4_1_12}
+	Die Fundamental Spiegelungen $S_1, \dots, S_n$ erzeugen $\G$, d.h. $\G = \G_t$.
+\end{theorem}
+\begin{proof}
+	...
+\end{proof}

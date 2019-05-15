@@ -5,3 +5,8 @@ STOCH/Lösungen/Blatt 1.synctex.gz
 *.out
 *.pdf
 *.gz
+*.idx
+*.ilg
+*.ind
+*.thm
+*.toc

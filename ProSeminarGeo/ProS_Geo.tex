@@ -1,0 +1,47 @@
+\documentclass[ngerman,a4paper,order=firstname]{mathscript}
+\usepackage{mathoperators}
+
+% % % local commands
+\renewcommand{\G}{\mathscr G}
+\renewcommand{\O}{\mathscr O}
+\renewcommand{\P}{\mathscr P}
+
+\newlist{remarkenum}{enumerate}{1}
+\setlist[remarkenum]{label=(\alph*),ref=\theremark~(\alph*)}
+\crefalias{remarkenumi}{remark}
+\newlist{propenum}{enumerate}{1}
+\setlist[propenum]{label=(\alph*),ref=\theproposition~(\alph*)}
+\crefalias{propenumi}{proposition}
+
+\title{\textbf{Coxetergruppen 16. Mai 2019}}
+\author{Dozent: \person{Pascal Lehmann}}
+
+\begin{document}
+\pagenumbering{roman}
+\pagestyle{plain}
+
+\maketitle
+
+\hypertarget{tocpage}{}
+\tableofcontents
+\bookmark[dest=tocpage,level=1]{Inhaltsverzeichnis}
+
+\pagebreak
+\pagenumbering{arabic}
+\pagestyle{fancy}
+
+\addtocounter{chapter}{4}
+\addtocounter{section}{1}
+\addtocounter{theorem}{3}
+\chapter{Coxetergruppen}
+\input{./TeX_files/Wurzelsysteme_I}
+
+\part*{Anhang}
+\addcontentsline{toc}{part}{Anhang}
+\appendix
+
+%\printglossary[type=\acronymtype]
+
+\printindex
+
+\end{document}
