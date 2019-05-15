@@ -142,22 +142,22 @@
 			&= \frac{1}{b-a} [\frac{1}{2} x^2]_a^b\\
 			&= \frac{1}{2} \frac{(b+a)(b-a)}{(b-a)} = \frac{b+a}{2}
 		\end{align*}
-		\item From the lecture notes we get the definition of Gamma distribution (and the identity $\Gamma(r+1) = r\Gamma(r)$ we proved in MINT last term)and $X$ has the probability density function:
+		\item From the lecture notes we get the definition of Gamma distribution (and the identity $\Gamma(r+1) = r\Gamma(r)$ we proved in MINT last term) and $X$ has the probability density function:
 		% https://proofwiki.org/wiki/Expectation_of_Gamma_Distribution
 		\[
-			\rho_X (x) = \frac{r^{\lambda} x^{r -1}e^{-\lambda x}}{\Gamma(\lambda)}
+			\rho_X (x) = \frac{\lambda^r x^{r -1}e^{-\lambda x}}{\Gamma(r)}
 		\] with $\Gamma(r) = \int_{x=0}^{\infty} x^{r-1}e^{-x}\d x$ the Gamma function. And for the definition of the expected value of a continuous random variable we get
 		\[
 			\E[X] = \int_{x=0}^{\infty}x \rho_X (x) \d x
 		\]
 		Hence
 		\begin{align*}
-			\E [X] &= \frac{r^\lambda}{\Gamma(\lambda)} \int_0^{\infty} x^{\lambda} e^{-r x} \d x\\
-			&= \frac{r^{\lambda}}{\Gamma(\lambda)} \int_0^{\infty} \frac{t}{r}^{\lambda} e^{-t} \frac{\d t}{r}\quad \text{sub. } t = rx\\
-			&= \frac{r^{\lambda}}{r^{\lambda +1}\Gamma(\lambda)}\int_0^{\infty} t^{\lambda} e^{-t} \d t\\
-			&= \frac{\Gamma(\lambda+1)}{\lambda \Gamma(\lambda)} \quad \text{ definition of gamma function}\\
-			&= \frac{r \cancel{\Gamma(\lambda)}}{\lambda \cancel{\Gamma(\lambda)}}\\
-			&= \frac{\lambda}{r}
+			\E [X] &= \frac{\lambda^r}{\Gamma(r)} \int_0^{\infty} x^r e^{-\lambda x} \d x\\
+			&= \frac{\lambda^r}{\Gamma(r)} \int_0^{\infty} \frac{t}{\lambda}^{r} e^{-t} \frac{\d t}{\lambda}\quad \text{sub. } t = \lambda x\\
+			&= \frac{\lambda^r}{\lambda^{r +1}\Gamma(r)}\int_0^{\infty} t^r e^{-t} \d t\\
+			&= \frac{\Gamma(r+1)}{\lambda \Gamma(r)} \quad \text{ definition of gamma function}\\
+			&= \frac{r \cancel{\Gamma(r)}}{\lambda \cancel{\Gamma(r)}}\\
+			&= \frac{r}{\lambda}
 		\end{align*}
 	\end{enumerate}
 \end{proof}
