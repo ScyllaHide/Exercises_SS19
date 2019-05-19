@@ -3,3 +3,8 @@
 *.out
 *.pdf
 *.gz
+*.idx
+*.ilg
+*.ind
+*.thm
+*.toc
