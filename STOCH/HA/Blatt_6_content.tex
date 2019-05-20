@@ -16,7 +16,7 @@
 %%%%%%%%%%%%%%%%%%%% Aufgabe 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{}
 %https://en.wikipedia.org/wiki/Expected_value Countably infinite case
-\begin{proof}}
+\begin{proof}
 	
 \end{proof}
 %%%%%%%%%%%%%%%%%%%% Aufgabe 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -27,13 +27,43 @@
 %%%%%%%%%%%%%%%%%%%% Aufgabe 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{}
 \begin{proof}
-	
+	\begin{enumerate}
+		\item\
+		\begin{enumerate}
+			\item \ul{pgf:} From Definition 5.14 from lecture we have
+			\begin{align*}
+				\psi_X(s) = \sum_{x \ge 0} \rho(x)s^x
+				\intertext{and from definition of the Poisson distribution we get}
+				\rho_X(k) = \frac{e^{-\lambda}\lambda^k}{k!} \quad \forall k \in \N, k\ge 0.
+				\intertext{Follows}
+				\psi_X(s) &= \sum_{k \ge 0} \frac{e^{-\lambda}\lambda^k}{k!}s^k\\
+				&=e^{-\lambda} \sum_{k \ge 0} \frac{(\lambda s)^k}{k!}\\
+				&=e^{-\lambda}e^{\lambda s} \quad \text{ Taylor Exp for $e$-function}\\
+				&= e^{-\lambda + \lambda s}
+			\end{align*}
+			\item \ul{exptected value:}
+			\begin{align*}
+				\E[X] = \psi'_X(s=1) = \lambda\psi_X(s=1) = \lambda
+			\end{align*}
+			\item \ul{variance:}
+			\begin{align*}
+				\Var X &= \psi''_X(1) + \psi'_X(1) - (\psi'_X(1))^2\\
+				&= \lambda^2 + \lambda - \lambda^2\\
+				&= \lambda
+			\end{align*}
+		\end{enumerate}
+	\item see links
+	\end{enumerate}
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%% Aufgabe 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{}
 \begin{proof}
-	
+	Let $X,Y \in \L^2(\O, \F, \meas)$ real random variables.
+	\begin{enumerate}
+		\item \ul{To show:} $\Var(X+Y) - \Var(X-Y) = 4\Cov(X,Y)$
+		
+	\end{enumerate}
 \end{proof}
 
 \subsection{*}
