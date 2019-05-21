@@ -4,7 +4,7 @@
 % of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or
 % send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
-\section{5th Homework STOCH}
+\section{6th Homework STOCH}
 %%%%%%%%%%%%%%%%%%%% Aufgabe 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{}
 %https://stats.stackexchange.com/questions/85363/simple-examples-of-uncorrelated-but-not-independent-x-and-y
@@ -52,7 +52,13 @@
 				&= \lambda
 			\end{align*}
 		\end{enumerate}
-	\item see links
+	\item Let $\O = \set{2, \dots, 12}$ and $\Uni(\O)$. We can use prop. 3.26 to get a contradiction.
+	Assume there exists a prob. measure $Q$, such that holds
+	\begin{align*}
+		Q \star Q &= \Uni(\Omega)\\
+		\sum_{l \in \O} \rho_1(l)\rho_2(l-k) &= \Uni(\O)\\
+		\frac{1}{11} \sum_{l \in \O} \frac{1}{l-k} &= \Uni(\O)\\
+	\end{align*}
 	\end{enumerate}
 \end{proof}
 
@@ -67,6 +73,20 @@
 \end{proof}
 
 \subsection{*}
-\begin{proof}
-	
+\begin{proof} Let $X,\tilde{X}, Y, \tilde{Y} \in L^2$
+	\begin{enumerate}
+		\item 
+		\begin{enumerate}
+			\item \ul{symmetric:} $\Cov(X,Y) = \Cov(Y,X)$, because when we look at the definition of the $\Cov(X,Y) = \E[XY] - \E[X]\E[Y]$ we can simply rely on the multiplication s.t.
+			$\Cov(X,Y) = \E[XY] - \E[Y]\E[X]$, the second there is just scalar multiplication is commutative and the first one just ``vector multiplication is commutative'' %TODO make this more precise, right now i dont have the right words for that
+			\item \ul{bilinear form:} We need to show the four axioms for BLFs, see for example ($\nearrow$ LAAG2 Fehm), we can use linearity of the expected value in $\nearrow$ prop. 5.6.
+			\item \ul{positiv-semi-definite:} We need to show that $\Cov(X,X) \ge 0$ always.
+			\begin{align*}
+				\Cov(X,X) &= \E[X\mal X] - \E[X]\E[X]\\
+				&= \E[X]\E[X] - \E[X]\E[X] = 0
+			\end{align*}
+			But why does ``$>$'' hold? \label{6:6_a}
+		\end{enumerate}
+	\item In \ref{6:6_a} we showed that $L^2$ has ``nice'' scalar product with $\Cov(X,Y)$, but this makes $L^2$ only into a pre-hilbert-space. In order to be complete, we would require that in $L^2$ all $L^2$-Cauchy-sequences converge. ($\nearrow$ MINT Riesz-Fischer Theorem 14.10). We would need to identify the $L^2$-CS and then check if everything fits in.
+	\end{enumerate}
 \end{proof}
