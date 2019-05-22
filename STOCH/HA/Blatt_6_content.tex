@@ -9,7 +9,7 @@
 \subsection{}
 %https://stats.stackexchange.com/questions/85363/simple-examples-of-uncorrelated-but-not-independent-x-and-y
 \begin{solution}
-	Let $X = \set{-1,1}$ with $\P(X=-1) = \P(X=1) = \sfrac{1}{2}$ and $Y = \set{0,-1,1}$ with $\P(X=1, Y=1) = \P(X=1, Y=-1) = \P(X=1,Y=0) = \sfrac{1}{2}$. Let $X$ and $Y$ be the dependent from each other with $y = 0$ if $X=-1$ and $Y = -1$ or $X=1$. Then we have for the expected values:
+	Let $X = \set{-1,1}$ with $\P(X=-1) = \P(X=1) = \sfrac{1}{2}$ and $Y = \set{-1,0,1}$ with $\P(X=1, Y=1) = \P(X=1, Y=-1) = \P(X=1,Y=0) = \sfrac{1}{2}$. Let $X$ and $Y$ be the dependent from each other with $y = 0$ if $X=-1$ and $Y = -1$ or $X=1$. Then we have for the expected values:
 	\begin{align*}
 		\E[X] &= \sum_{x_1 \in X}x_k \mal \P(X=x_k) = 0\\
 		\E[Y] &= \sum_{y_k \in Y}y_k \mal \P(Y=y_k) = 0
