@@ -4,7 +4,7 @@
 % of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or
 % send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
-\section{6th Homework STOCH}
+\section{7th Homework STOCH}
 %%%%%%%%%%%%%%%%%%%% Aufgabe 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{}
 \begin{proof}
@@ -77,7 +77,32 @@
 %%%%%%%%%%%%%%%%%%%% Aufgabe 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{}
 \begin{proof}
-	
+	\begin{enumerate}
+		\item Let
+		\begin{align*}
+			f_Y(y) &= \int_{\R} f(x,y) \d x\\
+			&= \int_{\R} e^{- \frac{x}{y}}e^{-x}\d x\\
+			&= e^{-y}\int_{\R} e^{-\frac{x}{y}} \d x\\
+			&= y e^{-y}\indi_{(0,\infty)}(y) %TODO somewhere here is an error :/
+		\end{align*}
+		and this will give us the marginal distribution for $Y$:
+		\[
+			\P(X\in A \mid Y=y) = \int_A f_Y(y)\d y
+		\]
+		\item Let
+		\begin{align*}
+			f_{X\mid Y}(x,y) &= \frac{f(x,y)}{f_Y(y)}\\
+			&= \frac{e^{-\frac{x}{y}}}{\cancel{e^{-y}}{y\cancel{e^{-y}}}}\\
+			&= \frac{1}{y}e^{-\frac{x}{y}}
+		\end{align*}
+		\item Finally $\P(X>1 \mid Y=y)$:
+		\begin{align*}
+			\P(X>1\mid Y=y) &= \int_1^{\infty} f_{X\mid Y}(x,y)\d x\\
+			&= \int_1^{\infty} \frac{1}{y} e^{-\frac{x}{y}}\d x\\
+			&= \frac{1}{y} \int_1^{\infty} e^{-\frac{x}{y}} \d x\\
+			&= e^{\frac{1}{y}}
+		\end{align*}
+	\end{enumerate}
 \end{proof}
 %%%%%%%%%%%%%%%%%%%% Aufgabe 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{}
@@ -91,7 +116,7 @@
 	
 \end{proof}
 
-\subsection{*}
-\begin{proof}
-	
-\end{proof}
+%\subsection{*}
+%\begin{proof}
+%	
+%\end{proof}
