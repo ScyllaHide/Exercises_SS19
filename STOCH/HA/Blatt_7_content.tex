@@ -1,0 +1,97 @@
+% !TeX spellcheck = en_US
+% This work is licensed under the Creative Commons
+% Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy
+% of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or
+% send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+\section{6th Homework STOCH}
+%%%%%%%%%%%%%%%%%%%% Aufgabe 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{}
+\begin{proof}
+	\begin{enumerate}
+		\item \begin{align*}
+			\Corr(aX + b,cY+d) &= \frac{\Cov(aX+b, cY+d)}{\sqrt{\Var(aX+b)\Var(cY+d)}}\\
+			&= \frac{ab\Cov(X,Y)}{a^2\Var(X)c^2\Var(Y)}\\
+			&= \frac{\cancel{ac}\Cov(X,Y)}{\cancel{ac}\sqrt{\Var(X)\Var(Y)}}\\
+			&= \Corr(X,Y)
+		\end{align*}
+		Where we have used
+		\begin{align*}
+			\Var(aX+b) &= \E[(aX+b)^2]- \E[aX+b]^2\\
+			&= ...\\ %TODO
+			&= a^2(\E[X^2] - \E[X]^2)
+		\end{align*}
+		and 
+		\begin{align*}
+			\Cov(aX+b,cY+d) &= \E[(aX+b)(cY+d)]-\E[(aX+b)]\E[(cY+d)]\\
+			&= \E[acXY + bcY + adX + bd] \\
+			&- (a\E[X]+b)(c\E[Y]+d)\\
+			&= ac\E[XY]+\cancel{bc\E[Y]} + \cancel{ad\E[X]} + \cancel{bd} - ac\E[X]\E[Y]\\
+			&- \cancel{bc \E[Y]} - \cancel{ad\E[X]} - \cancel{bd}\\
+			&= ac(\E[XY] - \E[X]\E[Y])\\
+			&= ac\Cov(X,Y)
+		\end{align*}
+		\item 
+	\end{enumerate}
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%% Aufgabe 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{}
+\begin{proof}
+	\begin{enumerate}
+		\item from definition of the marginal densities follows
+		\begin{align*}
+			f_X(x) &= \int_{\R} f_{X,Y} (x,y)\d y\\
+			&= \int_{\R} \indi_{\Delta}(x,y)\d y\\
+			&= \int_x^{1-\abs{x}} \d y\\
+%			&= 1 - \abs{x}
+			&= \int_{\R} \indi_{[-1,1]}(x)\indi_{[0,1-\abs{x}]}(y)\d y\\
+			&= \indi_{[-1,1]}(x)\int_x^{1-\abs{x}}\d y\\
+			&= \indi_{[-1,1]}(x)\mal (1-\abs{x})\\
+			f_Y(y) &= \int_{\R} f_{X,Y}(x,y)\d x\\
+			&= \int_{\R} \indi_{\Delta}(x,y)\d x\\
+			&= \int_{\R}\indi_{[-1,1]}(x)\indi_{[0,1-\abs{x}]}(x)\d x\\
+			&= \indi_{[0,1-\abs{x}]} \int_{-1}^1\d x\\
+			&= 2\mal \indi_{[0,1-\abs{x}]}(y)
+		\end{align*}
+		\item The conditional densities
+		\begin{align*}
+			f_{X\mid Y}(X,Y) &= \frac{f_{X,Y}(X,Y)}{f_Y(Y)}\\
+			&= \frac{\indi_{\Delta}(x,y)}{2\mal \indi_{[0,1-\abs{x}]}(y)}\\
+			&= \frac{\indi_{[0,1-\abs{x}]}(x)}{2}\\
+			f_{Y\mid X} &= \frac{f_{X,Y}(X,Y)}{f_X(Y)}\\
+			&= \frac{\indi_{\Delta}(x,y)}{\indi_{[-1,1]}\mal (1-\abs{x})}\\
+			&= \frac{\indi_{[0,1-\abs{x}]}(y)}{1-\abs{x}}\\
+		\end{align*}
+		\item Suppose $X \and Y$ are independent, then holds
+		\begin{align*}
+			f_{XY} &= f_{X\mid Y} \mal f_{Y\mid X}\\
+			&= \indi_{\Delta}(x,y) = \indi_{[-1,1]}(x) \mal \indi_{[0,1-\abs{x}]}(y)\\
+			f_{X\mid Y} \mal f_{Y\mid X} &=\frac{1}{2} \indi_{[-1,1]}(x) \mal \indi_{[0,1-\abs{x}]}(y) \mal \frac{1}{1-\abs{x}}\\
+			&= f_{XY} \mal \frac{1}{2}\mal \frac{1}{1-\abs{x}}\\
+			&\neq f_{XY} 
+		\end{align*}
+		and thats a contradiction to the independence of $X \and Y$ we have assumed. Therefore $X \and Y$ are dependent.
+	\end{enumerate}
+\end{proof}
+%%%%%%%%%%%%%%%%%%%% Aufgabe 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{}
+\begin{proof}
+	
+\end{proof}
+%%%%%%%%%%%%%%%%%%%% Aufgabe 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{}
+\begin{proof}
+	
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%% Aufgabe 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{}
+\begin{proof}
+	
+\end{proof}
+
+\subsection{*}
+\begin{proof}
+	
+\end{proof}
