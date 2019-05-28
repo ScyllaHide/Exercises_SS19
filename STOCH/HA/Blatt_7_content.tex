@@ -18,8 +18,8 @@
 		Where we have used
 		\begin{align*}
 			\Var(aX+b) &= \E[(aX+b)^2]- \E[aX+b]^2\\
-			&= ...\\ %TODO
-			&= a^2(\E[X^2] - \E[X]^2)
+			&= \text{ follows from lecture prop 5.13a}\\
+			&= a^2(\E[X^2] - \E[X]^2) = a^2\Var(X)
 		\end{align*}
 		and 
 		\begin{align*}
@@ -31,7 +31,32 @@
 			&= ac(\E[XY] - \E[X]\E[Y])\\
 			&= ac\Cov(X,Y)
 		\end{align*}
-		\item TODO
+		\item
+		\begin{enumerate}[label=]
+			\item \ul{$\Rightarrow:$} It holds $\P(Y = aX+b) = \P(Y-aX+b = 0) = \P(Z=0)$. Define a r.v. $Z:= Y - aX+b$. Now construct $a \and b$:
+			\begin{align*}
+				a:= \frac{\sqrt{\Var(Y)}}{\sqrt{\Var(X)}} \quad b = \E[Y] - a\E[X]
+			\end{align*}
+			with that holds
+			\begin{align*}
+				Z &= Y - \sqrt{\frac{\Var(Y)}{\Var(X)}} X + \E[Y] - \sqrt{\frac{\Var(Y)}{\Var(X)}}\E[X]\\
+				&= \sqrt{\frac{\Var(Y)}{\Var(X)}}(X-\E[X]) + (Y - \E[Y])
+				\intertext{and now for the expected value}
+				\E[Z] &= -\sqrt{\frac{\Var(Y)}{\Var(X)}}(\E[X] - \E[\E[X]] + (\E[Y] - \E[\E[Y]]))\\
+				&= \sqrt{\frac{\Var(Y)}{\Var(X)}} \mal 0 + 0 = 0
+			\end{align*}
+			Hence we get
+			\begin{align*}
+				\Var(Z) 
+				&= \E[Z^2] \\
+				&=\E\sqbrackets{\frac{\Var(Y)}{\Var(X)} (X-\E[X])^2 - 2 \sqrt{\frac{\Var(Y)}{\Var(X)}} (X- \E[X])(Y-\E[Y]) + (Y-\E[Y])^2}\\
+				&= \frac{\Var(Y)}{\cancel{\Var(X)}}\cancel{\Var(X)} - 2\sqrt{\frac{\Var(Y)}{\Var(X)}} \Cov(X,Y) + \Var(Y)\\
+				&= \Var(Y) - 2\sqrt{\frac{\Var(Y)}{\cancel{\Var(X)}}}\cancel{\sqrt{\Var(X)}}\sqrt{\Var(Y)} + \Var(Y)\\
+				&= 0
+			\end{align*}
+			From there follows $\P(Z = \E[Z] = 1)$ so to say (sts) $1= \P(Z=0) = \P(Y-aX-b = 0) = \P(Y = aX + b)$.
+			\item \ul{$\Leftarrow$:} Let $\P(Y = aX+b) = 1$ sts $\P(Y-aX+b = 0) = 1$.
+		\end{enumerate}
 	\end{enumerate}
 \end{proof}
 
@@ -43,25 +68,40 @@
 		\begin{align*}
 			f_X(x) &= \int_{\R} f_{X,Y} (x,y)\d y\\
 			&= \int_{\R} \indi_{\Delta}(x,y)\d y\\
-			&= \int_x^{1-\abs{x}} \d y\\
+			&= \indi_{[-1,1]}(x)\int_x^{1-\abs{x}} \d y\\
 %			&= 1 - \abs{x}
 			&= \int_{\R} \indi_{[-1,1]}(x)\indi_{[0,1-\abs{x}]}(y)\d y\\
 			&= \indi_{[-1,1]}(x)\int_x^{1-\abs{x}}\d y\\
 			&= \indi_{[-1,1]}(x)\mal (1-\abs{x})\\
+			% % % % % % % % % % % % % % % % % % % % % % % % % %
 			f_Y(y) &= \int_{\R} f_{X,Y}(x,y)\d x\\
 			&= \int_{\R} \indi_{\Delta}(x,y)\d x\\
 			&= \int_{\R}\indi_{[-1,1]}(x)\indi_{[0,1-\abs{x}]}(x)\d x\\
 			&= \indi_{[0,1-\abs{x}]} \int_{-1}^1\d x\\
 			&= 2\mal \indi_{[0,1-\abs{x}]}(y)
 		\end{align*}
-		\item The conditional densities
+		\item The conditional densities are
 		\begin{align*}
 			f_{X\mid Y}(X,Y) &= \frac{f_{X,Y}(X,Y)}{f_Y(Y)}\\
 			&= \frac{\indi_{\Delta}(x,y)}{2\mal \indi_{[0,1-\abs{x}]}(y)}\\
 			&= \frac{\indi_{[0,1-\abs{x}]}(x)}{2}\\
-			f_{Y\mid X} &= \frac{f_{X,Y}(X,Y)}{f_X(Y)}\\
+			f_{Y\mid X}(X,Y) &= \frac{f_{X,Y}(X,Y)}{f_X(Y)}\\
 			&= \frac{\indi_{\Delta}(x,y)}{\indi_{[-1,1]}\mal (1-\abs{x})}\\
 			&= \frac{\indi_{[0,1-\abs{x}]}(y)}{1-\abs{x}}\\
+		\end{align*}
+		\item For the Covariance we have
+		\begin{align*}
+			\Cov(X,Y) &= \E[XY] -\E[X]\E[Y] = \E[XY] \text{ see below!}\\
+			\E[X] &= \underbrace{\int_{-1}^1 x\mal (1-\abs{x})}_{=0}\indi_{[-1,1]}(x)\d x\\
+			&= 0 \mal \indi ... = 0\\
+			\E[Y] &= \int_0^{1-\abs{x}} y \mal 2 \dots \d y\\
+			&= [y^2]_0^{1-\abs{x}} \mal \indi_{[0,1-\abs{x}]}\\
+			&= (1-\abs{x})^2\indi_{[0,1-\abs{x}]}\\
+			\E[XY] &= \int_{y=0}^{1-\abs{x}} \brackets{\int_{x=-1}^1 xy \mal \cancel{2\mal 1/2} \indi_{[0,1-\abs{x}]} (y) \mal \indi_{[-1,1]\times[0,1-\abs{x}]}(x,y) \d x} \d y\\
+			&= \int_{y=0}^{1-\abs{x}} \brackets{\int_{x=-1}^1 y x \indi_{[-1,1]\times[0,1-\abs{x}]} (x,y)\d x}\d y\\
+			&= \int_{y=0}^{1-\abs{x}} y \mal \indi_{[-1,1]\times[0,1-\abs{x}]} \d y\\
+			&= \int_{y=0}^{1-\abs{x}} y \mal \indi ... \d y\\
+			&= (1-\abs{x})/2 \mal \indi_{[-1,1]\times[0,1-\abs{x}]}(x,y)
 		\end{align*}
 		\item Suppose $X \and Y$ are independent, then holds
 		\begin{align*}
@@ -81,39 +121,83 @@
 		\item Let
 		\begin{align*}
 			f_Y(y) &= \int_{\R} f(x,y) \d x\\
-			&= \int_{\R} e^{- \frac{x}{y}}e^{-x}\d x\\
+			&= \int_{\R} e^{-\frac{x}{y}}e^{-y}\d x\\
 			&= e^{-y}\int_{\R} e^{-\frac{x}{y}} \d x\\
-			&= y e^{-y}\indi_{(0,\infty)}(y) %TODO somewhere here is an error :/
+			&= y e^{-y}\indi_{(0,\infty)}(y)
 		\end{align*}
-		and this will give us the marginal distribution for $Y$:
-		\[
-			\P(X\in A \mid Y=y) = \int_A f_Y(y)\d y
-		\]
+%		and this will give us the marginal distribution for $Y$:
+%		\[
+%			\P(X\in A \mid Y=y) = \int_A f_Y(y)\d y = ...
+%		\]
 		\item Let
 		\begin{align*}
 			f_{X\mid Y}(x,y) &= \frac{f(x,y)}{f_Y(y)}\\
-			&= \frac{e^{-\frac{x}{y}}}{\cancel{e^{-y}}{y\cancel{e^{-y}}}}\\
-			&= \frac{1}{y}e^{-\frac{x}{y}}
+			&= \frac{e^{-\frac{x}{y}}\cancel{e^{-y}}}{y\mal\cancel{e^{-y}}}\\
+			&= \frac{1}{y}e^{-\frac{x}{y}} \label{eq:7_3:b_1} \tag{$\times$}\\
+			\P(X \le x \mid Y=y) &= \int_0^x f_{X\mid Y}(x,y) \\
+			\overset{\eqref{eq:7_3:b_1}}&{=} \int_0^x 1/y e^{\frac{x}{y}} \mal \indi_{(0,\infty)\times(0,\infty)}(x,y)\d x\\
+			&= y e^{-y}\indi_{(0,\infty)\times(0,\infty)}(x,y)
 		\end{align*}
 		\item Finally $\P(X>1 \mid Y=y)$:
 		\begin{align*}
 			\P(X>1\mid Y=y) &= \int_1^{\infty} f_{X\mid Y}(x,y)\d x\\
 			&= \int_1^{\infty} \frac{1}{y} e^{-\frac{x}{y}}\d x\\
 			&= \frac{1}{y} \int_1^{\infty} e^{-\frac{x}{y}} \d x\\
-			&= e^{\frac{1}{y}}
+			&= e^{-\frac{1}{y}}
 		\end{align*}
 	\end{enumerate}
 \end{proof}
 %%%%%%%%%%%%%%%%%%%% Aufgabe 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{}
 \begin{proof}
-	TODO	
+	\begin{enumerate}
+		\item Let $X\sim \Poi(\lambda)$. To show: $\E[Xf(X)] = \lambda \E[f(X+1)]$.
+		\begin{align*}
+			\E[Xf(X)] &= \sum_{x=0}^{\infty}x\mal f(x)\frac{e^{-\lambda}\lambda^x}{x!}\\
+			&= \sum_{x=1}^{\infty} f(x)\frac{e^{-\lambda}\lambda^x}{(x-1)!}\\
+			&= \sum_{x=0}^{\infty}f(x+1)\frac{e^{-\lambda}\lambda\lambda^x}{x!}\\
+			&= \lambda \mal \sum_{x=0}^{\infty} \frac{f(x+1)e^{-\lambda}\lambda^x}{x!}\\
+			&= \lambda \sum_{x=0}^{\infty} f(x+1)\frac{e^{-\lambda}\lambda^x}{x!}\\
+			&= \lambda\E[f(X+1)]
+		\end{align*}
+		\item TO show: $\E[Xf(X)] = \lambda \E[f(X+1)]$ $(\alpha)$ implies that $X\sim \Poi(\lambda) \with \lambda >0$.
+		\begin{enumerate}
+			\item \ul{LHS:} 
+			\begin{align*}
+				\E[Xf(X)] = \sum_{l=0}^{\infty} l \mal \indi_{\set{k}}(l) \rho(l) = k(\rho(k))
+			\end{align*}
+			\item \ul{RHS:}
+			\begin{align*}
+				\lambda\E[f(X+1)] = \lambda \P(X=k-1) = \lambda \rho(k-1)
+			\end{align*}
+			and this implies
+			\begin{align*}
+				\rho(k) = \frac{\lambda}{k}\rho(k-1)
+			\end{align*}
+			need to do induction over $k$ here and from that follows
+			\begin{align*}
+				\rho(k) = \frac{\lambda^k}{k!}\rho(0) \tag{$\times$}\label{eq:7_4:b}
+			\end{align*}
+			and the $e^{-\lambda}$ we get from the fact, that $\sum_{k=0}^{\infty} \rho(k) \overset{!}{=} 1$ and this implies that $\rho(0) = e^{-\lambda}$, where \eqref{eq:7_4:b} was used. Now set $f = \sum_{k=0}^{\infty} f(k)\indi_{\set{k}}$ and follows from $f_n = \sum_{k=0}^{\infty} f(k)\indi_{\set{k}} \xrightarrow{n \to \infty} f$. Set
+			\begin{align*}
+				f(X) &= \sum_{i=1}^{\infty} c_i \indi_{\set{i}}(x)\\
+				f(X+1) &= \sum_{i=1}^{\infty} c_i \indi_{\set{i}}(x+1)
+			\end{align*}
+			And when we put this equation into $(\alpha)$, we get with BEPPO-LEVI for sums the claim.
+		\end{enumerate}
+	\end{enumerate}
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%% Aufgabe 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{}
 \begin{proof}
-	TODO
+	Consider $\P(X \in A \mid Y=y) = \int_A \frac{\rho_{X,Y}(x,y)}{\rho_Y(y)}$ and $\P(X \mid Y = y) = \int_{\R} \frac{\rho_{X,Y}(x,y)}{\rho_Y(y)}$ and then follows $f_{X\mid Y=y} = \frac{\rho_{X,Y}(x,y)}{\rho_Y(y)}$. Therefore
+	\begin{align*}
+		\E[X \mid Y=y] &= \int_{\R} x \frac{\rho_{X,Y}(x,y)}{\rho_Y(y)} \d x\\
+		&= \int_{\R} x \frac{\rho_{X,Y}}{\rho_Y}\indi_{\rho_Y(y) >0} (x) \d x \\
+		&+ \underbrace{\int_{\R} x \frac{\rho_{X,Y}}{\rho_Y} \int_{\R} x \frac{\rho_{X,Y}}{\rho_Y} \indi_{\rho_Y(y) =0} (x) \d x}_{=0, \text{ because null set}}
+	\end{align*}
+	and that is the claim.
 \end{proof}
 
 %\subsection{*}
