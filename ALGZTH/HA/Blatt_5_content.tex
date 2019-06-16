@@ -1,0 +1,66 @@
+% !TeX spellcheck = en_US
+% This work is licensed under the Creative Commons
+% Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy
+% of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or
+% send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+\section{5th Homework ALGZTH}
+Let $L\mid K$ be a field extension and $p = \chara(K) \ge 0$.
+\subsection{H70}
+\begin{proof}\
+	\begin{itemize}
+		\item $L_1 \mid K, L_2\mid K$ finite and normal with II.1.4 implies $L_1 L_2 \mid K$ us normal. Now $\bar{K} \mid K$ is algebraic, $L_1\mid K, L_2 \mid K$ is separable and I.7.9 implies $L_1 L_2 \mid K$ is separable. With these two facts we get $L_1 L_2 \mid K$ is galois (also because $L_1 L_2 \mid K$ algebraic and $L_1, L_2 \subseteq L_1 L_2$)
+		\item \ul{To show:} $L_1\cap L_2 = K \implies \Gal(L_1 L_2 \mid K) \cong \Gal(L_1 \mid K) \times \Gal(L_2 \mid K)$. Consider
+		\begin{align*}
+			f: \begin{cases}
+				\Gal(L_1 L_2 \mid K) &\to \Gal(L_1 \mid K) \times \Gal(L_2 \mid K)\\
+				\sigma &\mapsto (\sigma_{\mid L_1}, \sigma_{\mid L_2})
+			\end{cases}
+		\end{align*}
+		$L_1 L_2 \mid K, L_1 \mid K, L_2 \mid K$ are normal and this implies that $f$ is a group homomorphism.
+		\begin{itemize}
+			\item \ul{$f$ injectiv:}
+			\begin{align*}
+				\ker(f) &= \set{\sigma \in \Gal(L_1 L_2 \mid K) \mid f(\sigma) = (\id_{L_1} = \sigma_{\mid L_1}, \id_{L_2} = \sigma_{\mid L_2})}\\
+				&=\set{\id_{L_1 L_2} = K(L_1 \cup L_2)}
+			\end{align*}
+			(Because $\sigma$ is unique defined through the $L_1, L_2$ values.)
+			\item \ul{$f$ surjectiv:} Consider $(\sigma_1 , \sigma_2) \in \Gal(L_1 \mid K) \times \Gal(L_2 \mid K)$. With Ü68 and $L_1 \cap L_2 = K$ we can continue $\sigma_1$ to $\sigma'_1 \in \Gal(L_1 L_2 \mid K)$ (with $\sigma'_{1\mid L_2} = \id_{L_2}$) and analog for $\sigma_2$. It holds
+			\begin{align*}
+				(\sigma'_1 \circ \sigma'_2)_{\mid L_1} = \sigma'_{1\mid L_1} \circ \sigma'_{2\mid L_1}\\
+				(\sigma'_1 \circ \sigma'_2)_{\mid L_2} = \sigma'_{1\mid L_2} \circ \sigma'_{2\mid L_2}.
+			\end{align*}
+		\end{itemize}
+	Hence $f(\sigma'_1 \circ \sigma'_2) = (\sigma_1, \sigma_2)$ and $f$ is surjectiv. Therefore $f$ is a group isomorphism.
+	\end{itemize}
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%% Aufgabe 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{H71}
+\begin{proof}\
+	It holds
+	\begin{align*}
+		\Q(\ii, \zeta_3, \sqrt{2}) &= \Q(\ii, \sqrt{2}, - \frac{1+\sqrt{3}\ii}{2})\\
+		&= \Q(\sqrt{2}, \ii, \sqrt{3}\ii)\\
+		&= \Q(\sqrt{2}, \ii, \sqrt{3}) \equiv L. 
+	\end{align*}
+	\begin{itemize}
+		\item $\Q$ is separable, because $\Q$ is perfect (``vollkommen'') and $\sqrt{2}, \sqrt{3} \and \ii$ are algebraic.
+		\item $\Q$ is normal, because $L$ is the splitting field of
+		\begin{align*}
+			(X^2 -2)(X^2+1)(X^2-3) := f_{\sqrt{2}}f_{\ii}f_{\sqrt{3}}
+		\end{align*}
+		and $L$ is separable (all factors are irreducible over $\Q$) $\implies L \mid \Q$ galois. The polynomials $f_{\sqrt{2}},f_{\ii},f_{\sqrt{3}}$ are iredducible with EISENSTEIN, normed and have $\sqrt{2},\sqrt{3}, \ii$ as roots and are therefore minimal polynomials. The automorphisms of $L$, which fix $\Q$ map only $\Q$-conjugated to each other and with that we get $\sigma_i \in \Gal(L\mid \Q), i =1,\dots,8$. These are ($\Q$-conjugate are: $\sqrt{3}\colon \pm \sqrt{3}$, $\sqrt{2}\colon \pm \sqrt{2} \and \ii\colon \pm \ii$)
+		\begin{align*}
+			
+			
+		\end{align*}
+		
+	\end{itemize}
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%% Aufgabe 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{H72}
+\begin{proof}\
+	
+\end{proof}
