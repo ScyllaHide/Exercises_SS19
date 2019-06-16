@@ -27,11 +27,12 @@ Let $L\mid K$ be a field extension and $p = \chara(K) \ge 0$.
 			(Because $\sigma$ is unique defined through the $L_1, L_2$ values.)
 			\item \ul{$f$ surjectiv:} Consider $(\sigma_1 , \sigma_2) \in \Gal(L_1 \mid K) \times \Gal(L_2 \mid K)$. With Ü68 and $L_1 \cap L_2 = K$ we can continue $\sigma_1$ to $\sigma'_1 \in \Gal(L_1 L_2 \mid K)$ (with $\sigma'_{1\mid L_2} = \id_{L_2}$) and analog for $\sigma_2$. It holds
 			\begin{align*}
-				(\sigma'_1 \circ \sigma'_2)_{\mid L_1} = \sigma'_{1\mid L_1} \circ \sigma'_{2\mid L_1}\\
+				(\sigma'_1 \circ \sigma'_2)_{\mid L_1} = \sigma'_{1\mid L_1} \circ \sigma'_{2\mid L_1} \and
 				(\sigma'_1 \circ \sigma'_2)_{\mid L_2} = \sigma'_{1\mid L_2} \circ \sigma'_{2\mid L_2}.
 			\end{align*}
+			Hence $f(\sigma'_1 \circ \sigma'_2) = (\sigma_1, \sigma_2)$ and $f$ is surjectiv. 
 		\end{itemize}
-	Hence $f(\sigma'_1 \circ \sigma'_2) = (\sigma_1, \sigma_2)$ and $f$ is surjectiv. Therefore $f$ is a group isomorphism.
+	Therefore $f$ is a group isomorphism.
 	\end{itemize}
 \end{proof}
 
@@ -50,17 +51,53 @@ Let $L\mid K$ be a field extension and $p = \chara(K) \ge 0$.
 		\begin{align*}
 			(X^2 -2)(X^2+1)(X^2-3) := f_{\sqrt{2}}f_{\ii}f_{\sqrt{3}}
 		\end{align*}
-		and $L$ is separable (all factors are irreducible over $\Q$) $\implies L \mid \Q$ galois. The polynomials $f_{\sqrt{2}},f_{\ii},f_{\sqrt{3}}$ are iredducible with EISENSTEIN, normed and have $\sqrt{2},\sqrt{3}, \ii$ as roots and are therefore minimal polynomials. The automorphisms of $L$, which fix $\Q$ map only $\Q$-conjugated to each other and with that we get $\sigma_i \in \Gal(L\mid \Q), i =1,\dots,8$. These are ($\Q$-conjugate are: $\sqrt{3}\colon \pm \sqrt{3}$, $\sqrt{2}\colon \pm \sqrt{2} \and \ii\colon \pm \ii$)
+		and $L$ is separable (all factors are irreducible over $\Q$) $\implies L \mid \Q$ galois. The polynomials $f_{\sqrt{2}},f_{\ii},f_{\sqrt{3}}$ are iredducible with EISENSTEIN, normed and have $\sqrt{2},\sqrt{3}, \ii$ as roots and are therefore minimal polynomials. The automorphisms of $L$, which fix $\Q$ map only $\Q$-conjugated to each other and with that we get $\sigma_i \in \Gal(L\mid \Q), i =1,\dots,8$. These are ($\Q$-conjugate are: $\sqrt{3}\colon \pm \sqrt{3}$, $\sqrt{2}\colon \pm \sqrt{2} \and \ii\colon \pm \ii$) and with $\sigma_i: L \to L \quad \forall i$:
 		\begin{align*}
-			
-			
+			\begin{tabular}{c|c|c|c}
+			\hline
+			$i \and \sigma$               & $\sigma(\sqrt{3})$             & $\sigma(\sqrt{2})$              & $\sigma(\ii)$\\ 
+			\hline 
+			1 & $\sqrt{3}$ & $\sqrt{2}$ & $\ii$ \\ %(\implies \sigma = \id_{L})$\\
+			\hline
+			2 & $\sqrt{3}$ & $\sqrt{2}$ & $-\ii$\\
+			\hline
+			3 & $\sqrt{3}$ & $-\sqrt{2}$ & $\ii$\\
+			\hline
+			4 & $\sqrt{3}$ & $-\sqrt{2}$ & $-\ii$\\
+			\hline
+			5 & $-\sqrt{3}$ & $\sqrt{2}$ & $\ii$\\
+			\hline
+			6 & $-\sqrt{3}$ & $\sqrt{2}$ & $-\ii$\\
+			\hline
+			7 & $-\sqrt{3}$ & $-\sqrt{2}$ & $\ii$ \\
+			\hline
+			8 & $-\sqrt{3}$ & $-\sqrt{2}$ & $-\ii$ \\     
+			\end{tabular}
 		\end{align*}
-		
+		In the table we can see, which $\Q$-conjugate get mapped to which elements. The automorphism is uniquely determined, because $L$ is ``spanned'' with these elments. Because $L\mid \Q$ is galois, did we find all elments in $\Gal(L\mid \Q)$, then $\# \Gal(L\mid \Q) = [L\colon \Q] = 8$:
+		\begin{align*}
+			[L:\Q] &= [\Q(\sqrt{2},\sqrt{3})(\ii):\Q(\sqrt{2},\sqrt{3})]\mal[\Q(\sqrt{2})(\sqrt{3}):\Q(\sqrt{2})]\mal[\Q(\sqrt{2}):\Q]\\
+			\overset{(\star)}&{=} 2\mal 2\mal 2 = 8
+		\end{align*}
+		$(\star)$ see minimal polynomials above and all subset-relations are proper!
+		\item Let check if $\alpha := \sqrt{3}+\sqrt{2}+\ii$ is a primitive element in the field extension $L\mid \Q$, $L=\Q(\alpha)$ and use V65. It holds
+		\begin{align*} %TODO
+			\begin{tabular}{c|c|c|c|c}
+				i & 1 & 2 & 3 & 4\\
+				\hline
+				$\sigma_i(\alpha)$ & $\sqrt{2}+\sqrt{3}+\ii$ & $\sqrt{2}+\sqrt{3}-\ii$ & $\sqrt{2}+\sqrt{3}-\ii$ & $\sqrt{2}-\sqrt{3}-\ii$ \\
+				\hline
+				i & 5 & 6 & 7 & 8\\
+				\hline
+				$\sigma_i(\alpha)$ & $-\sqrt{2}+\sqrt{3}+\ii$ & $-\sqrt{2}+\sqrt{3}-\ii$ & $-\sqrt{2}-\sqrt{3}+\ii$ & $-\sqrt{2}-\sqrt{3}-\ii$ \\
+			\end{tabular}
+		\end{align*}
+		Hence $\abs{\set{\sigma(\alpha) \mid \sigma \in \Gal(L\mid \Q)}} = 8 = [L:\Q]$ and therefore $L=\Q(\alpha)$.
 	\end{itemize}
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%% Aufgabe 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{H72}
 \begin{proof}\
-	
+	We can use the Galois-correspondence, because $L\mid \Q$ is finite galois. This means the number of ``Zwischenkörper'' equals the number of subgroups of $\Gal(L\mid \Q)$, which are because of $\Gal(L\mid \Q) \cong \Z / 4 \Z$ equal the number of subgroups of $\Z / 4\Z$. Because $\Z / 4\Z$ is cyclic, $\Z / 4\Z$ has to every divisor of the his order exact one subgroup. The divisors of $\abs{\Z / 4\Z} = 4$ are 1,2 and 4. (Excluding the trivial subgroups, we find \emph{one} nontrivial subgroup.) With the Galois-correspondence we get that there is exact one non-trivial ``Zwischenkörper'' and therefore $\Q \subsetneqq M \subsetneqq L$.
 \end{proof}
