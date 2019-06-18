@@ -11,38 +11,172 @@
 	\begin{enumerate}
 		\item This is known as the $Z$-transform in statistics ($Z = \frac{X-\mu}{\sigma}$). With the help of lecture notes (chap 7.1 remark after definition 7.1) we find
 		\begin{align*}
-		\E[Z] = \E[\frac{X-\mu}{\sigma}] = \frac{1}{\sigma}\E[(X)-\mu] = 0\\
-		\Var(Z) = \Var(\frac{X-\mu}{\sigma}) = \Var(\frac{X}{\sigma}) = \frac{1}{\sigma^2}\Var(X) = 1
+		\E[Z] &= \E[\frac{X-\mu}{\sigma}] = \frac{1}{\sigma}\E[(X)-\mu] = 0\\
+		\Var(Z) &= \Var(\frac{X-\mu}{\sigma}) = \Var(\frac{X}{\sigma}) = \frac{1}{\sigma^2}\Var(X) = 1
 		\end{align*}
 		(This follows with properties of $\E \and \Var$ we proved earlier in lecture.)
 		and this gives us already the claim.
-		\item 
+		\item Since $X \sim \mathscr{N}(0,1)$ and we know that the pdf of $X$ is
+		\begin{align*}
+			\rho_{1,0}(x) &= \frac{1}{\sqrt{2\pi}}e^{-x^2/2}
+			\intertext{The cdf of $Y := X^2$ is:}
+			F_Y(y) &:= \P(y \le Y) = \P(x^2 \le y) \\
+			&= \P(\abs{x} \le \sqrt{y}) = \int_{-\sqrt{y}}^{\sqrt{y}} \rho_{1,0}(x) \d x\\
+			\intertext{with that}
+			\int_{-\sqrt{y}}^{\sqrt{y}} \rho_{1,0}(x) &= \int_{-\sqrt{y}}^{\sqrt{y}} \frac{1}{\sqrt{2\pi}} e^{-x^2/2}\d x\\
+			&= \frac{1}{\sqrt{2\pi}}
+		\end{align*}
+		\item \ul{To show:} That $Y:=ZX \sim \mathscr{N}(0,1)$.
+		\begin{enumerate}
+			\item 
+			\begin{align*}
+				\E[Y] &= \E[XZ]\\
+				&= \E[X]\E[Z]\quad \text{$X$ and $Z$ are independent r.v.}\\
+				&= 0\mal \E[Z] \quad \E[X] = 0 \text{ since } X \sim \mathscr{N}(0,1)\\
+				&= 0 
+			\end{align*}
+			Therefore $\mathscr{N}(\mu,\sigma^2)$ and $\mu =0$.\\
+			From the lecture we know that 2 r.v. are independent, that this property is also inherited by the pmf, so it holds $\rho_{XZ} = \rho_X \mal \rho_Y$. Hence
+			\begin{align*}
+				\E[XZ] &= \int_{\R} XZ \mal \rho_{XZ}(X,Z)\d x \d z\\
+				&= \int_{\R} x\mal \rho_X(x)z\rho_Z(z) \d x \d z\\
+				&= \int_{\R} x \rho_X(x)\d x \mal \int_{\R} z \mal \rho_Z (z) \d z\\
+				&= \E[X] \E[Z].
+			\end{align*}
+			(the converse does not hold in general!)
+			\item 
+			\begin{align*}
+				\Var(Y) &= \Var(XZ)\\
+				&= \E[(XZ)^2]-\E[XZ]^2 \\
+				&= \E[X^2 Z^2] - 0\\
+				&= \E[X^2]\E[Z^2] \quad \text{$X,Z$ independent, then $X^2$ and $Y^2$ independent}\\
+				&= 1 \mal \E[Z^2] \tag{$\flat$}\label{eq:9_1_c}\\
+				&= \sum_{k = -1,1}k^2 \mal \P(Z = k)\\
+				&= (-1)^2\mal \P(Z = -1) + 1\mal \P(Z=1)\\
+				&= 1/2 + 1/2 = 1
+			\end{align*}
+			For \eqref{eq:9_1_c} we have:
+			\begin{align*}
+				\E[X^2] = \Var(X) + \E[X]^2 = 1+0 = 1
+			\end{align*}
+		\end{enumerate}
 	\end{enumerate}
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%% Aufgabe 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{}
-\begin{proof}
-	
-\end{proof}
+\begin{solution}
+	\item  \ul{exact calculation:} 
+	\begin{align*}
+		\P(k \le 3) &= \binom{50}{3}p^3(1-p)^{47} + \binom{50}{2}p^3(1-p)^{48} + \binom{50}{3}p^3(1-p)^{49} + \binom{50}{0}p^3(1-p)^{50}\\
+		&= ... = 0,25029 \approx 25,3\%
+	\end{align*}
+	(Did not write a lot down here, because decimals are ugly to look at and i will continue this for the others too!)
+	\item \ul{POISSON-approximation:}
+	\begin{align*}
+		\P(\set{k}) &= \frac{\lambda^k}{k!}e^{-\lambda} \for \lambda = np = 50\mal 0,1 = 5\\
+		\P(k \le 3) &= \frac{\lambda^3}{3!}e^{-5} + \frac{\lambda^2}{2!}e^{-5} + \frac{\lambda}{1!}e^{-5} + e^{-5}\\
+		&= ... = 0,26502 \approx 26,5\%
+	\end{align*}
+	\item \ul{DE-MOIVRE-LAPLACE:} We have
+	\begin{align*}
+		x_n(k) = \frac{k-np}{\sqrt{np(1-p)}} \and g(x) = \frac{1}{\sqrt{2\pi}}\mal e^{-x^2/2}
+	\end{align*}
+	also
+	\begin{align*}
+		\lim_{n \to \infty} \max_{k:\abs{x_n(k)}<c} \abs{\frac{\sqrt{np(1-p)}\mal B_{n,p(k)}}{g{x_n}(x)} -1} = 0
+	\end{align*}
+	Observe that all ``values'' in the limit are fixed already and therefore we dont need the maximum and the limit. The absolute value is also not necessary, because everything is positive, so we can simplify to
+	\begin{align*}
+		\frac{\sqrt{np(1-p)}\mal B_{n,p}(k)}{g{x_n}(x)} -1 = 0\\
+		B_{n,p}(k) = \frac{g(x_n(k))}{\sqrt{\sqrt{np(1-p)}}} \with n=50 \and k = 3,2,1,0.
+	\end{align*}
+	\begin{enumerate}[label=]
+		\item \ul{$k=3$:}
+		\begin{align*}
+			x_{50}(3) &= \frac{3-50\mal 0,1}{\sqrt{50\mal 0,1 \mal 0,9}} = ... = -\frac{2\sqrt{2}}{3}\\
+			g(x_{50}(3)) &= \frac{1}{\sqrt{2\pi}}\mal e^{x_{50}(3)} = ... = \frac{1}{\sqrt{2\pi}} \mal e^{-4/9}
+		\end{align*}
+		\item \ul{$k=2$:}
+		\begin{align*}
+		x_{50}(2) &= \frac{2-5}{3/\sqrt{2}} = ... = -\frac{3\sqrt{2}}{2}\\
+		g(x_{50}(2)) &= \frac{1}{\sqrt{2\pi}}\mal e^{x_{50}(2)} = ... = \frac{1}{\sqrt{2\pi}} \mal e^{-9/4}
+		\end{align*}
+		\item \ul{$k=1$:}
+		\begin{align*}
+		x_{50}(1) &= \frac{1-5}{3/\sqrt{2}} = ... = -\frac{4\sqrt{2}}{3}\\
+		g(x_{50}(1)) &= \frac{1}{\sqrt{2\pi}}\mal e^{x_{50}(1)} = ... = \frac{1}{\sqrt{2\pi}} \mal e^{-16/9}
+		\end{align*}
+		\item \ul{$k=0$:}
+		\begin{align*}
+		x_{50}(1) &= \frac{1-5}{3/\sqrt{2}} = ... = -\frac{5\sqrt{2}}{3}\\
+		g(x_{50}(1)) &= \frac{1}{\sqrt{2\pi}}\mal e^{x_{50}(0)} = ... = \frac{1}{\sqrt{2\pi}} \mal e^{-25/9}
+		\end{align*}
+	\end{enumerate}
+	Now putting everything together, gives us
+	\begin{align*}
+		&\implies g(x_n) = \sum_{i=0}^3 g(x_n(i)) \approx 0,39007\\
+		&\implies B_{n,p}(x) = \frac{g(x_n)}{3/\sqrt{2}} \approx 0,18388 \approx 18,38 \%
+	\end{align*}
+\end{solution}
 %%%%%%%%%%%%%%%%%%%% Aufgabe 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{}
 \begin{proof}
-	
+	\begin{enumerate}
+		\item $X \sim \Pois(\lambda)$:
+		\begin{align*}
+			m_X(u) &= \E[e^{ux}] = \sum_{k=0}^{\infty}\frac{\lambda^k e^{-\lambda}}{k!}\mal e^{ku}\\
+			&= e^{-\lambda}\sum_{k=0}^{\infty} \frac{(e^u\lambda)^k}{k!}\\
+			&= e^{\lambda(e^u - 1)} \quad \text{exponential series}
+		\end{align*}
+		expected value and variance
+		\begin{align*}
+			\E[X] &:= m'_X(0) \and \E[X^2] := m''_X(0)\\
+			m'_X(u) &= (e^{\lambda(e^u -1)})' = \lambda e^u \mal e^{\lambda(e^u -1)}\\
+			\E[X] &= m'_X(0) = \lambda e^0 = \lambda\\
+			m''_X(u) &= \frac{\d}{\d u}(e^{\lambda(e^u -1)}e^u \lambda) = \lambda(\lambda e^u - 1)e^{\lambda(e^u -1)+u}\\
+			\E[X^2] &= m''_X(0) = \lambda^2
+		\end{align*}
+		And therefore we get for the variance
+		\[
+			\Var(X) = \E[X^2]-\E[X]^2 = \lambda
+		\]
+		\item $X \sim U((a,b))$:
+		\begin{align*}
+			m_X(u) &= \frac{e^{ub} - e^{ua}}{u(b-a)}\\
+		\end{align*}
+		expand $e$'s in series and simplify
+		\begin{align*}
+			m_X(u) &= 1 + \frac{u(b-a)}{2} + \frac{u^2(b^3 - a^3)}{6(b-a)} + \dots\\
+			m'_X(0) &= \frac{b-a}{2}\\
+			m''_X(0) &= \frac{b^3 - a^3}{3(b-a)}
+		\end{align*}
+		expected value and variance
+		\begin{align*}
+			\E[X] &:= m'_X(0) \and \E[X^2] := m''_X(0)\\
+			\E[X] &= \frac{b-a}{2}\\
+			\Var(X) &= \E[X^2] -\E[X]^2 = \frac{b-a}{2} - \frac{b^3 - a^3}{3(b-a)} = -\frac{2a^2 + a(2b+3)+b(2b-3)}{6}
+		\end{align*}
+	\end{enumerate}
 \end{proof}
 %%%%%%%%%%%%%%%%%%%% Aufgabe 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{}
-\begin{proof}
-	
-\end{proof}
+%\subsection{}
+%\begin{proof}
+%	%TODO
+%\end{proof}
+%
+%%%%%%%%%%%%%%%%%%%%% Aufgabe 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\subsection{}
+%\begin{proof}
+%	%TODO
+%\end{proof}
+%
+%\subsection{*}
+%\begin{proof}
+%	5TODO
+%\end{proof}
 
-%%%%%%%%%%%%%%%%%%%% Aufgabe 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{}
-\begin{proof}
-	
-\end{proof}
-
-\subsection{*}
-\begin{proof}
-	
-\end{proof}
+%\subsection{*}
+%\begin{proof}
+%	5TODO
+%\end{proof}
