@@ -1,0 +1,76 @@
+\documentclass[ngerman,a4paper,order=firstname]{mathscript}
+\usepackage{mathoperators}
+
+% % % local commands
+\newcommand{\Halb}{\mathfrak{X}}            % Halbordnung
+\newcommand{\caly}{\mathcal{Y}}				% caligraphic Y
+\DeclareMathOperator{\transdeg}{tr.deg}		% transcendence degree
+\DeclareMathOperator{\Tr}{Tr}				% Trace Matrix or here for L\mid K
+\newcommand{\Zwischen}{\mathscr M}
+
+\newlist{remarkenum}{enumerate}{1}
+\setlist[remarkenum]{label=(\alph*),ref=\theremark~(\alph*)}
+\crefalias{remarkenumi}{remark}
+
+\newlist{propenum}{enumerate}{1}
+\setlist[propenum]{label=(\alph*),ref=\theproposition~(\alph*)}
+\crefalias{propenumi}{proposition}
+
+\newlist{expenum}{enumerate}{1}
+\setlist[expenum]{label=(\alph*),ref=\theexample~(\alph*)}
+\crefalias{expenumi}{example}
+
+\newlist{lemmaenum}{enumerate}{1}
+\setlist[lemmaenum]{label=(\alph*),ref=\thelemma~(\alph*)}
+\crefalias{lemmaenumi}{lemma}
+
+\title{\textbf{Algebra und Zahlentheorie SS 2019}}
+\author{Dozent: Prof. Dr. \person{Arno Fehm}}
+
+\begin{document}
+\pagenumbering{roman}
+\pagestyle{plain}
+
+\maketitle
+
+\hypertarget{tocpage}{}
+\tableofcontents
+\bookmark[dest=tocpage,level=1]{Inhaltsverzeichnis}
+
+\pagebreak
+\pagenumbering{arabic}
+\pagestyle{fancy}
+
+\chapter{Basics}
+\input{./TeX_files/content_basics}
+
+\chapter{Vektorräume}
+\input{./TeX_files/content_vr}
+
+\chapter{Lineare Abbildungen}
+\input{./TeX_files/content_lin}
+
+\chapter{Determinaten}
+\input{./TeX_files/content_det}
+
+\chapter{Endomorphismen}
+\input{./TeX_files/content_endo}
+
+\chapter{Skalarprodukte}
+\input{./TeX_files/content_skp}
+
+\chapter{Dualität}
+\input{./TeX_files/content_dual}
+
+\chapter{Moduln}
+\input{./TeX_files/content_moduln}
+
+\part*{Anhang}
+\addcontentsline{toc}{part}{Anhang}
+\appendix
+
+%\printglossary[type=\acronymtype]
+
+\printindex
+
+\end{document}
