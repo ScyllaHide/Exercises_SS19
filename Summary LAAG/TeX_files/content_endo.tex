@@ -1,0 +1,116 @@
+\begin{itemize}
+	\item $K$ a field
+	\item $n \in \N$
+	\item $V$ $n$-dim $K$-vector space
+	\item $f \in \End(V)$ an endomorphism
+\end{itemize}
+\section{eigenvalues}
+\begin{definition}
+	\begin{itemize}
+		\item $0\neq x \in V$, $\lambda \in K$ with $f(x) = \lambda x$
+		\item $\lambda$ is called eigenvalue $x$ eigenvector of $f$ and the eigenspace to $\lambda \in K$ 
+		\begin{align*}
+			\Eig(f,\lambda) = \set{x \in V \colon f(x) = \lambda x}.
+		\end{align*} 
+	\end{itemize}
+\end{definition}
+\begin{*remark}
+	\begin{itemize}
+		\item nullvector isnt an eigenvector per definition, but $\lambda = 0$ is possible $\longleftrightarrow f \not \in \Aut(V)$
+		\item set of Evec to $\lambda$ is $\Eig(f,\lambda)\setminus \set{0}$.
+	\end{itemize}
+\end{*remark}
+\begin{proposition}
+	$B$ is base of $V$.\\
+	\begin{align*}
+		M_B(f) \text{ is diagonalmatrix } \longleftrightarrow B \text{ consits of Evecs of }f
+	\end{align*}
+\end{proposition}
+\begin{lemma}
+	
+\end{lemma}
+\section{characteristic polynomial}
+\begin{definition}
+	\begin{itemize}
+		\item char. poly to a matrix $A \in \Mat(n,K)$ is the determinat of the matrix $t\mal \indi_n - A \in \Mat(n,K[t])$
+		\item char. poly of an endom $f \in \End(V)$ is $\chi_f(t) := \chi_{M_B(f)}(f)$ and $B$ is the bas of $V$.
+	\end{itemize}
+\end{definition}
+\begin{definition}
+	poly $0 \neq P \in K[t]$ with coeffiicent of the biggest power 1 is called normed.
+\end{definition}
+\section{Diagonalization}
+\begin{definition}
+	$f$ is called diagonal, if $V$ has a base $B$, where $M_B(f)$ is a diagonalmatrix.
+\end{definition}
+\begin{definition}
+	$R$ commutative ring and $a,b \in R$, say $a$ divides $b$ and write $a\mid b$ if there exists $x \in R$, st $ax = b$.
+\end{definition}
+\begin{definition}
+	$0 \neq P \in K[t]$, $\lambda \in K$ then
+	\begin{align*}
+		\mu(P,\lambda) = \set{r \in \N_0 \colon (t-\lambda)^r \mid P(t)}
+	\end{align*}
+	and its called the multiplicity of the root $\lambda$ of $P$.
+	\begin{itemize}
+		\item geom multiplicity $\mu_g(f,\lambda) := \dim(\Eig(f,\lambda))$
+		\item alg multiplicity $\mu_a(f,\lambda) := \mu(\chi_f, \lambda)$ 
+	\end{itemize}
+\end{definition}
+\section{Trig}
+\begin{definition}
+	$f$ is called trigonal, if $V$ has a base $B$, where $M_B(f)$ is an upper $\delta$-matrix.
+\end{definition}
+\begin{definition}
+	subspace $W \subseteq V$ is $f$ invariant, if $f(W) \subseteq W$.
+\end{definition}
+\section{minimalpolynomial}
+\begin{definition}
+	poly $P(t)= \sum_{i=0}^m  c_i t^i \in K[t]$ def $P(f):= \sum_{i=0}^m c_i f^i \in \End(V)$ and here have $f^0 = \id_V, f^1 = f, f^2 = f\circ f \dots \in \End(V)$. same for the matrix $A \in \Mat(n,K)$ and $P(A) \in \Mat(n,K)$.
+\end{definition}
+\begin{definition}
+	unique determined normed poly $0\neq P_f \in K[t]$ lowest order with $P_f(f) = 0$ called minimal poly of $f$.same for matrix $A$. 
+\end{definition}
+\begin{definition}
+	$f$-invariant subspace $W \subseteq V$ called cyclic if exists $x \in W$ with $W = span(x,f(x),f^2(x), \dots)$.
+\end{definition}
+\begin{theorem}[Cayley-Hamilton theorem]
+	If $f \in \End(V)$, then $\chi_f(f) = 0$.
+\end{theorem}
+\section{nilpotent endos}
+\begin{lemma}[Fittings lemma]
+	Let $V_i = \Ker(f^i), W_i = \im(f^i)$ and $d = \min\set{i \colon V_i = V_{i+1}}$. ...
+\end{lemma}
+\begin{definition}
+	endo $f \in \End(V)$ called nilpotent if $f^k = 0 \in \End(V)$ for a $k \in \N$. (matrix analog). The smallest $k \with f^k =0$ called nilpotent-class.
+\end{definition}
+\begin{definition}
+	$k \in \N$ and def Jordan matrix
+	\begin{align*}
+		\begin{pmatrix}
+		0 & 1 & & \\
+		  & \ddots & \ddots &\\
+		  &        & \ddots &1\\
+		  &        &        & 0\\
+		\end{pmatrix}\in \Mat(k,K)
+	\end{align*}
+	and set $J_k(\lambda) := \lambda \indi_k + J_k$ for $\lambda \in K$.
+\end{definition}
+\section{JNF}
+\begin{definition}
+	generalized eigenspace of $f$ for $\lambda$ mutliplicity $r = \mu_a(f,\lambda)$
+	\begin{align*}
+		\Hau(f,\lambda) := \ker((f-\lambda \mal \id_V)^r)
+	\end{align*}
+\end{definition}
+\begin{theorem}[JNF]
+	$f \in \End(V)$ and its char poly $\chi_f$ can be represented by linear factors. Then exists $r \in \N, \mu_1, \dots, \mu_r \in K \and k_1, \dots, k_r \in \N$ with $\sum_{i=1}^r k_i = \dim(V)$ and a base $B$ of $V$ with 
+	\begin{align*}
+		M_B(f) = \begin{pmatrix}
+		J_{k_1}(\mu_1) & &\\
+		               & \dots &\\
+		               &       & J_{k_r}(\mu_r)
+		\end{pmatrix}
+	\end{align*}
+	the pairs are called $(\mu_i,k_i)$ Jordan-invariants of $f$ and they are unique defined up to seq.
+\end{theorem}
