@@ -1,0 +1,191 @@
+%\RequirePackage{ifluatex}
+\documentclass[
+paper=A4,fontsize=12pt,
+BCOR=15mm,DIV=22,
+%twoside=true,
+headinclude=true,footinclude=false,
+parskip=full,
+numbers=noendperiod,
+ngerman,fleqn,             % fleqn = linksbündige Ausrichtung von Formeln
+bibliography=totoc, % Bibliography appears in Table of Contents (without a number)
+toc=listof, % List of Figures and List of Tables appear in Table of Contents
+cleardoublepage=empty,      % Vakantseiten ohne Paginierung
+version = last
+]{scrartcl}
+
+\usepackage[ngerman]{babel}
+\usepackage{lmodern}
+
+%\usepackage{lua-visual-debug}
+\usepackage{scrhack}
+\usepackage{marginnote}
+\usepackage{scrpage2}
+\pagestyle{scrheadings}
+\clearscrheadfoot
+\ihead{\headmark}\ohead{\pagemark}
+\automark[subsection]{section}
+\setheadsepline{0.5pt}
+%\usepackage{fontspec}
+
+\usepackage{calc}
+
+\usepackage{graphicx,xcolor}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amsmath,amsfonts,amssymb,mathtools}
+\usepackage{bbm}
+\usepackage{xfrac}
+\usepackage{siunitx}
+\sisetup{
+	locale = DE,
+	round-precision=3,
+	table-format=1.3e+1,
+	round-mode=places,
+%	table-figures-integer = 1,
+%	table-figures-decimal = 6
+}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+
+\usepackage[%
+font={small},
+labelfont={bf,sf},
+format=hang, % try plain or hang
+margin=5pt,
+]{caption}
+
+\usepackage[%
+bookmarks, % Create bookmarks
+bookmarksopen=true, % Unfold bookmatk tree in PDF viewer when document is opened
+bookmarksopenlevel=1, % Level of unfolding
+bookmarksnumbered=true, % Number bookmarks
+hidelinks, % do not highlight hyperlinks -- looks ugly
+% Ansicht beim Öffnen
+pdfpagelabels=true, % See manual...
+plainpages=false, % See manual...
+hyperfootnotes=true, % Hyperlinks for footnotes
+hyperindex=true, % Indexeinträage verweisen auf Text
+]{hyperref}
+\usepackage{cleveref}
+
+\newenvironment{bottompar}{\par\vspace*{\fill}}{\clearpage}
+
+\let\oldepsilon\epsilon
+\let\epsilon\varepsilon
+
+\newcommand{\transpose}[1]{%
+	\ifmmode%
+		{#1}^\textrm T%
+	\else%
+		$#1^\textrm T$%
+	\fi%
+}
+%Shortcuts math symbols
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+
+\makeatletter
+\newread\infile
+\def\preparetable#1{
+	\@bsphack
+	\bgroup
+	\openin\infile=#1
+	\let\\=\relax
+	\newcount\linecnt
+	\gdef\usetable{}
+	\endlinechar=-1
+	\@whilesw\unless\ifeof\infile\fi{%
+		\advance\linecnt by \@ne
+		\read\infile to \line
+		\if\relax\line\relax\else
+			\xdef\usetable{\usetable \the\linecnt & \line  \\}
+		\fi
+	}
+	 \egroup
+	\@esphack
+}
+\makeatother
+
+\newcommand{\konturplotsamples}{300}
+
+\begin{document}
+
+%\frontmatter
+
+% Titelpageseite
+\begin{titlepage}
+	{
+		\flushleft\includegraphics[width=0.33\textwidth]{TU_Logo_SW.pdf}\\[-2mm]
+		\rule{\textwidth}{0.5pt}\\[-3.7mm]
+		\rule{\textwidth}{0.5pt}
+	}
+	
+	\vspace{\stretch{1.4}}
+	\centering\large
+	{\huge\bfseries Dokumentation}
+	
+	\vspace{\stretch{0.1}}
+	{der Modulbegleitenden Aufgabe P2\\
+		des Moduls NUM
+	}
+	
+	\vspace{\stretch{0.5}}
+	vorgelegt von
+	
+	\vspace{\stretch{0.1}}
+	{\Large Pascal Lehmann}
+	
+	\vspace{\stretch{1.0}}
+	Institut für numerische Mathematik\\
+	Fachrichtung Mathematik\\
+	Fakultät Mathematik und Naturwissenschaften\\
+	der Technischen Universität Dresden\\
+	2019
+\end{titlepage}
+
+
+\pagenumbering{roman}
+\setcounter{page}{1}
+
+\tableofcontents
+\clearpage
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\section{Anfangswertprobleme und Methoden zum numerischen Lösen}
+\subsection{Anfangswertproblem}
+Für ein Anfangswertproblem (AWP) seien
+\begin{align}
+\notag 
+a,b\in \R\text{, } f:[a,b]\times\R^m\to\R^m \text{ und } u_0\in\R^m
+\end{align}
+gegeben.
+Ziel dabei ist, eine auf $(a,b)$ stetig differenzierbare Funktion 
+\begin{align}
+\label{eq:AWP}
+u:[a,b]\to\R^m \text{, die } u'(x)=f(x,u(x)) \text{ mit } u(a)=u_0
+\end{align}
+erfüllt, zu finden.
+In dieser Arbeit wird dabei die logistische Gleichung \eqref{eq:log} und eine gegebene weitere Gleichung \eqref{eq:gl} gelöst.
+\begin{align}
+\label{eq:log}
+& u'=\beta (1-u)u & \text{ mit } & x\in (0,10] \text{, für }u(0)=\alpha > 0 \text{, } \beta > 0 \\
+\label{eq:gl}
+&u'=10(\sin(x)-\cos(5x))& \text{ mit }& x\in (0,10] \text{, für } u(0)= 10 
+\end{align}
+\subsection{Numerische Verfahren}
+
+\subsubsection{Explizites und implizites Euler-Verfahren}
+
+\subsubsection{Verbessertes Polygonzugverfahren}
+
+
+\section{Lösen des Anfangswertproblems}
+\subsection{Analytische Lösung}
+
+\end{document}
