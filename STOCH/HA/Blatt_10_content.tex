@@ -8,6 +8,28 @@
 %%%%%%%%%%%%%%%%%%%% Aufgabe 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{}
 \begin{proof}
+	\begin{enumerate}\
+		\item 
+		\item 
+		\item 
+		\item We can solve this quick with the Residue Theorem (see ANAF for the physicsts from 2014 for example). We have
+		\begin{align*}
+		\frac{1}{\pi}\int_{-\infty}^{\infty} \frac{e^{\ii t x}}{x^2+1} \d x
+		\end{align*}
+		we can evaluate it by expressing the integral as a limit of contour integrals. So we can set with $t>0$ and define a contour $\mathscr{C}$ which goes along the real line from $-a$ to $a$ and counter clockweise along the semicircle centered at 0 from $a$ to $-a$ (need to go sure that the circle is bigger than 1, because we need to enclose $\ii$)
+		\begin{align*}
+		\frac{1}{\pi}\int_{\mathscr{C}} f(z) \d z = \int_{\mathscr{C}} \frac{e^{\ii t z}}{z^2+1}
+		\end{align*}
+		$e^{\ii t z}$ (because it is holomorphic at all finite points over the whole $\C$ plane) has no singularities only $z^2+1$ has in the denominator, so we find two singularities $z=\ii$ and $z = - \ii$. So only one of the two points is bounded by this contour and we have
+		\begin{align*}
+		\frac{e^{\ii t z}}{z^2+1} = \frac{e^{\ii t z}}{2 \ii (z- \ii)} / \frac{e^{\ii t z}}{2 \ii (z)+ \ii)}
+		\end{align*}
+		So the residue of $f(z)$ at $z = i$ is
+		\begin{align*}
+		Res_{z=i} f(z) = \frac{e^{-t}}{2 \ii}
+		\end{align*}
+		We know that the contour splits up in a straight part and an arc part. The straight part we have already calculated. %TODO finish
+	\end{enumerate}	
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%% Aufgabe 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -23,16 +45,16 @@
 %%%%%%%%%%%%%%%%%%%% Aufgabe 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{}
 \begin{proof}
-	
-\end{proof}
-
-%%%%%%%%%%%%%%%%%%%% Aufgabe 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{}
-\begin{proof}
-	
-\end{proof}
-
-\subsection{*}
-\begin{proof}
-	
+	\begin{enumerate}
+		\item 
+		\item For the counter example let $X$ be a CAUCHY r.v. and let $X=Y$ a.s.. The characterstic function (see 10.1d) was given by ($x_0$ is location and $\alpha$ is scale)
+		\begin{align*}
+			\varphi_X (u) &= e^{\ii x_0 u + \alpha\abs{u}}
+			\intertext{thus}
+			\varphi_X (u) \varphi(u) &= \brackets{e^{\ii x_0 u + \alpha \abs{u}}}^2 = e^{2\ii x_0 t + \alpha\abs{u}}\\
+			&= \E[e^{\ii u(2X)}] = \E[e^{\ii u (X+Y)}]\\
+			&= \varphi_{X+Y}
+		\end{align*}
+		and we know from previous homeworks that $X \and Y$ are \emph{not} independent.
+	\end{enumerate}
 \end{proof}
