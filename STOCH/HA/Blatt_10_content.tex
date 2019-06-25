@@ -9,7 +9,7 @@
 \subsection{}
 \begin{proof}
 	\begin{enumerate}
-		\item 
+		\item TODO
 		\item Follows quickly from the characteristic function definition (define $U= (u,0,\dots,0)$)
 		\begin{align*}
 			\varphi_X(U) &= \E[e^{\ii \scaProd{U}{X}}]\\
@@ -32,7 +32,7 @@
 		\end{align*}
 		$e^{\ii t z}$ (because it is holomorphic at all finite points over the whole $\C$ plane) has no singularities only $z^2+1$ has in the denominator, so we find two singularities $z=\ii$ and $z = - \ii$. So only one of the two points is bounded by this contour and we have
 		\begin{align*}
-		\frac{e^{\ii t z}}{z^2+1} = \frac{e^{\ii t z}}{2 \ii (z- \ii)} / \frac{e^{\ii t z}}{2 \ii (z)+ \ii)}
+		\frac{e^{\ii t z}}{z^2+1} = \frac{e^{\ii t z}}{2 \ii (z- \ii)} - \frac{e^{\ii t z}}{2 \ii (z+ \ii)}
 		\end{align*}
 		So the residue of $f(z)$ at $z = i$ is
 		\begin{align*}
@@ -55,7 +55,7 @@
 		\end{align*}
 		Where we have used that
 		\begin{align*}
-			\abs{e^{\ii t z}} = \abs{e^{\ii t \abs{z}}(\cos(\phi) +\ii \sin(\phi)} = \abs{e^{-t \abs{z} \sin(\phi} + \ii t \abs{z} \cos(\phi)} = e^{-t \abs{z} \sin(\phi)} \le 1
+			\abs{e^{\ii t z}} = \abs{e^{\ii t \abs{z}(\cos(\phi) +\ii \sin(\phi))}} = \abs{e^{-t \abs{z} \sin(\phi) + \ii t \abs{z} \cos(\phi)}} = e^{-t \abs{z} \sin(\phi)} \le 1
 		\end{align*}
 		So we get
 		\begin{align*}
@@ -65,36 +65,36 @@
 		\begin{align*}
 			\int_{-\infty}^{\infty} \frac{e^{\ii t z}}{z^2+1} \d z = \pi e^t
 		\end{align*}
-		Which gives us the end result for the CAUCHY-distrubution
+		Which gives us the end result for the CAUCHY-distribution
 		\begin{align*}
 			\varphi_X(u) = \frac{1}{\pi}\int_{-\infty}^{\infty} \frac{e^{\ii u z}}{z^2+1} \d z = e^{-\abs{u}}
 		\end{align*}
-		For convience we left out the $\frac{1}{\pi}$ scalar and added it back in the last line.
+		For convenience we left out the $\frac{1}{\pi}$ scalar and added it back in the last line.
 	\end{enumerate}	
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%% Aufgabe 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{}
 \begin{proof}
-	
+	TODO
 \end{proof}
 %%%%%%%%%%%%%%%%%%%% Aufgabe 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{}
 \begin{proof}
-	
+	TODO
 \end{proof}
 %%%%%%%%%%%%%%%%%%%% Aufgabe 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{}
 \begin{proof}
 	\begin{enumerate}
-		\item 
-		\item For the counterexample, let $X$ be a CAUCHY r.v. and $X=Y$ a.s.. The characterstic function (see 10.1d) was given by ($x_0$ is location and $\alpha$ is scale) %TODO maybe i dont need the x_0 here and the scale alpha, but it makes it more general ...
+		\item TODO 
+		\item For the counterexample, let $X$ be a CAUCHY r.v. and $X=Y$ a.s.. The characterstic function (see 10.1d) was given by ($x_0$ is a displacement and $\alpha$ is scale factor) %TODO maybe i dont need the x_0 here and the scale alpha, but it makes it more general ...
 		\begin{align*}
 			\varphi_X (u) &= e^{\ii x_0 u + \alpha\abs{u}}
 			\intertext{thus}
-			\varphi_X (u) \varphi(u) &= \brackets{e^{\ii x_0 u + \alpha \abs{u}}}^2 = e^{2\ii x_0 t + \alpha\abs{u}}\\
+			\varphi_X (u) \varphi(u) &= \brackets{e^{\ii x_0 u + \alpha \abs{u}}}^2 = e^{2\ii x_0 u + 2\alpha\abs{u}}\\
 			&= \E[e^{\ii u(2X)}] = \E[e^{\ii u (X+Y)}]\\
-			&= \varphi_{X+Y}
+			&= \varphi_{X+Y}(u)
 		\end{align*}
 		and we know from previous constructed counterexamples that $X \and Y$ are \emph{not} independent.
 	\end{enumerate}
