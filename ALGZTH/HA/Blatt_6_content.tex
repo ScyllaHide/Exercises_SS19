@@ -1,0 +1,56 @@
+% !TeX spellcheck = en_US
+% This work is licensed under the Creative Commons
+% Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy
+% of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or
+% send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+\section{6th Homework ALGZTH}
+Let $p$ be a prime number and $q=p^d$ for a $d \in \N$.
+\subsection{H86}
+\begin{proof}\
+	Let $L$ be the splitting field of $f$, $f$ is also the 8th cyclotomic polynomial ($\phi_8(x)$) and therefore we know the roots, which are
+	\begin{align*}
+		\xi_8 = e^{(\pi \ii)/8} \and 
+		\xi^3_8 = e^{(3\pi \ii)/8}\\
+		\xi_8^5 = e^{(5\pi \ii)/8} \and
+		\xi_8^7 = e^{(7\pi \ii)/8}
+	\end{align*}
+	and therefore $[L=\Q(\xi_4)\colon \Q] = 4$ (and $\phi_8(x)$ is irreducible over $\Q$). The field extension $L \mid \Q$ is finite galois, because the splitting field $L$ is finite and $\Q$ is also perfect ($\chara(\Q) = 0$). So we can use the GALIOS-correspondence (theorem 2.2.2) and get $\abs{\Gal(L\mid \Q)} = 4$ where we have used 2.1.8. So we can look for groups with order 4. These are
+	\begin{align*}
+		G = \Gal(L \mid \Q) \cong C_4 \text{ or } V_4.
+	\end{align*}
+	$C_4$ we can eliminate, because all roots for $\varphi_8(x)$ are in $\C$. So we have $V_4$, which has 5 subgroups including $V_4$ itself, hence we have 5 ``Zwischenkoerper''. %TODO add subgroups here.
+	Because the order of $V_4$ was 4, so there exists 4 ``$\sigma$ maps''. So let us define the maps
+	\begin{align*}
+		...
+	\end{align*}
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%% Aufgabe 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{H87}
+\begin{proof}\
+	
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%% Aufgabe 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{H88}
+\begin{proof}\
+	Let $l$ be prime.
+	We know $[\F_{q^l}\colon \F_q] = l$ and because $l$ is prime we get 
+	\begin{align*}
+		[\F_q(\alpha)\colon \F] =
+		\begin{cases}
+			1 & \quad \in (\F_{q^l}\mid \F_q\setminus \F_q) \\
+			l & \alpha \in \F_q.
+		\end{cases}
+	\end{align*}
+	With 2.3.7 it follows for all $\alpha \in (\F_{q^l} \mid \F_q \set{\F_q}):$ $\F_q(\alpha) = \F_{q^l}$. And thus the number of primitive elements is 
+	\begin{align*}
+		\#(\F_{q^l} \mid \F_q \setminus \F_q) = q^l -q
+	\end{align*}
+	The minimal polynomial is irreducible (because with 2.3.5, it is separabel) and therefore we have $(q-1)$ and $l$ roots have the same minimal polynomial $\implies l^{-1}$. When we put everything together we get
+	\begin{align*}
+		l^{-1}\mal (q^l - q)(q-1)
+	\end{align*}
+	many irreducible $f \in \F_q(X)$ with degree $\deg(f) = l$.
+\end{proof}
