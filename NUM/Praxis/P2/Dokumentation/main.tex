@@ -159,19 +159,18 @@ hyperindex=true, % Indexeinträage verweisen auf Text
 
 \section{intial value problem and methods for solution}
 \subsection{intial value problem}
-Für ein Anfangswertproblem (AWP) seien
+For an initial value problem (IVP) we have
 \begin{align}
 \notag 
 a,b\in \R\text{, } f:[a,b]\times\R^m\to\R^m \text{ und } u_0\in\R^m
 \end{align}
-gegeben.
 Ziel dabei ist, eine auf $(a,b)$ stetig differenzierbare Funktion 
 \begin{align}
 \label{eq:AWP}
 u:[a,b]\to\R^m \text{, die } u'(x)=f(x,u(x)) \text{ mit } u(a)=u_0
 \end{align}
 erfüllt, zu finden.
-In dieser Arbeit wird dabei die logistische Gleichung \eqref{eq:log} und eine gegebene weitere Gleichung \eqref{eq:gl} gelöst.
+In this documentation we have to solve the logistic equation \eqref{eq:log} and another equation \eqref{eq:gl}.
 \begin{align}
 \label{eq:log}
 & u'=\beta (1-u)u & \text{ mit } & x\in (0,10] \text{, für }u(0)=\alpha > 0 \text{, } \beta > 0 \\
@@ -180,12 +179,38 @@ In dieser Arbeit wird dabei die logistische Gleichung \eqref{eq:log} und eine ge
 \end{align}
 \subsection{Numerical methods}
 
-\subsubsection{explicit and implicit Euler-method}
+\subsubsection{Explicit and implicit Euler-method}
 
-\subsubsection{improved Euler-method}
+\subsubsection{Improved Euler-method}
 
 
-\section{solution of the intial value problem}
+\section{Solution of the intial value problem}
 \subsection{analytical solution}
-
+\subsubsection*{$u_1$}
+	We can solve \cref{eq:log} with speration of the variables and with the initial value $u(0) = \alpha$ and we get 
+	\begin{align*}
+		\int_{\alpha}^{u} \frac{1}{u' (1-u')} \d u' = \beta \int_0^t \d t'.
+	\end{align*} 
+	For the solution we need to use partial fraction expansion and after integration we get
+	\begin{align*}
+		\ln \left( \frac{u}{\alpha} \cdot \frac{1-\alpha}{a-u}\right) = \beta t.
+	\end{align*}
+	and after a bit algebra fun we find the solution:
+	\begin{align}
+		u(t) = \frac{e^{\beta t}}{\frac{1-\alpha}{\alpha} + e^{\beta t}\label{eq:u_1:sol}
+	\end{align}
+\subsubsection*{$u_2$
+	The second function we can quickly solve by simple integration with the initial value $u(0) = 10$. After integration
+	\begin{align*}
+		u(x) = \gamma - 10 \left( \cos(x) + \frac{1}{5} \sin(x)\right) \label{eq:u_2:sol}
+	\end{align*}
+\section{Numerical results}
+\subsection{$u_1$}
+\subsubsection*{explicit Euler method}
+	
+\subsubsection*{improved polygon method}
+\subsubsection*{implicit euler method}
+\subsection{$u_2$}
+\subsubsection*{explicit Euler method}
+\subsubsection*{improved polygon method}
 \end{document}
