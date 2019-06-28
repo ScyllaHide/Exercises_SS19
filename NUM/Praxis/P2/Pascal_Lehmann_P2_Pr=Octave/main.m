@@ -24,7 +24,7 @@ for j=1:8
   h=(1/2)*h;
 
 endfor
-sol 
+sol
 
 pause
 
@@ -103,7 +103,7 @@ title("graphical presentation of the error for f_2");
 
 disp('experimentelle Konvergenzordnung')
 
-exp_KO = (log(error((5/h)+1))-log(error(5/h)))/(log(10)-log(10/(2*h)))
+exp_KO = (log(error((5/h)+1))-log(error(5/h)))/(log(10/h)-log(10/(2*h)))
 
 pause
 
@@ -126,4 +126,4 @@ error = abs(transpose(analytic)-result);
 
 disp('experimentelle Konvergenzordnung')
 
-exp_KO = (log(error((5/h)+1))-log(error(5/h)))/(log(10)-log(10/(2*h)))
+exp_KO = (log(error((5/h)+1))-log(error(5/h)))/(log(10/h)-log(10/(2*h)))
