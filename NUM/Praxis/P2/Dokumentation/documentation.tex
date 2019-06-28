@@ -71,6 +71,9 @@ hyperindex=true, % Indexeinträage verweisen auf Text
 ]{hyperref}
 \usepackage{cleveref}
 
+% local commands
+%\newcommand{\d}{\mathrm{ d}}
+
 \newenvironment{bottompar}{\par\vspace*{\fill}}{\clearpage}
 
 \let\oldepsilon\epsilon
@@ -159,17 +162,6 @@ hyperindex=true, % Indexeinträage verweisen auf Text
 
 \section{intial value problem and methods for solution}
 \subsection{intial value problem}
-For an initial value problem (IVP) we have
-\begin{align}
-\notag 
-a,b\in \R\text{, } f:[a,b]\times\R^m\to\R^m \text{ und } u_0\in\R^m
-\end{align}
-Ziel dabei ist, eine auf $(a,b)$ stetig differenzierbare Funktion 
-\begin{align}
-\label{eq:AWP}
-u:[a,b]\to\R^m \text{, die } u'(x)=f(x,u(x)) \text{ mit } u(a)=u_0
-\end{align}
-erfüllt, zu finden.
 In this documentation we have to solve the logistic equation \eqref{eq:log} and another equation \eqref{eq:gl}.
 \begin{align}
 \label{eq:log}
@@ -177,40 +169,58 @@ In this documentation we have to solve the logistic equation \eqref{eq:log} and 
 \label{eq:gl}
 &u'=10(\sin(x)-\cos(5x))& \text{ mit }& x\in (0,10] \text{, für } u(0)= 10 
 \end{align}
-\subsection{Numerical methods}
-
-\subsubsection{Explicit and implicit Euler-method}
-
-\subsubsection{Improved Euler-method}
-
-
+\subsection*{implicit euler method for $u_1$}
+	We needed to reshape the ODE \eqref{eq:gl} for this method:
+	\begin{align}
+		u_{k+1} = u_k + h_k f(x_{k+1}, u_{k+1}) \label{eq:imp_euler:1}
+	\end{align}
+	for the implicit euler method, we need to solve the equation, because we have the value for $f(x_{k+1}, u_{k+1})$ only implicit, thats where the name for the method comes from.
+	If we take a look at \eqref{eq:gl} again we get from there the $f$-function, which we put into \eqref{eq:imp_euler:1} and get the following equation
+	\begin{align}
+		u_{k+1} = u_k + hf(\beta(1-u_{k+1})u_{k+1}) \notag
+		\intertext{rearrange to}
+		u_{k+1} = \frac{1}{2}\left( 1-\frac{1}{h\beta} \right) \pm \sqrt{\frac{1}{4} \left( 1-\frac{1}{h \beta} \right)^2 + \frac{u_k}{h \beta}} \label{eq:imp_euler:2}
+	\end{align}
+	and we 
 \section{Solution of the intial value problem}
 \subsection{analytical solution}
-\subsubsection*{$u_1$}
-	We can solve \cref{eq:log} with speration of the variables and with the initial value $u(0) = \alpha$ and we get 
+\subsubsection*{equation $u_1$}
+	We can solve \cref{eq:log} with separation of variables, with the initial value $u(0) = \alpha$ we get 
 	\begin{align*}
-		\int_{\alpha}^{u} \frac{1}{u' (1-u')} \d u' = \beta \int_0^t \d t'.
+		\int_{\alpha}^{u} \frac{1}{u' (1-u')} du' = \beta \int_0^t dx'.
 	\end{align*} 
-	For the solution we need to use partial fraction expansion and after integration we get
+	For the solution we need to use partial fraction expansion and integrate
 	\begin{align*}
 		\ln \left( \frac{u}{\alpha} \cdot \frac{1-\alpha}{a-u}\right) = \beta t.
 	\end{align*}
-	and after a bit algebra fun we find the solution:
+	After a bit algebra fun we find the solution:
 	\begin{align}
-		u(t) = \frac{e^{\beta t}}{\frac{1-\alpha}{\alpha} + e^{\beta t}\label{eq:u_1:sol}
+		u(x) = \frac{e^{\beta x}}{\frac{1-\alpha}{\alpha}} + e^{\beta x}\label{eq:u_1:sol}
 	\end{align}
-\subsubsection*{$u_2$
-	The second function we can quickly solve by simple integration with the initial value $u(0) = 10$. After integration
-	\begin{align*}
+\subsubsection*{equation $u_2$}
+	The second function can quickly solved by simple integration with the initial value $u(0) = 10$ and integrate
+	\begin{align}
 		u(x) = \gamma - 10 \left( \cos(x) + \frac{1}{5} \sin(x)\right) \label{eq:u_2:sol}
-	\end{align*}
+	\end{align}
+	with the initial value, we get
+	\begin{align}	
+		u(x) = 20 - 10 \cos(x) -2\sin(x) \label{eq:u_2:sol:2}
+	\end{align}
+\subsubsection*{Solution for $u(10)$ for $u_1$ and $u_2$}
+For \eqref{eq:gl} with $\alpha = 10$ and $\beta = 2$ for $u_1$.
+\begin{align}
+	u_1(10) &= \frac{e^{20}}{\frac{9}{10} + e^{20}} \approx 1, \label{eq:u_1:bound}\\
+	u_2(10) &= 20 -10\cos(10) - 2 \sin(10) \approx 29,48. \label{eq:u_2_bound}
+\end{align}
+\subsubsection*{Limit for $u_1$} We can use for the limit of the logistic equation \eqref{eq:log} for $n \to \infty$ the L'Hopital law:
+\begin{align}
+	\lim_{x \to \infty} u_1(x) = \lim_{x \to \infty} \frac{e^{x\beta}}{\frac{9}{10} + e^{x\beta}} = \lim_{x \to \infty} \frac{\beta e^{\beta x}}{\beta e^{\beta x}} = 1.
+\end{align}
 \section{Numerical results}
-\subsection{$u_1$}
-\subsubsection*{explicit Euler method}
-	
-\subsubsection*{improved polygon method}
-\subsubsection*{implicit euler method}
-\subsection{$u_2$}
-\subsubsection*{explicit Euler method}
-\subsubsection*{improved polygon method}
+\subsection*{explicit Euler method}
+	For the $u_1$ we can see less deviation the more finer we take the $x$-grid, but when there is curvature involved, then we see more deviation like in the interval $(0,1)$ for \eqref{eq:log}.
+\subsection*{improved polygon method}
+	For this method we have way less deviation the more fine we make the $x$-grid and this method seems to also better handle the curvature areas of the given ODEs \eqref{eq:gl} and \eqref{eq:log}.
+\subsection*{implicit euler method}
+	The method seems to have two solutions for the \eqref{eq:log} as we know from \eqref{eq:imp_euler:2} and in every interation it is checked by calculating the deviation with the previous $u_{k-1}$ value which solution of $\eqref{eq:imp_euler:2}$ to choose.
 \end{document}

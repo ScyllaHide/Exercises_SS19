@@ -98,7 +98,7 @@ pause
 
 analytic = -2*(sin(5*x)+cos(5*x)-10);
 error = abs(transpose(analytic)-result);
-fplot(x,error); 
+plot(x,error); 
 title("graphical presentation of the error for f_2");
 
 disp('experimentelle Konvergenzordnung')
