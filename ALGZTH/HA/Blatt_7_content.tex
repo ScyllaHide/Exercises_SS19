@@ -4,27 +4,89 @@
 % of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or
 % send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
-\section{6th Homework ALGZTH}
+\section{7th Homework ALGZTH}
 Let $K$ be a field and $n \in \N$.
 \subsection{H101}
 \begin{solution}\
-	$f_i$ over $\Q$.
+	Find the GALOIS-groups for $f_i$ over $\Q,i=1,2,3,4$. Where $d_i=$ is discriminant, $G_i=\Gal(f_i\mid \Q)$ are  GALOIS-groups for the polynomials $f_i,i=1,2,3,4$.
 	\begin{itemize}
 		\item $f_1 = X^3 + X + 1$:
+		\begin{enumerate}
+			\item $d_1=-31$ and its clearly not a square number. ($d_1 \notin (\Q^{\times})^2$)
+			\item We assume $f_1$ is reducible and do polynomial division which leads to a contradiction, because we cant choose $a$ that it is an element of $\Q$ and therefore $f_1$ is irreducible and with the hint we get that $G_1 \cong S_3$.
+		\end{enumerate}
 		\item $f_2 = X^3 - 2X - 1$:
+		\begin{enumerate}
+			\item $d_2=5$, clearly not a square number. ($d_2 \notin (\Q^{\times})^2$)
+			\item With polynomial division we find $(x-1)(x^2-x-1)$, hence $f_2$ is reducible and with hint we get $G_2 \cong C_2$.
+		\end{enumerate}
 		\item $f_3 = X^3 - 12X + 8$:
+		\begin{enumerate}
+			\item $d_3 = 2^2(2^2\mal 3)^3 - 3^3 \mal 2^6$ we can simplify to $2^6\mal 3^4 = 72^2$ and this is a square number. ($d_3 \in (\Q^{\times})^2$)
+			\item We assume $f_1$ is reducible and do polynomial division which leads to a contradiction, because we cant choose $a$ that it is an element of $\Q$ and therefore $f_1$ is irreducible and with the hint we get that $G_3 \cong A_3$.
+		\end{enumerate}
 		\item $f_4 = X^4 + 3X^2 + 2$:
+		\begin{enumerate}
+			\item We find roots: 
+				\begin{align*}
+					\alpha_1 = \ii \and \alpha_2=-\ii\\
+					\alpha_3 = \ii\sqrt{2} \and \alpha_4 = -\ii\sqrt{2}
+				\end{align*}
+			and with definition (lecture notes 2.5.11) of discriminant
+			\begin{align*}
+				d_4 &= \prod_{i < j} (\alpha_i -\alpha_j) =((\alpha_1 - \alpha_2)(\alpha_2-\alpha_3)(\alpha_3-\alpha_4)(\alpha_1-\alpha_4)(\alpha_1-\alpha_3))^2\\
+				&=32
+			\end{align*}
+			\begin{align*}
+				\text{and field degree: }[\Q(\ii, \ii\sqrt{2})\colon \Q] = 4
+			\end{align*}
+			and this implies $C_4$ or $C_2 \times C_2 \cong V_4$, we can exclude $C_4$, because we cant construct any automorphisms for $C_4$ with the roots we found. But for $(C_2)^2$ we find
+			\begin{align*}
+				\sigma_1 = \begin{cases}
+					\ii &\to -\ii\\
+					\ii\sqrt{2} &\to \ii\sqrt{2}\\
+				\end{cases} &\and
+				\sigma_2 = \begin{cases}
+					\ii \sqrt{2} &\to \ii \sqrt{2}\\
+					\ii &\to -\ii 
+				\end{cases}\\
+				\sigma_3 = \begin{cases}
+					\ii &\to \ii\\
+					\ii \sqrt{2} &\to \ii \sqrt{2}
+				\end{cases} &\and
+				\sigma_4 = \id
+			\end{align*}
+			with automorphism compositions:
+			\begin{align*}
+				\sigma_1\sigma_2 = \sigma_3 \sigma_1 \sigma_3 &= \sigma_2 \sigma_2 \sigma_3 = \sigma_1\\
+				\sigma_3 \sigma_1 &= \sigma_2
+			\end{align*}
+			That is the $V_4$, so we find $G_4 \cong V_4$. 
+		\end{enumerate}
 		\end{itemize}
 \end{solution}
 
 %%%%%%%%%%%%%%%%%%%% Aufgabe 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{H102}
 \begin{proof}\
-	
+	TODO.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%% Aufgabe 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{H103}
 \begin{proof}\
-	
+	\begin{enumerate}
+		\item $\implies$: With II.6.9 und GEO I.4.14 we get that $\Gal(L\mid \Q) \cong C_{p-1}$ and $p$ odd implies $2 \mid (p-1)$. With GEO I.5.4a we get $\Gal(L\mid \Q)$ has only one subgroup $G \cong C_{(p-1)/2}$ with order $(p-1)/2$ and index: $(\Gal(L \mid \Q)\colon G) = 2$. Now we can use the GALOIS-correspondence: exact one intermediate field $K=L^G$ with
+		\begin{align*}
+		[K\colon\Q] = (\Gal(L \mid \Q)\colon G) = 2
+		\end{align*}
+		With Ü20 we can see that $K=\Q(\sqrt{l}), l \in \Q$ and we get two cases
+		\begin{itemize}
+			\item $l \in \Z \implies d= l \in \Z$
+			\item $l \notin \Z \implies l = a/b \with a,b \in \Z$ shows $\Q(\sqrt{ab}) = \Q(\sqrt{a/b})$ and this implies $d=a\cdot b \in \Z$
+		\end{itemize}
+		Therefore $\Q(\sqrt{l}) = \Q(\sqrt{d}) = K$. $d$ is not a square, because we had $\sqrt{d} \in \Q \and \Q(\sqrt{d}) = \Q$, hence $[\Q(\sqrt{d})\colon \Q] = 1 \neq 2$. (Because its late, i assume we have here all equivalences ...)
+		\item $\implies$: $K \subseteq \R \implies$ complex conjugation fixes $K \implies$ complex conjugation in $\Gal(L \mid K) = G$ ($\nearrow$ GEO I.4.5a) $\implies$ $2 \mid (p-1)/2$, this implies $4 \mid p-1 \implies p \equiv 1 \mod 4$. From GEO I.4.5 we get that $\Gal(L \mid \Q)$ has exact one element of order 2 and this is the complex conjugation.\\
+		$\Longleftarrow$: Let $p \equiv 1 \mod 4 \implies 2 \mid (p-1)/2 \implies \Gal(L \mid K) \cong C_{p-1/2}$ has element of order 2. Because $\Gal(L\mid K) \le \Gal(L\mid \Q)$ this element is also in $\Gal(L \mid \Q)$ and this has to be the complex conjugation and this implies the complex conjugation fixes $K \implies K \subseteq \R$.
+	\end{enumerate}
 \end{proof}
