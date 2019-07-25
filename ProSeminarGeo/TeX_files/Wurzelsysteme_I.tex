@@ -1,0 +1,202 @@
+\addtocounter{section}{3}
+\section{Wurzelsysteme I}
+Sei $\G \le \O(V)$ und $V$ ein euklidischer Vektorraum mit Skalarprodukt $(\cdot, \cdot)$.
+\begin{*definition}
+	Spiegelung ist $Sx = x$ $x \in \P$ und $Sx = -x x \in \P^{\perp}$ wobei $\P$ eine fixierte Hyperebene ist. Sei nun $0 \neq r \in \P^{\perp}$. Dann lässt sich eine Transformation $S_r$ definieren durch das Setzen von
+	\begin{align*}
+		S_r x = x - \frac{2(x,r)r}{(r,r)} \quad \forall x \in V
+	\end{align*}
+	Sprechweise: $S_r$ ist die Spiegelung \emph{durch} $\P$ oder auch die Spiegelung \emph{entlang} $r$.
+\end{*definition}
+Sei $S \in \G$ eine Spiegelung durch die Hyperbene $\P$.
+\begin{*definition}
+	Wurzeln von $\G$ werden Einheitsvektoren $\pm r$ genannt, welche senkrecht zu $\P$ sind, so dass $S = S_r$ gilt.
+\end{*definition}
+\begin{proposition}
+	\proplbl{4_1_1}
+	Wenn $r$ eine Wurzel von $\G$ ist und wenn $T \in\G$, dann ist $Tr$ auch Wurzel von $\G$. Also gilt, wenn $Tr = x$, dann $S_x = TS_r T^{-1} \in \G$.
+\end{proposition}
+\begin{*definition}
+	Eine Untergruppe von $\G$ wird effektiv genannt, wenn $V_0(\G) = 0$ ist. Dabei ist 
+	\begin{align*}
+		V_0(\G) = \bigcap_{T \in \G} \set{x \in V \colon Tx = x}	
+	\end{align*}
+\end{*definition}
+\begin{proposition}
+	\proplbl{4_1_2}
+	Angenommen, dass $\G$ erzeugt wird von Spiegelungen entlang der Wurzeln $r_1, \dots, r_k$. Genau dann ist $\G$ effektiv, wenn $\set{r_1, \dots, r_k}$ eine Basis für $V$ enthält.
+\end{proposition}
+\begin{*definition}
+	Ein Wurzelsystem $\Delta$ nach \propref{4_1_1} ist die Menge aller Wurzeln, die zu den Spiegelungen $TST^{-1}$ gehören, wobei $T$ Ranges über $\G$ und $S$ über das Erzeugendensystem der Spiegelungen.
+\end{*definition}
+\begin{proposition}
+	\proplbl{4_1_3}
+	Angenommen, das $\G$ erzeugt wird von einem endlichen Menge von Spiegelungen und das $\G$ effectiv ist. Wenn Wurzelsystem endlich ist, dann auch $\G$ endlich.
+\end{proposition}
+Wähle einen Vektor $t \in V$ aus, sodass $(t,r) \neq 0$ für jede Wurzel $r \in \G$. Dann ergibt sich folgende Aufteilung des Wurzelsystems $\Delta$ in zwei Teilmenge
+\begin{align*}
+	\Delta_t^{\pm} = \set{r \in \Delta \colon (t,r) \gtrless 0}
+\end{align*}
+\begin{*definition}
+	\begriff{t-Basis} wird eine Teilmenge $\Pi$ von $\Delta_t^+$ genannt, wenn gilt
+	\begin{enumerate}
+		\item $\Pi$ ist minimal, d.h. das jedes $r \in \Delta_t^+$ ist eine Linearkombination von Elementen aus $r_i \in \Pi$, da sonst $\Pi$ kein Erzeugendensystem mehr von $\Delta_t^+$ ist.
+		\item Bei den Linearkombinationen sind alle Koeffizienten positiv. 
+	\end{enumerate}
+\end{*definition}
+\begin{*definition}
+	Ein Vektor $x \in V$ wird t-positiv genannt, wenn $x$ aus einer Linearkombination mit nicht positiven Koeffizienten geschrieben werden kann.
+\end{*definition}
+Betrachte $x$ $t$-positiv und dann ergibt sich für das Skalarprodukt $(t,x) \ge 0$. Für $t$-negativ gilt ``$\le 0$''.
+
+\begin{proposition}
+	\proplbl{4_1_4}
+	Wenn $r_i, r_j$ in $\Pi$ mit $i\neq j$ und $\lambda_i, \lambda_j$ sind positive reelle Zahlen.\\
+	Dann ist der Vektor $x = \lambda_i r_i - \lambda_j r_j$ weder $t$-positiv noch $t$-negativ.
+\end{proposition}
+\begin{proof} Der Beweis ist indirekt, es wird angenommen, dass $x$ $t$-positiv bzgl der Basis $\Pi$ ist, dann wird das Skalarprodukt $(t,x)$ ausgewertet, sodass es zu einen Widerspruch führt der Form $0 > 0$ indem das Skalarprodukt auseinander gezogen wird.
+	\begin{enumerate}
+		\item Angenommen $x$ wäre positiv, dann könnte $x$ geschrieben werden als
+		\[
+			x = \lambda_i r_i - \lambda_j r_j = \sum_{k=1}^m \mu_k r_k
+		\]
+		mit $\mu_k \ge 0$. Wenn $\lambda_i > \mu_i$, dann folgt
+		\begin{align*}
+			0 = (t,)
+		\end{align*}
+	\end{enumerate}
+\end{proof}
+\begin{proposition}
+	\proplbl{4_1_5}
+	Angenommen, dass $r_i, r_j \in \Pi \mit i \neq j$. Sei $S_i$ die Spiegelung entlang $r_i$.\\
+	Dann ist $S_i r_j \in \Delta_t^+ \und (r_i,r_j) \le 0$.
+\end{proposition}
+\begin{proof}
+	Ist ein direkter Beweis es wird die Definition von Spiegelung benutzt und die ``Neutralität'' eines Linearkombination, Nach \propref{4_1_4}. 
+\end{proof}
+\begin{*remark}
+	Geometrisch bedeutet $(r_i, r_j) \le 0$, dass der Winkel zwischen den Vektoren $r_i \und r_j$ spitzwinklig ist, folgt aus der Definition des Skalarprodukts.
+\end{*remark}
+\begin{proposition}
+	\proplbl{4_1_6}
+	Angenommen, dass $x_1, \dots, x_m \in V$ sind alle auf der gleichen Seite der Hyperfläche, d.h $(x,x_i) >0 \mit 1\le i \le m$ für ein $x \in V$.\\
+	Wenn $(x_i,x_j) \le 0$ für $i\neq j$, dann ist die Menge $Q = \set{x_1,\dots,x_m}$ linear unabhängig. 
+\end{proposition}
+\begin{proof}
+	Angenommen $Q$ ist linear abhängig, dann gibt es Abhängigkeit der Form:
+	\[
+		\sum_{i=1}^k \lambda_i x_i = \sum_{i=k+1}^m \mu_i x_i,
+	\]
+	mit $\forall \lambda_i \ge 0 \und \forall \mu_i \ge 0$. Dann
+	\begin{align*}
+		0 \le \norm{\sum_{i=1}^k \lambda_i x_i} &= (\sum_{i=1}^k \lambda_i x_i, \sum_{i=1}^k \lambda_i x_i)\\
+		&= (\sum_{i=1}^k \lambda_i x_i, \sum_{j=1}^m \mu_j x_j)\\
+		&= (\sum_{i=1}^k \lambda_i x_i, \sum_{j=1}^m \mu_j x_j)\\
+		&= \sum_{i=1}^k \sum_{i=k+1}^m \lambda_i \mu_j (x_i,x_j) \le 0,
+	\end{align*}
+	Gleichheit bleibt erhalten. Dann aber
+	\[
+		0 = (\sum_{i=1}^k \lambda_i x_i,x) = \sum_{i=1}^k \lambda_i (x_i,x) >0
+	\]
+	für einige $\lambda_i > 0$. Ist Widerspruch und damit bewiesen.
+\end{proof}
+\begin{theorem}
+	\proplbl{4_1_7:th}
+	Wenn $\Pi$ $t$-Basis für $\Delta$ ist, dann ist $\Pi$ auch eine Basis für $V$.
+\end{theorem}
+\begin{proof}
+	Da $\G$ effectiv ist, spannt $\Delta$ $V$, nach \propref{4_1_2}. Jedes $r \in \Delta$ ist LK der Wurzeln in $\Pi$, $\Pi$ wird aufgespannt von $V$. Nach \propref{4_1_5} und \propref{4_1_6} ist $\Pi$ linear unabhängig, also $\Pi$ ist Basis von $V$.
+\end{proof}
+\begin{proposition}
+	\proplbl{4_1_8}
+	Es gibt genau eine $t$-Basis für $\Delta$.
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+		\item Angenommen es gibt $\Pi_1$ und $\Pi_2$ $t$-Basen. Also jede Wurzel in $\Pi_1$ wird durch eine nicht negativ LK von Elementen in $\Pi_2$ dargestellt, dann kann die Basiswechselmatrix $A$ von $\Pi_2$ zu $\Pi_1$ betrachtet werden, diese hat nicht negative Einträge. Umgekehrt sei $B = A^{-1}$, die Basiswechselmatrix $\Pi_1 \to \Pi_2$ auch mit nicht negativ Einträgen.
+		\item Betrachte die Zeilen von $A$: $a_1, \dots, a_n$ und Spalten von $B$ mit $b_1, \dots, b_n$. Da $AB = I$ gilt, ergibt sich $a_1^T \perp b_i$ für $2 \le i \le n$ in $\R^n$. $B$ kann nicht singulär sein, da es höchstens einen Index $j$ for welchen der $j$-Eintrag in allen Spalten von $b_1, \dots, b_n$ 0 ist., dann wären $b_i$ linear abhängig. Folgt das $a_1$ höchstens ein nicht negativen Eintrag hat. Ähnlich für die verbleibenden $a_i$. Da $A$ nicht singulär ist, folgern wir, dass $A$ genau einen positiven Eintrag in jeder Zeile und in jeder Spalte haben muss, sonst Nullen.
+		\item Somit ist jede Wurzel in $\Pi_1$ eine positive Vielfache einer Wurzel in $\Pi_2$. Da nicht positive Vielfache einer Wurzel $r$ eine Wurzel bereits selbst eine Wurzel $r$ ist, folgt das $A$ eine Permutationsmatrix ist und damit muss $\Pi_1 = \Pi_2$ gelten. 
+	\end{itemize}
+	
+\end{proof}
+\begin{proposition}
+	\proplbl{4_1_9}
+	Angenommen, dass $S_{r_i}$ eine Spiegelung entlang $r_i \in \Pi = \set{r_1, \dots, r_n}$ ist.\\
+	Wenn $r \in \Delta_t^+$, aber $r \neq r_i$, dann gilt $S_{r_i}r \in \Delta_t^+$.
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item Wenn $r \in \Pi$, dann ist $S_{r_i}(r) \in \Delta_t^+$ nach \propref{4_1_5}.
+		\item Wenn $r \notin \Pi$, dann $r = \sum_{j=1} \lambda_j r_j$ und mindestens zwei positive Koeffizienten $\lambda_j$, nehme a, dass $r_i \neq r_1$ und das $\lambda_1 > 0$. Also
+		\begin{align*}
+			S_{r_i}(r) &= \sum_{j=1} \lambda_j r_j \\
+			&= \lambda_1 r_1 + \sum_{j=2} \lambda_j r_j - 2 \sum_{j=1}^n \lambda_j(r_j,r_i)r_i.
+		\end{align*}
+		Da $S_{r_i}(r) \in \Delta$, ist $S_{r_i}(r)$ weder positiv noch negativ. Da es mindestens einen postiven Koeffizienten $\lambda_1$ hat, schlussfolgern wir, dass alle Koeffizienten nicht negativ sind, somit gilt $S_{r_i}(r) \in \Delta^+$.
+	\end{enumerate}
+\end{proof}
+\begin{*definition}
+	\begin{itemize}
+		\item \begriff{Fundamentalwurzeln} oder \begriff{einfache Wurzel} werden die Wurzeln $r_1, \dots, r_n$ in der Basis $\Pi$ genannt.
+		\item \begriff{Fundamentalspiegelung} von $\G$ werden die $S_1, \dots, S_n$ entlang der Wurzeln $r_1, \dots, r_n$ genannt.
+	\end{itemize}
+\end{*definition}
+Bezeichne temporär mit $\G_t$ die Untergruppe $\rangle S_i \colon 1 \le i \le n\langle$ von $\G$. In \propref{4_1_12} wird gezeigt, dass $\G_t = \G$ gilt und damit das $\G$ erzeugt wird von den Fundamental Spiegelungen.
+\begin{proposition}
+	\proplbl{4_1_10}
+	Wenn $x \in V$, dann gibt es eine Transformation $T \in \G_t$, so dass $(Tx, r_i) \ge 0$ für alle $r_i \in \Pi$ ist.
+\end{proposition}
+\begin{proof}
+	Setze $x_0 = \frac{1}{2} \sum_{r \in \Delta^+}r$. Da $\G_t$ endliche Gruppe, ist es möglich $T \in \G_t$ auszuwählen, sodass $(Tx,x_0)$ maximal ist. Wenn $S_{r_i}$ die Spiegelung entlang $r_i$ ist, dann folgt mit \propref{4_1_9}
+	\begin{align*}
+		S_{r_i}(x_0) &= \frac{1}{2}(S_{r_i}r_i + \frac{1}{2}\sum_{\substack{r \in \Delta^+\\r \neq r_i}})\\
+		&=  -\frac{1}{2}r_i + \frac{1}{2}\sum_{\substack{r \in \Delta^+\\r \neq r_i}}r\\
+		&= \frac{1}{2} \sum_{r \in \Delta^+}r - r_i = x_0 - r_i.
+	\end{align*}
+	Somit folgt mit der Maximalität von $(Tx, x_0)$,
+	\begin{align*}
+		(Tx,x_0) \ge (S_i Tx, x_0) &= (Tx,S_i x_0) = (Tx, x_0 - r_i)\\
+		&= (Tx,x_0) - (Tx,r_i)
+		\intertext{also}
+		&(Tx,r_i) >0.
+	\end{align*}
+\end{proof}
+\begin{proposition}
+	\proplbl{4_1_11}
+	Wenn $r \in \Delta^+$, dann ist $Tr \in \Pi$ für einige $T \in \G_t$.
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item Wenn $r \in \Pi$, wähle $T = 1$ und fertig.
+		\item \label{bew:4_1_11} Wenn $r \notin \Pi$, dann folgt mit \propref{4_1_5} und \propref{4_1_6} und \propref{4_1_7:th} dass $(r,r_{i_1}) > 0$ für einige Wurzeln $r_{i_1} \in \Pi$, andererseits wäre $\Pi \cup \set{r}$ linear unabhängig. Setze
+		\begin{align*}
+			a_1 = S_{r_{i_1}}r = r - 2(r, r_{i_1})r_{i_1}.
+		\end{align*}
+		Dann $a_1 \in \Delta^+$ nach \propref{4_1_9} und
+		\[
+			(a_1,t) = (r,t) - 2(r,r_{i_1})(r_{i_1},t) <(r,t).
+		\]
+		\begin{enumerate}
+			\item Wenn $a_1 \in \Pi$, setze $T = S_{i_1}\in \G_t$.
+			\item Wenn $a_1 \notin \Pi$ wiederhole Schritte von $a_1$ \ref{bew:4_1_11} um $r_{i_2}\in \Pi$ zugewinnen und 
+			\[
+				a_2 = S_{i_2}a_1 = S_{i_2}S_{i_1}r\in \Delta^+,
+			\]
+			mit $(a_2,t) < (a_1, t)$. Wenn $a_2 \in \Pi$ setze $S_{i_2}S_{i_1} = T$.
+			\item Wenn $a_2 \notin \Pi$, dann wird die Iteration forgesetzt, da $\Delta^+$ endlich ist, bricht die Iteration mit einem $a_k \in \Pi$ ab.
+			Da
+			\[
+				a_k = S_{i_k}a_{k-1} = S_{i_k}\cdots S_{i_1}r.
+			\]
+			Die Proposition ist bewiesen, wenn wir $T = S_{i_k}\cdots S_{i_1} \in \G_t$ setzen. 
+		\end{enumerate} 
+	\end{enumerate}
+\end{proof}
+\begin{theorem}
+	\proplbl{4_1_12}
+	Die Fundamentalspiegelungen $S_1, \dots, S_n$ erzeugen $\G$, d.h. $\G = \G_t$.
+\end{theorem}
+\begin{proof}
+	Da $\G = \langle S_r \colon r \in \Delta\rangle$ und da $S_{-r} = S_r$ reicht es aus zubeweisen, dass wenn $r \in \Delta^+$, dann $S_r \in \G_t$.\\
+	Angenommen das $r \in \Delta^+$. Nach \propref{4_1_11} gibt es eine Trasnformation $T \in \G_t$, sodass $Tr \in \Pi$, also $Tr = r_i$. Nach \propref{4_1_1} haben wir $S_r = T^{-1}S_{r_i}T \in \G_t$.
+\end{proof}
