@@ -1,0 +1,226 @@
+%\RequirePackage{ifluatex}
+\documentclass[
+paper=A4,fontsize=12pt,
+BCOR=15mm,DIV=22,
+%twoside=true,
+headinclude=true,footinclude=false,
+parskip=full,
+numbers=noendperiod,
+ngerman,fleqn,             % fleqn = linksbündige Ausrichtung von Formeln
+bibliography=totoc, % Bibliography appears in Table of Contents (without a number)
+toc=listof, % List of Figures and List of Tables appear in Table of Contents
+cleardoublepage=empty,      % Vakantseiten ohne Paginierung
+version = last
+]{scrartcl}
+
+\usepackage[ngerman]{babel}
+\usepackage{lmodern}
+
+%\usepackage{lua-visual-debug}
+\usepackage{scrhack}
+\usepackage{marginnote}
+\usepackage{scrpage2}
+\pagestyle{scrheadings}
+\clearscrheadfoot
+\ihead{\headmark}\ohead{\pagemark}
+\automark[subsection]{section}
+\setheadsepline{0.5pt}
+%\usepackage{fontspec}
+
+\usepackage{calc}
+
+\usepackage{graphicx,xcolor}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{amsmath,amsfonts,amssymb,mathtools}
+\usepackage{bbm}
+\usepackage{xfrac}
+\usepackage{siunitx}
+\sisetup{
+	locale = DE,
+	round-precision=3,
+	table-format=1.3e+1,
+	round-mode=places,
+%	table-figures-integer = 1,
+%	table-figures-decimal = 6
+}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+
+\usepackage[%
+font={small},
+labelfont={bf,sf},
+format=hang, % try plain or hang
+margin=5pt,
+]{caption}
+
+\usepackage[%
+bookmarks, % Create bookmarks
+bookmarksopen=true, % Unfold bookmatk tree in PDF viewer when document is opened
+bookmarksopenlevel=1, % Level of unfolding
+bookmarksnumbered=true, % Number bookmarks
+hidelinks, % do not highlight hyperlinks -- looks ugly
+% Ansicht beim Öffnen
+pdfpagelabels=true, % See manual...
+plainpages=false, % See manual...
+hyperfootnotes=true, % Hyperlinks for footnotes
+hyperindex=true, % Indexeinträage verweisen auf Text
+]{hyperref}
+\usepackage{cleveref}
+
+% local commands
+%\newcommand{\d}{\mathrm{ d}}
+
+\newenvironment{bottompar}{\par\vspace*{\fill}}{\clearpage}
+
+\let\oldepsilon\epsilon
+\let\epsilon\varepsilon
+
+\newcommand{\transpose}[1]{%
+	\ifmmode%
+		{#1}^\textrm T%
+	\else%
+		$#1^\textrm T$%
+	\fi%
+}
+%Shortcuts math symbols
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+
+\makeatletter
+\newread\infile
+\def\preparetable#1{
+	\@bsphack
+	\bgroup
+	\openin\infile=#1
+	\let\\=\relax
+	\newcount\linecnt
+	\gdef\usetable{}
+	\endlinechar=-1
+	\@whilesw\unless\ifeof\infile\fi{%
+		\advance\linecnt by \@ne
+		\read\infile to \line
+		\if\relax\line\relax\else
+			\xdef\usetable{\usetable \the\linecnt & \line  \\}
+		\fi
+	}
+	 \egroup
+	\@esphack
+}
+\makeatother
+
+\newcommand{\konturplotsamples}{300}
+
+\begin{document}
+
+%\frontmatter
+
+% Titelpageseite
+\begin{titlepage}
+	{
+		\flushleft\includegraphics[width=0.33\textwidth]{TU_Logo_SW.pdf}\\[-2mm]
+		\rule{\textwidth}{0.5pt}\\[-3.7mm]
+		\rule{\textwidth}{0.5pt}
+	}
+	
+	\vspace{\stretch{1.4}}
+	\centering\large
+	{\huge\bfseries documentation}
+	
+	\vspace{\stretch{0.1}}
+	{der Modulbegleitenden Aufgabe P2\\
+		des Moduls NUM
+	}
+	
+	\vspace{\stretch{0.5}}
+	vorgelegt von
+	
+	\vspace{\stretch{0.1}}
+	{\Large Pascal Lehmann}
+	
+	\vspace{\stretch{1.0}}
+	Institut für numerische Mathematik\\
+	Fachrichtung Mathematik\\
+	Fakultät Mathematik und Naturwissenschaften\\
+	der Technischen Universität Dresden\\
+	2019
+\end{titlepage}
+
+
+\pagenumbering{roman}
+\setcounter{page}{1}
+
+\tableofcontents
+\clearpage
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\section{intial value problem and methods for solution}
+\subsection{intial value problem}
+In this documentation we have to solve the logistic equation \eqref{eq:log} and another equation \eqref{eq:gl}.
+\begin{align}
+\label{eq:log}
+& u'=\beta (1-u)u & \text{ mit } & x\in (0,10] \text{, für }u(0)=\alpha > 0 \text{, } \beta > 0 \\
+\label{eq:gl}
+&u'=10(\sin(x)-\cos(5x))& \text{ mit }& x\in (0,10] \text{, für } u(0)= 10 
+\end{align}
+\subsection*{implicit euler method for $u_1$}
+	We needed to reshape the ODE \eqref{eq:gl} for this method:
+	\begin{align}
+		u_{k+1} = u_k + h_k f(x_{k+1}, u_{k+1}) \label{eq:imp_euler:1}
+	\end{align}
+	for the implicit euler method, we need to solve the equation, because we have the value for $f(x_{k+1}, u_{k+1})$ only implicit, thats where the name for the method comes from.
+	If we take a look at \eqref{eq:gl} again we get from there the $f$-function, which we put into \eqref{eq:imp_euler:1} and get the following equation
+	\begin{align}
+		u_{k+1} = u_k + hf(\beta(1-u_{k+1})u_{k+1}) \notag
+		\intertext{rearrange to}
+		u_{k+1} = \frac{1}{2}\left( 1-\frac{1}{h\beta} \right) \pm \sqrt{\frac{1}{4} \left( 1-\frac{1}{h \beta} \right)^2 + \frac{u_k}{h \beta}} \label{eq:imp_euler:2}
+	\end{align}
+	and we 
+\section{Solution of the intial value problem}
+\subsection{analytical solution}
+\subsubsection*{equation $u_1$}
+	We can solve \cref{eq:log} with separation of variables, with the initial value $u(0) = \alpha$ we get 
+	\begin{align*}
+		\int_{\alpha}^{u} \frac{1}{u' (1-u')} du' = \beta \int_0^t dx'.
+	\end{align*} 
+	For the solution we need to use partial fraction expansion and integrate
+	\begin{align*}
+		\ln \left( \frac{u}{\alpha} \cdot \frac{1-\alpha}{a-u}\right) = \beta t.
+	\end{align*}
+	After a bit algebra fun we find the solution:
+	\begin{align}
+		u(x) = \frac{e^{\beta x}}{\frac{1-\alpha}{\alpha}} + e^{\beta x}\label{eq:u_1:sol}
+	\end{align}
+\subsubsection*{equation $u_2$}
+	The second function can quickly solved by simple integration with the initial value $u(0) = 10$ and integrate
+	\begin{align}
+		u(x) = \gamma - 10 \left( \cos(x) + \frac{1}{5} \sin(x)\right) \label{eq:u_2:sol}
+	\end{align}
+	with the initial value, we get
+	\begin{align}	
+		u(x) = 20 - 10 \cos(x) -2\sin(x) \label{eq:u_2:sol:2}
+	\end{align}
+\subsubsection*{Solution for $u(10)$ for $u_1$ and $u_2$}
+For \eqref{eq:gl} with $\alpha = 10$ and $\beta = 2$ for $u_1$.
+\begin{align}
+	u_1(10) &= \frac{e^{20}}{\frac{9}{10} + e^{20}} \approx 1, \label{eq:u_1:bound}\\
+	u_2(10) &= 20 -10\cos(10) - 2 \sin(10) \approx 29,48. \label{eq:u_2_bound}
+\end{align}
+\subsubsection*{Limit for $u_1$} We can use for the limit of the logistic equation \eqref{eq:log} for $n \to \infty$ the L'Hopital law:
+\begin{align}
+	\lim_{x \to \infty} u_1(x) = \lim_{x \to \infty} \frac{e^{x\beta}}{\frac{9}{10} + e^{x\beta}} = \lim_{x \to \infty} \frac{\beta e^{\beta x}}{\beta e^{\beta x}} = 1.
+\end{align}
+\section{Numerical results}
+\subsection*{explicit Euler method}
+	For the $u_1$ we can see less deviation the more finer we take the $x$-grid, but when there is curvature involved, then we see more deviation like in the interval $(0,1)$ for \eqref{eq:log}.
+\subsection*{improved polygon method}
+	For this method we have way less deviation the more fine we make the $x$-grid and this method seems to also better handle the curvature areas of the given ODEs \eqref{eq:gl} and \eqref{eq:log}.
+\subsection*{implicit euler method}
+	The method seems to have two solutions for the \eqref{eq:log} as we know from \eqref{eq:imp_euler:2} and in every interation it is checked by calculating the deviation with the previous $u_{k-1}$ value which solution of $\eqref{eq:imp_euler:2}$ to choose.
+\end{document}
