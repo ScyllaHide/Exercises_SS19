@@ -1,0 +1,57 @@
+% !TeX spellcheck = en_US
+% This work is licensed under the Creative Commons
+% Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy
+% of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or
+% send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+\section{3rd Homework ALGZTH}
+Let $L\mid K$ be a field extension and $p = \chara(K) \ge 0$.
+\subsection{H38}
+Determine the splitting field degree of the polynomial $f = X^4 +2X^2 -2$ over $\Q$. Is $f$ separable over $\Q$?
+\begin{solution}\
+	\begin{itemize}
+		\item there is an alternate form  for $f = (X^2+1)^2-3$ where we can obtain with substitution the roots easily. The roots are
+		\begin{align*}
+			X_{1,2} = \pm \sqrt{\sqrt{3}-1} \qquad X_{3,4} = \pm \ii\sqrt{\sqrt{3}+1}.
+		\end{align*}
+		With that we find the splitting field is $\Split = \Q(\sqrt{\sqrt{3}-1}, \sqrt{\sqrt{3}+1})$. Now we know that the degree of both roots is already 4 (compare definition 2.6b in the lecture notes and with Eisenstein we can show that $f$ is already irreducible,) and therefore the splitting field degree is $[\Q(\sqrt{\sqrt{3}-1}, \sqrt{\sqrt{3}+1}), \Q] = 8$.\\ 
+		\item Since $f$ is irreducible and $\chara(\Q) = 0$, we get that $f$ is separable. (thats corollary 6.8a)
+	\end{itemize}
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%% Aufgabe 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{H39}
+Let $L = K(X)$ a rational function field. Let $a = \frac{f}{g} \in L \setminus K \with f,g \in K[X]$ coprime. To show:
+\begin{align*}
+	[L:K(a)] = \max\set{\deg(f),\deg(g)}
+\end{align*}
+\begin{proof}\
+	I tried, but I have no idea here, would be nice to get some hints, that I can try on my own after getting back this problem series. Thank you!
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%% Aufgabe 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{H40}
+Let $p > 0, a \in K \and f = X^p - X + a \in K[X]$. To show
+\begin{enumerate}
+	\item $f(X) = f(X+1)$ \label{H40_1}
+	\item $f$ is separable.
+	\item Every Wurzelkörper (this does not exists in the literature, at least not in my sources) of $f$ is a splitting field of $f$.
+	\item Has $f$ not a roots in $K$, then is $f$ irreducible. 
+\end{enumerate}
+\begin{proof}\
+	\begin{enumerate}
+		\item Use V1 (sometimes called freshman's dream) and compare: \label{H40_sol:1}
+		\begin{align*}
+			f(X+1) = (X+1)^p - X -1 + a \overset{\text{V1}}{=} X^p + \cancel{1^p} -X \cancel{-1} +a = f(X) 
+		\end{align*}
+		Therefore \ref{H40_1} holds.
+		\item Yes, because with \ref{H40_sol:1} we get that also $a +1, \dots, a+ p-1$ are roots.
+		Clearly $f \neq 0$, Hence we can use proposition 6.6. Then $\gcd(f,f') =1$, because
+		\begin{align*}
+			f = X^p - X +a \and f' = pX^{p-1} -1
+		\end{align*}
+		and the greatest common divisor is 1. And therefore $f$ is separable as we desired.
+		\item The set of roots is $R_f = \set{a+1, \dots, a+p-1}$ and we can see that $1,2, \dots, p-1$ are already in $K$ and therefore the ``Wurzelkörper'' $K(a+1)$ is equal to the splitting field $\Split(a+1)$.
+		\item no idea! :( 
+	\end{enumerate}
+\end{proof}

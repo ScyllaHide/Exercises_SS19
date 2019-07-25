@@ -1,0 +1,26 @@
+% This work is licensed under the Creative Commons
+% Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy
+% of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or
+% send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+% Commands für STOCH
+%\undef{\F}
+\newcommand{\F}{\mathbb{F}}					      % general field \math
+%\newcommand{\qetesbus}{\rotatebox[origin=c]{180}{$\subseteq$}} % mirrored \subseteq
+\DeclareMathOperator{\chara}{char}				  % characteristic of field
+\newcommand{\Split}{\mathscr S}					  % Splitting field
+%\DeclareMathOperator{\gcd}[2]{gcd(#1,#2)}		  % greatest common divisor
+%\DeclareMathOperator{\lcd}[2]{lcd(#1,#2)}		  % least common divisor
+\DeclareMathOperator{\Gal}{Gal}
+\newcommand{\for}{\text{ for }}
+
+\undef{\over}
+\newcommand{\over}[2]{\overset{#1}{#2}}
+\renewcommand{\and}{\text{ and }}
+\newcommand{\with}{\text{ with }}
+\DeclareMathOperator{\Zwk}{Zwk}
+
+% independent symbol from:
+% https://tex.stackexchange.com/questions/79434/double-perpendicular-symbol-for-independence
+\newcommand{\unab}{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
