@@ -56,7 +56,7 @@
 %%%%%%%%%%%%%%%%%%%% Aufgabe 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Aufgabe 1.2}
 \begin{enumerate}
-	\item Es sei $(\Omega, \F, \Meas)$ ein WRaum und $A,B,C \in \F$ drei Ereignisse. Beschreiben Sie mengentheoretisch folgende Ereignisse:
+	\item Es sei $(\Omega, \F, \P)$ ein WRaum und $A,B,C \in \F$ drei Ereignisse. Beschreiben Sie mengentheoretisch folgende Ereignisse:
 	\begin{enumerate}
 		\item es tritt nur $A$ ein
 		\item $A$ und $B$ treten ein, aber $C$ nicht
@@ -98,23 +98,23 @@
 \subsection{Aufgabe 1.3}
 
 \begin{enumerate}
-	\item Es sei $\Meas$ ein WMaß auf $(\Omega, \F)$ und $A,B,A_1,A_2,\dots \in \F$ beliebige Ereignisse. Zeigen Sie:
+	\item Es sei $\P$ ein WMaß auf $(\Omega, \F)$ und $A,B,A_1,A_2,\dots \in \F$ beliebige Ereignisse. Zeigen Sie:
 	\begin{enumerate}
-		\item $\Meas(\emptyset) = 0$,
-		\item $\Meas(A\cup B) + \Meas(A\cap B) = \Meas(A) + \Meas(B)$ (endliche Additivität), insbesondere $\Meas(A) + \Meas(A^C) = 1$,
-		\item Aus $A \subseteq B$ folgt $\Meas(A) \le \Meas(B)$ (Monotonie),
+		\item $\P(\emptyset) = 0$,
+		\item $\P(A\cup B) + \P(A\cap B) = \P(A) + \P(B)$ (endliche Additivität), insbesondere $\P(A) + \P(A^C) = 1$,
+		\item Aus $A \subseteq B$ folgt $\P(A) \le \P(B)$ (Monotonie),
 		\item $\sigma$-Subadditivität
 		\begin{align*}
-			\Meas\left( \bigcup_{i \ge 1} A_i\right) \le \sum_{i\ge 1} \Meas(A_i),
+			\P\left( \bigcup_{i \ge 1} A_i\right) \le \sum_{i\ge 1} \P(A_i),
 		\end{align*}
 		\item $\sigma$-Stetigkeit, d.h. $A_n \uparrow A$, d.h. $A_1 \subseteq A_2 \subseteq \dots$ und $A = \bigcup_{i \ge 1} A_i$ (oder $A_n \downarrow A$, d.h. $A_1 \supseteq A_2 \supseteq \dots$ und $A = \bigcap_{i \ge 1} A_i$), dann
 		\begin{align*}
-			\liminf_{i \to \infty} \Meas(A_i) = \Meas(A).
+			\liminf_{i \to \infty} \P(A_i) = \P(A).
 		\end{align*}
 	\end{enumerate}
-	\item Es sei $(\Omega, \F, \Meas)$ ein WRaum und $A,B \in \F$ zwei Ereignisse mit $\Meas(A) = 0.6$ und $\Meas(B) = 0.4$, sowie $\Meas(A\cap B) = 0.2$. Bestimmen Sie die Wahrscheinlichkeiten
+	\item Es sei $(\Omega, \F, \P)$ ein WRaum und $A,B \in \F$ zwei Ereignisse mit $\P(A) = 0.6$ und $\P(B) = 0.4$, sowie $\P(A\cap B) = 0.2$. Bestimmen Sie die Wahrscheinlichkeiten
 	\begin{align*}
-		\Meas(A\cup B), \quad \Meas(B^C), \quad \Meas(A^C \cap B), \quad \Meas(A \cup B^C), \quad \Meas(A^C \cap B^C).
+		\P(A\cup B), \quad \P(B^C), \quad \P(A^C \cap B), \quad \P(A \cup B^C), \quad \P(A^C \cap B^C).
 	\end{align*}
 \end{enumerate}
 
@@ -122,52 +122,52 @@
 	\begin{enumerate}
 		\item 
 		\begin{enumerate}
-			\item Behauptung: $\Meas(\emptyset) = 0$
+			\item Behauptung: $\P(\emptyset) = 0$
 			\begin{align*}
 			\emptyset = \bigcup_{n=1}^{\infty} \emptyset\qquad 
-			\Meas(\emptyset) = \Meas\left(\bigcup_{n=1}^{\infty}\right) = \sum_{i= 1}^{\infty} \Meas(\emptyset) \le 1.
+			\P(\emptyset) = \P\left(\bigcup_{n=1}^{\infty}\right) = \sum_{i= 1}^{\infty} \P(\emptyset) \le 1.
 			\end{align*}
-			\item Behauptung: $\Meas(A \cup B) + \Meas(A \cap B) = \Meas(A) + \Meas(B)$
+			\item Behauptung: $\P(A \cup B) + \P(A \cap B) = \P(A) + \P(B)$
 			\begin{align}
-				\Meas(A\uplus B) 
-				&= \Meas(A \cup B \cup \emptyset \cup \dots)\notag\\ 
-				&= \Meas(A) + \Meas(B) + \sum_{i=1}^{\infty}\Meas(\emptyset)\notag\\
-				B = A^C &\Rightarrow \Meas(\Omega) = \Meas(A \uplus A^C)\notag\\
-				&= \Meas(A) + \Meas(A^C) = 1\notag\\
-				\Meas(A \cup B) + \Meas(A \cap B) 
-				&= \Meas(A \setminus B \cup B\setminus A \uplus (A \cap B) + \Meas(A \cap B)\notag\\
-				&= \underbrace{\Meas(A\setminus B)  + \Meas(A \cap B)}_{\Meas(A)} + \underbrace{\Meas(A \cap B) + \Meas(B\setminus A)}_{\Meas(B)}\notag\\
-				&= \Meas(A) + \Meas(B)\notag
+				\P(A\uplus B) 
+				&= \P(A \cup B \cup \emptyset \cup \dots)\notag\\ 
+				&= \P(A) + \P(B) + \sum_{i=1}^{\infty}\P(\emptyset)\notag\\
+				B = A^C &\Rightarrow \P(\Omega) = \P(A \uplus A^C)\notag\\
+				&= \P(A) + \P(A^C) = 1\notag\\
+				\P(A \cup B) + \P(A \cap B) 
+				&= \P(A \setminus B \cup B\setminus A \uplus (A \cap B) + \P(A \cap B)\notag\\
+				&= \underbrace{\P(A\setminus B)  + \P(A \cap B)}_{\P(A)} + \underbrace{\P(A \cap B) + \P(B\setminus A)}_{\P(B)}\notag\\
+				&= \P(A) + \P(B)\notag
 			\end{align}
 %			\item ... %TODO other points, i have as picture!
 			\item $A,B \in \F, A \subseteq B$:\\
 			\begin{align}
-				\Meas(B) = \Meas(A \cup B\setminus A) = \Meas(A) + \underbrace{\Meas(B\setminus A)}_{\ge 0} \ge \Meas(A) 
+				\P(B) = \P(A \cup B\setminus A) = \P(A) + \underbrace{\P(B\setminus A)}_{\ge 0} \ge \P(A) 
 				\label{eq_1}\tag{*}
 			\end{align}
 			\item $A_1,A_2,\dots$\\
-			Behauptung: $\Meas\brackets{\bigcup_{i \ge 1} A_i} \overset{!?}{\le} \sum_{i\ge 1} \Meas(A_i)$
+			Behauptung: $\P\brackets{\bigcup_{i \ge 1} A_i} \overset{!?}{\le} \sum_{i\ge 1} \P(A_i)$
 			\begin{align}
-			&= \Meas(\bigcup_{i \ge 1}^{\infty}(A_i \setminus \bigcup_{j \ge i} A_j))\notag\\ 
-			&= \Meas(A_1 \cup (A_2 \setminus A_1) \cup (A_3 \setminus (A_1 \cup A_2)) \cup \dots)\notag\\
-			&= \sum_{i\ge 1}^{\infty} \Meas(A_i \setminus \bigcup_{j \ge i} A_j) \overset{\text{\cref{eq_1}}}{\le} \sum_{i\ge 1} \Meas(A_i)\notag
+			&= \P(\bigcup_{i \ge 1}^{\infty}(A_i \setminus \bigcup_{j \ge i} A_j))\notag\\ 
+			&= \P(A_1 \cup (A_2 \setminus A_1) \cup (A_3 \setminus (A_1 \cup A_2)) \cup \dots)\notag\\
+			&= \sum_{i\ge 1}^{\infty} \P(A_i \setminus \bigcup_{j \ge i} A_j) \overset{\text{\cref{eq_1}}}{\le} \sum_{i\ge 1} \P(A_i)\notag
 			\end{align}
 			\item $A_1 \subseteq A_2 \subseteq \dots \in F, A_0 = \emptyset$ und $A_n \xrightarrow{n \to \infty} A$. 
 			%(Es muss eine disjunkte Zerlegung gefunden werden: $F_i = A_i \setminus A_{i-1}$)
 			\begin{align}
-				\Meas(A) 
-				&= \Meas(\bigcup_{i \ge 1} (A_i \setminus A_{i-1})) \notag\\
-				&= \sum_{i\ge 1} \Meas(A_i \setminus A_{i-1})\notag\\
-				&= \liminf_{n \to \infty} \sum_{i\ge 1}^{n} \Meas(A_i \setminus A_{i-1})\notag \\
-				&= \liminf_{n \to \infty} \Meas(\bigcap_{i \ge 1} (A_i\setminus A_{i-1})) \notag\\
-				&= \liminf_{n \to \infty} \Meas(A_n)
+				\P(A) 
+				&= \P(\bigcup_{i \ge 1} (A_i \setminus A_{i-1})) \notag\\
+				&= \sum_{i\ge 1} \P(A_i \setminus A_{i-1})\notag\\
+				&= \liminf_{n \to \infty} \sum_{i\ge 1}^{n} \P(A_i \setminus A_{i-1})\notag \\
+				&= \liminf_{n \to \infty} \P(\bigcap_{i \ge 1} (A_i\setminus A_{i-1})) \notag\\
+				&= \liminf_{n \to \infty} \P(A_n)
 				\label{eq_2}\tag{**}
 			\end{align}
 			Und nun nochmal den absteigenden Fall:\\
 			$B_1 \supseteq B_2 \supseteq \dots \in F$ und $B_n \downarrow B \Longrightarrow B_1 \setminus B_n \uparrow B_1 \setminus B$. Benutze dazu \cref{eq_1} und \cref{eq_2}:
 			\begin{align}
-				\underbrace{\Meas(B_1 \setminus B)}_{\Meas(B_1) - \Meas(B)} &= \lim_{n \to \infty} \Meas(B_1 \setminus B_n) \notag\\
-				&= \lim_{n \to \infty} (\Meas(B_1) - \Meas(B_1))\notag
+				\underbrace{\P(B_1 \setminus B)}_{\P(B_1) - \P(B)} &= \lim_{n \to \infty} \P(B_1 \setminus B_n) \notag\\
+				&= \lim_{n \to \infty} (\P(B_1) - \P(B_1))\notag
 			\end{align}
 		\end{enumerate}
 	\item $\dots$ %TODO No idea right now, later.
@@ -190,17 +190,17 @@ Es sei $X$ eine stetige, reelle Zufallsvariable ($X: \R_{+} \to \R_{+}$) mit Wah
 \begin{lösung}
 	\begin{enumerate}[label=\alph*)]
 		\item Nach auswerten des Integrals über $f$ auf $\R_{+}$ ergibt sich, $c = \sfrac{1}{\sqrt{2}}$.
-		Sei $\Meas$ das WMaß, was normiert ist zu $1$, d.h. $\Meas(\R_{+}) \overset{!}{=}1 (N)$. Damit lässt sich dann $c$ bestimmen:
+		Sei $\P$ das WMaß, was normiert ist zu $1$, d.h. $\P(\R_{+}) \overset{!}{=}1 (N)$. Damit lässt sich dann $c$ bestimmen:
 		\begin{align*}
-			\Meas(\R_{+}) &= \int_{\R_{+}} \frac{1}{2c} e^{-cx} dx\\
+			\P(\R_{+}) &= \int_{\R_{+}} \frac{1}{2c} e^{-cx} dx\\
 			&= \frac{1}{2c} \int_{0}^{\infty}  e^{-cx} dx \\
 			&= \frac{1}{2c} \big[-\frac{1}{c} e^{-cx}\big]_{0}^{\infty}\\
 			&= -\frac{1}{2c^2} \big(\lim\limits_{\alpha \to \infty} e^{-c\alpha} - e^{-c\cdot0}\big)\\
 			&= \frac{1}{2c^2} \overset{(N)}{\Rightarrow} c = \frac{1}{\sqrt{2}} 
 		\end{align*}
-		\item Damit gibt es folgenden WRaum $(\Omega, \borel(\R_{+}),\Meas)$ auf diesem soll sich die Verteilungsfunktion befinden. Nach Definition gilt: 
+		\item Damit gibt es folgenden WRaum $(\Omega, \borel(\R_{+}),\P)$ auf diesem soll sich die Verteilungsfunktion befinden. Nach Definition gilt: 
 		\begin{align*}
-			F_{\Meas \circ X^{-1}} = F_{X}: \R_{+} \to [0,1] \mit F: d \to \Meas((X \le d))\notag\\
+			F_{\P \circ X^{-1}} = F_{X}: \R_{+} \to [0,1] \mit F: d \to \P((X \le d))\notag\\
 			\text{Im dem Fall sieht das so aus: } F_{X}(d) = \int_{-\infty}^{d} \frac{1}{2\sqrt{2}} e^{-\frac{x}{\sqrt{2}}} \diff x = \brackets{1 - e^{-\frac{d}{\sqrt{2}}}}\indi_{\set{x \ge 0}}.\notag\\
 		\end{align*}
 		%TODO maybe draw a plot of this thing?
