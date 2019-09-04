@@ -5,9 +5,8 @@
 
 \section{Übung 1 - Körpergrad, algebraische Erweiterungen}
 Sei $L \vert K$ Körpererweiterung.
-\subsection{V 1.1}
+\subsection{V1}
 Ist $\chara(K) = p >0$, so gilt $(a+b)^p = a^p + b^p$ für alle $a,b \in K$.
-
 \begin{proof}
 	Es seien $a,b \in K$. Es gilt:
 	\begin{align*}
@@ -17,11 +16,19 @@ Ist $\chara(K) = p >0$, so gilt $(a+b)^p = a^p + b^p$ für alle $a,b \in K$.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%% Aufgabe 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{V 1.2}
-%TODO
+\subsection{V2}
+Seien $\alpha \in L \ K$ und $\alpha^2 \in K$, so ist $[K[\alpha], K] = 2$. 
+\begin{proof}
+	Es gibt zwei Möglichkeiten:
+	\begin{enumerate}
+		\item \ul{Minimalpolynom:} Das Polynom $X^2+a^2$ ist irreduzibel, da $a \in L \ K$ ist.
+		\item \ul{lineare Unabhängigkeit:} Die Elemente $1,a$ sind linear unabhängig., aber $1,a,a^2$ ist linear abhängig, also ist $1,a$ eine $K$-Basis von $K(a)$.
+	\end{enumerate}
+	Und beide Argumente geben uns die Behauptung.
+\end{proof}
 %%%%%%%%%%%%%%%%%%%% Aufgabe 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{V 1.3}
+\subsection{V3}
 Sei $\alpha \in L^{\times}$. Zeigen Sie: Für $a \in K^{\times}$ und $b \in K^{\times}$ ist $K[\alpha] = K[a\alpha + b]$ und $K(\alpha) = K(\alpha^{-1}) = K(a\alpha + b)$.
 
 \begin{proof}
@@ -41,7 +48,7 @@ Sei $\alpha \in L^{\times}$. Zeigen Sie: Für $a \in K^{\times}$ und $b \in K^{\
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%% Aufgabe 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Ü 1.4}
+\subsection{Ü4}
 Ist $[L:K] = p$ prim, so ist $L = K(\alpha)$ für jedes $\alpha \in L \setminus K$.
 
 \begin{proof}
@@ -54,12 +61,12 @@ Ist $[L:K] = p$ prim, so ist $L = K(\alpha)$ für jedes $\alpha \in L \setminus 
 
 %%%%%%%%%%%%%%%%%%%% Aufgabe 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Aufgabe 1.4}
+\subsection{Ü5}
 
 
 %%%%%%%%%%%%%%%%%%%% Aufgabe 6 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Ü 1.6}
+\subsection{Ü6}
 Sei $\alpha \in L$ nicht algebraisch über $K$ und $n \ge 1$. Zeigen Sie, dass $[K(\alpha):K(\alpha^n)] = n$.
 
 \begin{proof}
@@ -68,7 +75,7 @@ Sei $\alpha \in L$ nicht algebraisch über $K$ und $n \ge 1$. Zeigen Sie, dass $
 
 %%%%%%%%%%%%%%%%%%%% Aufgabe 7 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{P 1.14}
+\subsection{P14}
 Geben Sie ein Beispiel einer Körpererweiterung $L\vert K$, die endlich erzeugt aber nicht endlich ist.
 
 \begin{lösung}
@@ -78,7 +85,7 @@ Geben Sie ein Beispiel einer Körpererweiterung $L\vert K$, die endlich erzeugt 
 
 %%%%%%%%%%%%%%%%%%%% Aufgabe 8 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{P 1.15}
+\subsection{P15}
 \begin{enumerate}
 	\item $\Q(\sqrt{2}) = \Q(\sqrt{3})$? \label{ex:P15:1}
 	\item $\Q(\sqrt{2}) \cong \Q(\sqrt{3})$? \label{ex:P15:2}
