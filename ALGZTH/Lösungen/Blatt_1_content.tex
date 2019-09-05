@@ -36,12 +36,12 @@ Sei $\alpha \in L^{\times}$. Zeigen Sie: Für $a \in K^{\times}$ und $b \in K^{\
 		\item $K[\alpha] = K[a\alpha + b]:$
 		\begin{align*}
 			&(\supseteq)\quad a\alpha + b = a(\alpha) + b\\
-			&(\subseteq)\quad a\alpha = \frac{1}{a} (a\alpha + n) - \frac{b}{a}\\
+			&(\subseteq)\quad \alpha = \frac{1}{a} (a\alpha + b) - \frac{b}{a}\\
 		\end{align*}
 		\item $K(\alpha) = K(\alpha^{-1}):$
 		\begin{align*}
-			&(\subseteq)\quad a\alpha^{-1} = \frac{1}{a}\\
-			&(\supseteq)\quad a\alpha = (\alpha^{-1})^{-1}
+			&(\subseteq)\quad \alpha^{-1} = \frac{1}{a}\\
+			&(\supseteq)\quad \alpha = (\alpha^{-1})^{-1}
 		\end{align*}
 		\item ``$K(\alpha) = K(\alpha +b)$'' folgt aus $K[\alpha] = K[\alpha + b]$ und der Definition von $K(...)$. 
 	\end{itemize}
@@ -68,7 +68,7 @@ Bestimmen Sie das Minimalpolynom von $\sqrt[n]{2}$ über $\Q$, für $n \in \N$. 
 	\begin{enumerate}
 		\item 
 		\begin{enumerate}
-			\item Sei $n \ge 1$. Es ist klar, dass $\sqrt[n]{2}$ eine Nullstelle von $X^2-2 \in \Q[X]$ ist. Diese Polynom ist normiert und irreduzibel über $\Q$ (EISENSTEIN, $p=2$). Deshalb ist $X^n -2$ das Minimalpolynom von $\sqrt[n]{2}$ über $\Q$.
+			\item Sei $n \ge 1$. Es ist klar, dass $\sqrt[n]{2}$ eine Nullstelle von $X^n-2 \in \Q[X]$ ist. Diese Polynom ist normiert und irreduzibel über $\Q$ (EISENSTEIN, $p=2$). Deshalb ist $X^n -2$ das Minimalpolynom von $\sqrt[n]{2}$ über $\Q$.
 			\item Schreibe $w = 1+\ii$. Es ist
 			\begin{align*}
 				w^2 + 1 -2w &=(w-1)^2 = \ii^2
@@ -84,7 +84,7 @@ Bestimmen Sie das Minimalpolynom von $\sqrt[n]{2}$ über $\Q$, für $n \in \N$. 
 %%%%%%%%%%%%%%%%%%%% Aufgabe 6 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection*{Aufgabe Ü6}
-Sei $\alpha \in L$ nicht algebraisch über $K$ und $n \ge 1$. Zeigen Sie, dass $[K(\alpha):K(\alpha^n)] = n$.
+Sei $\alpha \in L$ nicht algebraisch (= transzendent) über $K$ und $n \ge 1$. Zeigen Sie, dass $[K(\alpha):K(\alpha^n)] = n$.
 
 \begin{proof}
 	Da $\alpha$ nicht algebraisch über $K$ ist, ist $\alpha^n$ nicht algebraisch über $K$, d.h. $K(\alpha^n) \cong K(T)$. Das Polynom $x^n - T$ ist irreduzibel über $K(T)$ nach EISENSTEIN. Deswegen ist $X^n - \alpha^n$ irreduzibel über $K(\alpha^n)$. Das Polynom $x^n - \alpha^n$ ist normiert und $\alpha^n$ ist eine Nullstelle dieses Polynoms. Deshalb ist $x^n - \alpha^n$ das Minimalpolynom von $\alpha$ über $K(\alpha^n)$. Insbesondere ist $[K(\alpha):K(\alpha)] = n$.
