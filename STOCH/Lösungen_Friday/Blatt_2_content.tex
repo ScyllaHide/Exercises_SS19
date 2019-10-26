@@ -21,7 +21,7 @@
 	\begin{enumerate}
 		\item Setze $X$ als die Anzahl der defekten Glühbirnen. $X$ ist binomialverteilt mit $p=0,03$ und $n=5$. Damit ergibt sich
 		\begin{align*}
-			\Meas(X=0) = \binom{n}{0}p^0(1-p)^{n-0} = 0.97^5 \approx \ul{0,8587}
+			\P(X=0) = \binom{n}{0}p^0(1-p)^{n-0} = 0.97^5 \approx \ul{0,8587}
 		\end{align*}
 		\item 5 Spielrunden, 1 Gast aus Dorf $A$ und je 2 Gäaste aus Dorf $B/C$\\
 		äquivalentes Urnenmodell:
@@ -32,7 +32,7 @@
 		Gesucht sei die Wahrscheinlichkeit bei 5-maligem Ziehen: 1 schwarze, 2 blaue und 2 rote Kugeln zu ziehen.\\
 		Lösung: Es ist $E = \set{s,b,r}$, also $\abs{E} = 3$ und $(k_{a})_{a \in E} = (k_s, k_b, k_r) = (3,4,5)$
 		\begin{align*}
-			\Meas\brackets{Y = (1,2,2)^T}
+			\P\brackets{Y = (1,2,2)^T}
 			&= \binom{5}{(1,2,2)}\binom{3}{12}^1\cdot \binom{4}{12}^2\cdot\binom{5}{12}^2\\
 			&= \frac{5!}{1!2!2!} \frac{1}{4}\frac{1}{9}\frac{25}{144}\\
 			&= \frac{120}{4}\frac{1}{4}\frac{1}{9}\frac{25}{144}\\
@@ -52,16 +52,16 @@ das geschlechtsreife Alter erreichen. Wie groß ist die Wahrscheinlichkeit, dass
 	\begin{itemize}
 		\item Binomialverteilung: Dabei wähle $X = \Bin(1000,0,001)$, $\Omega = \set{0,\dots,1000}$ und $\F = \pows({\Omega}), X = \id.$
 		\begin{align*}
-		\Meas(X \ge 2) = 1-\Meas(X<2) 
-		&= 1 - \Meas(X=0) - \Meas(X = 1)\\
+		\P(X \ge 2) = 1-\P(X<2) 
+		&= 1 - \P(X=0) - \P(X = 1)\\
 		&= 1 - \binom{1000}{0}\mal 0.001^{0}0.999^{1000}-\binom{1000}{1}0.001^1\mal 0.999^{999}\\
 		&= 1-0.999^{1000} - 1000\mal 0.001 \mal 0.999^{999}\\
 		&= 1 - 0.999^{1000} - 0.999^{999}\\
 		&\approx 0.2645 \approx 26.4\%
 		\end{align*}
-		\item Poisson-Approximation: Dabei wähle $\Omega = \N, \Meas = \Pois(\lambda = np)$
+		\item Poisson-Approximation: Dabei wähle $\Omega = \N, \P = \Pois(\lambda = np)$
 		\begin{align*}
-			\Meas(X \ge 2) = 1 - \Meas(X = 1) - \Meas(X = 0) \approx 0.2642
+			\P(X \ge 2) = 1 - \P(X = 1) - \P(X = 0) \approx 0.2642
 		\end{align*}
 	\end{itemize}
 	Wie man sieht ergibt die Bimonialverteilung und die Poissonverteilung die gleichen Werte, wobei ich finde, dass die Poissonverteilung sich schneller arithmetischer berechnen lässt.
@@ -78,7 +78,7 @@ das geschlechtsreife Alter erreichen. Wie groß ist die Wahrscheinlichkeit, dass
 	Tag Geburtstag haben?\\
 	Wie viele Leute müssen Sie kennen, damit mit Wahrscheinlichkeit von 50\% einer davon am
 	gleichen Tag wie Sie Geburtstag hat? 
-	\item Es sei $\Meas({k}) = 2^{-k}$. Zeigen Sie, $\Meas$ ist ein Wahrscheinlichkeitsmaß auf $(\N , \Meas(\N))$. Geben Sie
+	\item Es sei $\P({k}) = 2^{-k}$. Zeigen Sie, $\P$ ist ein Wahrscheinlichkeitsmaß auf $(\N , \P(\N))$. Geben Sie
 	eine Zufallsvariable $X$ an, die einen doppelten Münzwurf mit einer fairen Münze beschreibt.
 	\item Aus dem folgendem Satz wird ein Wort zufällig gleichverteilt ausgewählt.
 	\begin{center}
@@ -99,17 +99,17 @@ das geschlechtsreife Alter erreichen. Wie groß ist die Wahrscheinlichkeit, dass
 			Dabei sind $\omega$ das Geburtsdatum der $n$ Personen und $X_d$ ist messbar, da $\sum$ von Indikatorfunktion auf messbare Menge $\set{d}$ abbildet.
 			Setze $X: \Omega \to \N_0 \mit X(\omega) := \max_{d \in J} X_d(\omega)$ und die Dichtefunktion $\rho(d) = \frac{1}{\Omega} ? \frac{1}{365^n}\quad \forall d \in J$. Dann haben wir
 			\begin{align*}
-			\Meas(X \ge 2) 
-			&= \Meas(\set{\omega \in \Omega : X(\omega) \ge 2})\\
+			\P(X \ge 2) 
+			&= \P(\set{\omega \in \Omega : X(\omega) \ge 2})\\
 			&= \frac{\abs{\omega \in \Omega : X(\omega \ge 2)}}{\abs{\Omega}}\\
-			\Meas(X \ge 2)
-			&= 1 - \Meas(X<2)\\
+			\P(X \ge 2)
+			&= 1 - \P(X<2)\\
 			&= \frac{365\mal 364 \cdots (365-n + 1)}{365^n}
 			\end{align*} 
-			Für $n = 23$ ist $\Meas(X \ge 2) \approx \frac{1}{2}$.
+			Für $n = 23$ ist $\P(X \ge 2) \approx \frac{1}{2}$.
 			\item Für festes Datum: $p = \frac{1}{365}, q \approx 1- p = 1 - \frac{1}{365}$
 			\begin{align*}
-				\Meas = 1- q^n = \frac{1}{2} \Longrightarrow \frac{1}{2} = q^n \Longrightarrow n = \frac{\ln \frac{1}{2}}{\ln q} \approx 253 
+				\P = 1- q^n = \frac{1}{2} \Longrightarrow \frac{1}{2} = q^n \Longrightarrow n = \frac{\ln \frac{1}{2}}{\ln q} \approx 253 
 			\end{align*}
 		\end{itemize}
 	\item Wahrscheinlichkeitsmaß: $\sum_{k=1}^{\infty} \frac{1}{2^k} = -1 + \sum_{k=0}^{\infty} \frac{1}{2^k} = -1 +2 = 1$\\
@@ -123,10 +123,10 @@ das geschlechtsreife Alter erreichen. Wie groß ist die Wahrscheinlichkeit, dass
 		\end{cases}
 	\end{align*}
 	\item \begin{align*}
-	\Meas(L = 3) &= \frac{7}{13} & \Meas(L = 3) &= \frac{1}{13}\\
-	\Meas(L = 4) &= \frac{2}{13} & \Meas(L = 3) &= \frac{1}{13}\\
-	\Meas(L = 5) &= \frac{1}{13} & \Meas(L = 3) &= \frac{1}{13}\\
-	\Meas(L = 6) &= \frac{1}{13} &              &              \\
+	\P(L = 3) &= \frac{7}{13} & \P(L = 3) &= \frac{1}{13}\\
+	\P(L = 4) &= \frac{2}{13} & \P(L = 3) &= \frac{1}{13}\\
+	\P(L = 5) &= \frac{1}{13} & \P(L = 3) &= \frac{1}{13}\\
+	\P(L = 6) &= \frac{1}{13} &              &              \\
 	\end{align*}
 	Die ersten Wörter werden mit $\frac{1}{4}$ ausgewählt, nächstes Wort mit Wahrscheinlichkeit $\frac{1}{2}$ und dann mit $\frac{1}{4}$. Das letzte Wort hat Wahrscheinlichkeit 0.
 	\end{enumerate}
